@@ -1507,6 +1507,43 @@
             { id: 6, name: 'Pizza Á moda da casa frango 8 fatias', category: 'pizza', description: 'Molho, frango desfiado, presunto, salsicha, milho, Mussarela, calabresa, bacon, tomate, azeitona, cebola, óregano e azeite', price: 72.00, emoji: '🍕' },
             { id: 7, name: 'Pizza Á moda da casa carne moída 8 fatias', category: 'pizza', description: 'Molho, carne moída, presunto, salsicha, milho, Mussarela, calabresa, bacon, tomate, azeitona, cebola, óregano e azeite', price: 72.00, emoji: '🍕' },
             { id: 8, name: 'Pizza Doce Banana com canela 8 fatias', category: 'pizza', description: 'Massa especial para pizza doce, mussarela, Banana maçã, canela em pó e leite condensado', price: 75.00, emoji: '🍕' },
+            <style>
+    .secao-pizzas {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 30px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .secao-pizzas::before,
+    .secao-pizzas::after {
+        content: '';
+        flex: 1;
+        border-bottom: 2px solid #333; /* Linha escura sólida */
+    }
+
+    .secao-pizzas::before {
+        margin-right: 15px;
+    }
+
+    .secao-pizzas::after {
+        margin-left: 15px;
+    }
+
+    .texto-pizzas {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: #333;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+</style>
+
+<div class="secao-pizzas">
+    <span class="texto-pizzas">PIZZAS DE 8 FATIAS</span>
+</div>
+        
             { id: 9, name: 'Pizza Mussarela 6 fatias', category: 'pizza', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, óregano e azeite', price: 35.00, emoji: '🍕' },
             { id: 10, name: 'Pizza Calabresa 6 fatias', category: 'pizza', description: 'Molho especial de tomate, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, óregano e azeite', price: 40.00, emoji: '🍕' },
             { id: 202, name: 'Pizza Calabresa simples/econômica 6 fatias', category: 'pizza', description: 'molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano', price: 33.00, emoji: '🍕' },
