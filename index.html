@@ -1400,7 +1400,24 @@
     </main>
 
     <!-- Promotion Modal -->
-
+    <div class="promotion-modal" id="promotionModal">
+        <div class="promotion-content">
+            <div class="promotion-header">
+                <h2 class="promotion-title">🎉 PROMOÇÃO DO DIA</h2>
+                <button class="promotion-close" onclick="closePromotion()">✕</button>
+            </div>
+            <div class="promotion-body">
+                <img id="promotionImage" class="promotion-image" src="" alt="Promoção">
+                <div id="promotionVideoContainer" class="promotion-video" style="display: none;">
+                    <iframe id="promotionVideo" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="promotion-details">
+                    <div class="promotion-product-name" id="promotionProductName"></div>
+                    <div class="promotion-product-desc" id="promotionProductDesc"></div>
+                    <div class="promotion-product-price" id="promotionProductPrice"></div>
+                </div>
+            </div>
+            <div class="promotion-footer">
                 
                 <button class="btn-promo btn-promo-skip" onclick="closePromotion()">ACESSAR O CARDÁPIO</button>
             </div>
