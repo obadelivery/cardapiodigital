@@ -689,8 +689,33 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 .card-half .card-name { color: var(--accent2); }
 .card-half .card-price { font-size: 12px; font-weight: 700; color: var(--text2); }
 
-.half-modal .modal-box { max-width: 480px; max-height: 92dvh; }
+.half-modal {
+  align-items: stretch;
+  padding: 0;
+  overscroll-behavior: none;
+}
+.half-modal .modal-box {
+  max-width: 480px;
+  width: 100%;
+  max-height: 100dvh;
+  height: min(100dvh, 720px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: auto;
+  border-radius: 20px 20px 0 0;
+}
+@media (min-width: 520px) {
+  .half-modal { align-items: center; padding: 16px; }
+  .half-modal .modal-box {
+    height: auto;
+    max-height: 92dvh;
+    border-radius: 20px;
+  }
+}
 .half-hero {
+  flex-shrink: 0;
+
   padding: 18px 16px 12px;
   text-align: center;
   background: linear-gradient(160deg, rgba(245,158,11,0.18), rgba(239,68,68,0.08));
@@ -701,6 +726,7 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 .half-hero p { font-size: 12px; color: var(--text3); margin-top: 4px; line-height: 1.4; }
 .half-steps {
   display: flex; gap: 6px; padding: 12px 16px 0; flex-wrap: wrap;
+  flex-shrink: 0;
 }
 .half-step-dot {
   flex: 1; min-width: 70px; text-align: center;
@@ -714,7 +740,15 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 .half-step-dot.done {
   color: #4ade80; border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.1);
 }
-.half-body { padding: 14px 16px; }
+.half-body {
+  padding: 14px 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+}
 .half-label {
   font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px;
 }
@@ -785,7 +819,7 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
   font-size: 12px; font-weight: 700; color: var(--text2);
   text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 8px;
 }
-.half-ing-list { display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; }
+.half-ing-list { display: flex; flex-direction: column; gap: 6px; }
 .half-ing-row {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   padding: 8px 10px; border-radius: 10px; background: rgba(10,10,11,0.45);
@@ -827,6 +861,8 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
   display: flex; gap: 8px; padding: 12px 16px;
   padding-bottom: max(12px, var(--safe-bottom));
   border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--bg2);
 }
 .half-nav button {
   flex: 1; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14px;
@@ -838,6 +874,83 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 .half-btn-next { background: var(--accent); color: #000; }
 .half-btn-next:disabled { opacity: 0.45; cursor: not-allowed; }
 .half-btn-add { background: var(--accent); color: #000; flex: 1.4; }
+
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  touch-action: none;
+}
+
+/* COUPON */
+.coupon-box {
+  margin-bottom: 12px;
+  border: 1.5px solid rgba(139,92,246,0.35);
+  background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(99,102,241,0.05));
+  border-radius: 12px;
+  overflow: hidden;
+}
+.btn-coupon-toggle {
+  width: 100%; padding: 12px 14px; border: none; background: transparent;
+  color: #c4b5fd; font-weight: 700; font-size: 13px; cursor: pointer;
+  font-family: inherit; display: flex; align-items: center; justify-content: space-between;
+  gap: 8px; min-height: 44px;
+}
+.btn-coupon-toggle:hover { color: #e9d5ff; }
+.coupon-panel { display: none; padding: 0 12px 12px; }
+.coupon-panel.show { display: block; }
+.coupon-banner {
+  background: rgba(139,92,246,0.15);
+  border: 1.5px solid rgba(139,92,246,0.35);
+  border-radius: 10px; padding: 12px; margin-bottom: 10px;
+}
+.coupon-banner .cb-title {
+  font-size: 12px; font-weight: 800; color: #c4b5fd; margin-bottom: 4px;
+  text-transform: uppercase; letter-spacing: 0.3px;
+}
+.coupon-banner .cb-text {
+  font-size: 13px; color: var(--text); line-height: 1.4; font-weight: 600;
+}
+.coupon-banner .cb-sponsor {
+  font-size: 11px; color: var(--text3); margin-top: 6px;
+}
+.coupon-row {
+  display: flex; gap: 8px; align-items: stretch;
+}
+.coupon-row input {
+  flex: 1; min-width: 0; padding: 12px 12px; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--card); color: var(--text);
+  font-size: 14px; font-family: inherit; font-weight: 700; letter-spacing: 0.5px;
+  text-transform: uppercase; outline: none;
+}
+.coupon-row input:focus { border-color: #8b5cf6; }
+.btn-coupon-apply {
+  flex-shrink: 0; padding: 0 16px; border: none; border-radius: 10px;
+  background: #8b5cf6; color: #fff; font-weight: 800; font-size: 13px;
+  cursor: pointer; font-family: inherit; min-height: 44px;
+}
+.btn-coupon-apply:hover { background: #7c3aed; }
+.coupon-applied {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 10px 12px; background: rgba(34,197,94,0.12);
+  border: 1.5px solid rgba(34,197,94,0.35); border-radius: 10px;
+  font-size: 12px; color: #4ade80; font-weight: 700;
+}
+.coupon-applied button {
+  background: none; border: none; color: #f87171; font-weight: 800;
+  font-size: 12px; cursor: pointer; font-family: inherit; padding: 4px 8px;
+}
+.cart-discount-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 8px; font-size: 13px; font-weight: 600; color: #4ade80;
+}
+.cart-subtotal-row {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 4px; font-size: 13px; font-weight: 600; color: var(--text2);
+}
+.checkout-discount-line {
+  font-size: 13px; color: #4ade80; font-weight: 700; margin-top: 6px; text-align: center;
+}
 
 /* TOAST */
 .toast {
@@ -1779,6 +1892,34 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
     <div class="empty"><div class="empty-icon">🛒</div><p>Carrinho vazio</p></div>
   </div>
   <div class="drawer-footer">
+    <div class="coupon-box" id="couponBox">
+      <button type="button" class="btn-coupon-toggle" onclick="toggleCouponPanel()" id="btnCouponToggle">
+        <span>🎟️ Tem cupom de desconto?</span>
+        <span id="couponToggleIcon">▼</span>
+      </button>
+      <div class="coupon-panel" id="couponPanel">
+        <div class="coupon-banner" id="couponBanner">
+          <div class="cb-title">Oferta de parceiro</div>
+          <div class="cb-text">Qual é a loja que vende mais barato utensílios para a sua cozinha?</div>
+          <div class="cb-sponsor">Digite o cupom do anunciante e ganhe desconto nas pizzas</div>
+        </div>
+        <div id="couponFormWrap">
+          <div class="coupon-row">
+            <input type="text" id="couponInput" placeholder="DIGITE O CUPOM" autocomplete="off" autocapitalize="characters">
+            <button type="button" class="btn-coupon-apply" onclick="applyCoupon()">Aplicar</button>
+          </div>
+        </div>
+        <div id="couponAppliedWrap" style="display:none"></div>
+      </div>
+    </div>
+    <div class="cart-subtotal-row" id="cartSubtotalRow" style="display:none">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">R$ 0,00</span>
+    </div>
+    <div class="cart-discount-row" id="cartDiscountRow" style="display:none">
+      <span id="cartDiscountLabel">Desconto</span>
+      <span id="cartDiscountVal">− R$ 0,00</span>
+    </div>
     <div class="cart-total-row">
       <span>Total</span>
       <span id="cartTotal">R$ 0,00</span>
@@ -1798,6 +1939,7 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
     <div class="modal-total">
       <label>Total do pedido</label>
       <div class="amount" id="checkoutTotal">R$ 0,00</div>
+      <div class="checkout-discount-line" id="checkoutDiscountLine" style="display:none"></div>
     </div>
     <div class="modal-actions">
       <button class="btn-wa" onclick="sendWhatsApp()">
@@ -3725,14 +3867,43 @@ function halfPrice() {
   return Math.round(((a.price + b.price) / 2) * 100) / 100;
 }
 
+function lockBodyScroll() {
+  try {
+    if (!document.body.classList.contains('modal-open')) {
+      document.body.dataset.scrollY = String(window.scrollY || window.pageYOffset || 0);
+      document.body.classList.add('modal-open');
+      document.body.style.top = '-' + document.body.dataset.scrollY + 'px';
+    }
+  } catch (e) {}
+}
+function unlockBodyScroll() {
+  try {
+    if (!document.body.classList.contains('modal-open')) return;
+    // keep locked if another modal still open
+    var still = document.querySelector('.modal.open, .mk-modal.open, .drawer.open');
+    if (still) return;
+    var y = parseInt(document.body.dataset.scrollY || '0', 10) || 0;
+    document.body.classList.remove('modal-open');
+    document.body.style.top = '';
+    window.scrollTo(0, y);
+  } catch (e) {}
+}
+
 function openHalfBuilder() {
   halfState = { step: 1, size: null, halfA: null, halfB: null, removeA: {}, removeB: {}, qty: 1 };
   document.getElementById('halfModal').classList.add('open');
+  lockBodyScroll();
   renderHalfModal();
+  // garante foco de scroll no corpo do modal
+  setTimeout(function () {
+    var b = document.getElementById('halfBody');
+    if (b) b.scrollTop = 0;
+  }, 50);
 }
 
 function closeHalfBuilder() {
   document.getElementById('halfModal').classList.remove('open');
+  unlockBodyScroll();
 }
 
 function halfSetStep(n) {
@@ -3949,6 +4120,152 @@ function halfCardHtml() {
       '</div>' +
     '</div>' +
   '</article>';
+}
+
+
+
+/* ========== CUPONS DE DESCONTO ==========
+ * Edite aqui os cupons válidos.
+ * percent: 2 | 5 | 10 (desconto só em pizzas: cardápio, custom e metade/metade)
+ * bannerText: texto que aparece quando a pessoa abre a área de cupom
+ */
+const COUPONS = {
+  'UTENSILIOS10': {
+    percent: 10,
+    bannerTitle: 'Oferta de parceiro',
+    bannerText: 'Qual é a loja que vende mais barato utensílios para a sua cozinha?',
+    sponsor: 'Cupom patrocinado · 10% nas pizzas'
+  },
+  'OBA5': {
+    percent: 5,
+    bannerTitle: 'Cupom Oba Delivery',
+    bannerText: 'Desconto especial nas pizzas para quem tem o cupom do parceiro.',
+    sponsor: '5% de desconto nas pizzas'
+  },
+  'PIZZA2': {
+    percent: 2,
+    bannerTitle: 'Cupom parceiro local',
+    bannerText: 'Pequeno desconto nas pizzas — ideal para ações rápidas de anunciantes.',
+    sponsor: '2% de desconto nas pizzas'
+  }
+};
+
+let appliedCoupon = null; // { code, percent, ... }
+let couponPanelOpen = false;
+
+function isPizzaCartItem(item) {
+  if (!item) return false;
+  if (item.halfHalf) return true;
+  if (item.custom) return true; // pizza montada / metade
+  if (item.id != null) {
+    var p = PRODUCTS.find(function (x) { return x.id === item.id; });
+    return !!(p && p.category === 'pizza');
+  }
+  return false;
+}
+
+function cartSubtotal() {
+  return cart.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+}
+
+function cartPizzaSubtotal() {
+  return cart.reduce(function (s, i) {
+    return s + (isPizzaCartItem(i) ? i.price * i.qty : 0);
+  }, 0);
+}
+
+function cartDiscountAmount() {
+  if (!appliedCoupon || !appliedCoupon.percent) return 0;
+  var pizzaSub = cartPizzaSubtotal();
+  return Math.round(pizzaSub * (appliedCoupon.percent / 100) * 100) / 100;
+}
+
+function cartFinalTotal() {
+  return Math.max(0, Math.round((cartSubtotal() - cartDiscountAmount()) * 100) / 100);
+}
+
+function toggleCouponPanel() {
+  couponPanelOpen = !couponPanelOpen;
+  var panel = document.getElementById('couponPanel');
+  var icon = document.getElementById('couponToggleIcon');
+  if (panel) panel.classList.toggle('show', couponPanelOpen);
+  if (icon) icon.textContent = couponPanelOpen ? '▲' : '▼';
+  // banner padrão (ou do cupom ativo)
+  updateCouponBanner();
+}
+
+function updateCouponBanner() {
+  var title = document.querySelector('#couponBanner .cb-title');
+  var text = document.querySelector('#couponBanner .cb-text');
+  var sponsor = document.querySelector('#couponBanner .cb-sponsor');
+  // Mostra o banner do primeiro cupom como exemplo de anunciante, ou do aplicado
+  var ref = appliedCoupon || COUPONS['UTENSILIOS10'] || Object.values(COUPONS)[0];
+  if (!ref) return;
+  if (title) title.textContent = ref.bannerTitle || 'Oferta de parceiro';
+  if (text) text.textContent = ref.bannerText || '';
+  if (sponsor) sponsor.textContent = ref.sponsor || '';
+}
+
+function applyCoupon() {
+  var input = document.getElementById('couponInput');
+  var code = ((input && input.value) || '').trim().toUpperCase().replace(/\s+/g, '');
+  if (!code) { toast('Digite o código do cupom'); return; }
+  var data = COUPONS[code];
+  if (!data) { toast('Cupom inválido ou expirado'); return; }
+  if (!cartPizzaSubtotal()) {
+    toast('Cupom válido só para pizzas — adicione uma pizza ao carrinho');
+    return;
+  }
+  appliedCoupon = Object.assign({ code: code }, data);
+  try { sessionStorage.setItem('oba_coupon', code); } catch (e) {}
+  toast('Cupom ' + code + ' aplicado: ' + data.percent + '% nas pizzas!');
+  renderCouponUI();
+  updateCartUI();
+}
+
+function removeCoupon() {
+  appliedCoupon = null;
+  try { sessionStorage.removeItem('oba_coupon'); } catch (e) {}
+  var input = document.getElementById('couponInput');
+  if (input) input.value = '';
+  toast('Cupom removido');
+  renderCouponUI();
+  updateCartUI();
+}
+
+function loadSavedCoupon() {
+  try {
+    var code = sessionStorage.getItem('oba_coupon');
+    if (code && COUPONS[code]) {
+      appliedCoupon = Object.assign({ code: code }, COUPONS[code]);
+    }
+  } catch (e) {}
+}
+
+function renderCouponUI() {
+  var formWrap = document.getElementById('couponFormWrap');
+  var appliedWrap = document.getElementById('couponAppliedWrap');
+  if (!formWrap || !appliedWrap) return;
+  updateCouponBanner();
+  if (appliedCoupon) {
+    formWrap.style.display = 'none';
+    appliedWrap.style.display = 'block';
+    appliedWrap.innerHTML =
+      '<div class="coupon-applied">' +
+        '<span>✓ ' + appliedCoupon.code + ' · ' + appliedCoupon.percent + '% nas pizzas</span>' +
+        '<button type="button" onclick="removeCoupon()">Remover</button>' +
+      '</div>';
+    // keep panel open when applied so user sees status
+    couponPanelOpen = true;
+    var panel = document.getElementById('couponPanel');
+    var icon = document.getElementById('couponToggleIcon');
+    if (panel) panel.classList.add('show');
+    if (icon) icon.textContent = '▲';
+  } else {
+    formWrap.style.display = 'block';
+    appliedWrap.style.display = 'none';
+    appliedWrap.innerHTML = '';
+  }
 }
 
 
@@ -4337,6 +4654,7 @@ function openProduct(id) {
   if (!p) return;
   currentProductId = id;
   prodQty = 1;
+  lockBodyScroll();
 
   document.getElementById('prodEmoji').textContent = p.emoji || '🍕';
   document.getElementById('prodName').textContent = p.name;
@@ -4384,6 +4702,7 @@ function closeProduct() {
   document.getElementById('productModal').classList.remove('open');
   currentProductId = null;
   prodQty = 1;
+  unlockBodyScroll();
 }
 
 function addFromDetail() {
@@ -4419,7 +4738,9 @@ function loadCart() {
 
 function updateCartUI() {
   const count = cart.reduce((s, i) => s + i.qty, 0);
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const subtotal = cartSubtotal();
+  const discount = cartDiscountAmount();
+  const total = cartFinalTotal();
   const badge = document.getElementById('cartCount');
   const cartBtn = document.getElementById('btnCart') || document.querySelector('.btn-cart');
   if (count > 0) {
@@ -4430,7 +4751,23 @@ function updateCartUI() {
     badge.style.display = 'none';
     if (cartBtn) cartBtn.classList.remove('has-items');
   }
+  var subRow = document.getElementById('cartSubtotalRow');
+  var discRow = document.getElementById('cartDiscountRow');
+  var discLabel = document.getElementById('cartDiscountLabel');
+  var discVal = document.getElementById('cartDiscountVal');
+  var subEl = document.getElementById('cartSubtotal');
+  if (discount > 0 && appliedCoupon) {
+    if (subRow) subRow.style.display = 'flex';
+    if (discRow) discRow.style.display = 'flex';
+    if (subEl) subEl.textContent = fmt(subtotal);
+    if (discLabel) discLabel.textContent = 'Desconto ' + appliedCoupon.code + ' (' + appliedCoupon.percent + '% pizzas)';
+    if (discVal) discVal.textContent = '− ' + fmt(discount);
+  } else {
+    if (subRow) subRow.style.display = 'none';
+    if (discRow) discRow.style.display = 'none';
+  }
   document.getElementById('cartTotal').textContent = fmt(total);
+  renderCouponUI();
 
   const body = document.getElementById('cartBody');
   if (!cart.length) {
@@ -4485,7 +4822,9 @@ function closeCart() {
 function openCheckout() {
   if (!cart.length) { toast('Carrinho vazio!'); return; }
   closeCart();
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const subtotal = cartSubtotal();
+  const discount = cartDiscountAmount();
+  const total = cartFinalTotal();
   document.getElementById('checkoutBody').innerHTML = cart.map(item => {
     let detail = '';
     if (item.custom && item.ings) {
@@ -4494,8 +4833,11 @@ function openCheckout() {
         return `${i.emoji} ${i.name}${g} (${fmt(i.price)})`;
       }).join(', ')}</div>`;
     }
+    const pizzaTag = isPizzaCartItem(item) && appliedCoupon
+      ? ' <span style="color:#4ade80;font-size:11px">· pizza c/ cupom</span>'
+      : '';
     return `<div class="checkout-item">
-      <div class="checkout-item-name">${item.qty}x ${item.name}</div>
+      <div class="checkout-item-name">${item.qty}x ${item.name}${pizzaTag}</div>
       ${detail}
       <div class="checkout-item-prices">
         <span class="unit">Unitário: ${fmt(item.price)}</span>
@@ -4504,16 +4846,30 @@ function openCheckout() {
     </div>`;
   }).join('');
   document.getElementById('checkoutTotal').textContent = fmt(total);
+  var discLine = document.getElementById('checkoutDiscountLine');
+  if (discLine) {
+    if (discount > 0 && appliedCoupon) {
+      discLine.style.display = 'block';
+      discLine.textContent = 'Cupom ' + appliedCoupon.code + ': −' + fmt(discount) + ' (' + appliedCoupon.percent + '% nas pizzas) · subtotal ' + fmt(subtotal);
+    } else {
+      discLine.style.display = 'none';
+      discLine.textContent = '';
+    }
+  }
   document.getElementById('checkoutModal').classList.add('open');
+  lockBodyScroll();
 }
 
 function closeCheckout() {
   document.getElementById('checkoutModal').classList.remove('open');
+  unlockBodyScroll();
 }
 
 function sendWhatsApp() {
   if (!cart.length) return;
-  const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const subtotal = cartSubtotal();
+  const discount = cartDiscountAmount();
+  const total = cartFinalTotal();
   const now = new Date();
   const dataHora = now.toLocaleString('pt-BR', {
     day: '2-digit', month: '2-digit', year: 'numeric',
@@ -4552,6 +4908,10 @@ function sendWhatsApp() {
   });
 
   msg += '\n━━━━━━━━━━━━━━━━━━━━\n';
+  if (discount > 0 && appliedCoupon) {
+    msg += `🧾 Subtotal: ${fmt(subtotal)}\n`;
+    msg += `🎟️ Cupom *${appliedCoupon.code}* (−${appliedCoupon.percent}% nas pizzas): −${fmt(discount)}\n`;
+  }
   msg += `💰 *TOTAL A PAGAR: ${fmt(total)}*\n`;
   msg += '━━━━━━━━━━━━━━━━━━━━\n\n';
   msg += '💲 *Lembrete:* 5% de desconto pagando em dinheiro(válido somente para pizzas!\n';
@@ -4572,9 +4932,11 @@ function init() {
     else console.log('[Oba] Marketplace em modo local');
   });
   loadCart();
+  loadSavedCoupon();
   renderCats();
   renderProducts();
   renderAdSlots();
+  renderCouponUI();
 
   // Fechar modal ao clicar no fundo (fora do box)
   document.getElementById('productModal').addEventListener('click', function(e) {
@@ -4584,6 +4946,22 @@ function init() {
   if (halfModalEl) halfModalEl.addEventListener('click', function(e) {
     if (e.target === this) closeHalfBuilder();
   });
+  var couponInput = document.getElementById('couponInput');
+  if (couponInput) {
+    couponInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') { e.preventDefault(); applyCoupon(); }
+    });
+  }
+  // impede scroll do fundo no modal metade (iOS)
+  if (halfModalEl) {
+    halfModalEl.addEventListener('touchmove', function(e) {
+      var body = document.getElementById('halfBody');
+      if (!body) return;
+      if (body.contains(e.target) || body === e.target) return;
+      // permite no halfBody; bloqueia no overlay/hero/nav
+      if (e.target === halfModalEl) e.preventDefault();
+    }, { passive: false });
+  }
   document.getElementById('checkoutModal').addEventListener('click', function(e) {
     if (e.target === this) closeCheckout();
   });
