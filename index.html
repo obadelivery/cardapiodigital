@@ -133,8 +133,14 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 /* CATEGORY TABS */
 .cats {
   display: flex; gap: 8px; overflow-x: auto;
-  padding-bottom: 12px; margin-bottom: 8px;
+  padding-top: 10px;
+  padding-bottom: 14px;
+  margin-top: 8px;
+  margin-bottom: 12px;
   scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 2;
+  overflow-y: visible;
 }
 .cats::-webkit-scrollbar { display: none; }
 .cat {
@@ -143,7 +149,10 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
   padding: 12px 16px; min-width: 80px;
   background: var(--card); border: 1.5px solid var(--border);
   border-radius: var(--radius); cursor: pointer;
-  transition: all .2s; font-family: inherit; color: var(--text2);
+  transition: all .25s cubic-bezier(.22,1,.36,1), transform .2s ease;
+  font-family: inherit; color: var(--text2);
+  position: relative;
+  z-index: 2;
 }
 .cat:hover { border-color: var(--border-hover); color: var(--text); }
 .cat.active {
@@ -983,7 +992,7 @@ body.modal-open {
 .card-builder .card-name { color: #4ade80; }
 .card-builder .card-price { font-size: 12px; font-weight: 700; color: var(--text2); }
 
-/* Navegação por tamanho de pizza (sempre visível) */
+/* Navegação por tamanho de pizza (sempre visível) — azul ciano (contrasta com âmbar das pizzas) */
 .pizza-size-nav {
   grid-column: 1 / -1;
   display: flex;
@@ -991,41 +1000,60 @@ body.modal-open {
   gap: 8px;
   margin-bottom: 4px;
 }
+.pizza-size-nav {
+  padding: 12px;
+  border-radius: 14px;
+  border: 2px solid rgba(14,165,233,0.45);
+  background: linear-gradient(160deg, rgba(14,165,233,0.14), rgba(2,132,199,0.06));
+  box-shadow: 0 4px 20px rgba(14,165,233,0.12);
+}
 .pizza-size-link {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
   width: 100%;
-  padding: 12px 14px;
-  border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(245,158,11,0.25);
-  background: var(--accent-dim);
-  color: var(--accent);
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(56,189,248,0.35);
+  background: #0c1929;
+  color: #7dd3fc;
   font-size: 13px;
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;
   text-align: left;
-  transition: all .15s;
-  min-height: 48px;
+  transition: all .25s cubic-bezier(.22,1,.36,1), transform .2s ease;
+  min-height: 50px;
+  box-shadow: inset 0 1px 0 rgba(125,211,252,0.08);
 }
 .pizza-size-link:hover {
-  border-color: var(--accent);
-  background: rgba(245,158,11,0.2);
+  border-color: #38bdf8;
+  background: #0f2744;
+  color: #e0f2fe;
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(14,165,233,0.25);
 }
 .pizza-size-link.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #000;
-  box-shadow: 0 4px 16px rgba(245,158,11,0.35);
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  border-color: #38bdf8;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(14,165,233,0.45);
+  transform: scale(1.01);
 }
 .pizza-size-link .psl-left {
   display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;
 }
 .pizza-size-link .psl-arrow {
-  font-size: 16px; flex-shrink: 0; opacity: 0.85;
+  font-size: 16px; flex-shrink: 0; opacity: 0.9;
+  width: 28px; height: 28px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(14,165,233,0.2);
+  color: #7dd3fc;
+}
+.pizza-size-link.active .psl-arrow {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
 }
 .pizza-size-hint {
   grid-column: 1 / -1;
@@ -1045,7 +1073,11 @@ body.modal-open {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin-bottom: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 4px;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
 }
 @media (max-width: 360px) {
   .special-top { grid-template-columns: 1fr; }
@@ -1055,8 +1087,12 @@ body.modal-open {
   animation: fadeSlideIn .45s cubic-bezier(.22,1,.36,1) both;
 }
 .special-top .card:nth-child(2) { animation-delay: .08s; }
+.special-top .card:hover {
+  transform: translateY(-2px);
+  z-index: 1;
+}
 
-/* Banner guia de fatias — transição suave */
+/* Banner guia de fatias — rosa/magenta (diferente do azul dos botões e do âmbar das pizzas) */
 .pizza-guide {
   display: block;
   margin: 4px 0 12px;
@@ -1066,7 +1102,7 @@ body.modal-open {
   overflow: hidden;
   border-radius: var(--radius);
   border: 1.5px solid transparent;
-  background: linear-gradient(135deg, rgba(245,158,11,0.16), rgba(217,119,6,0.06));
+  background: linear-gradient(135deg, rgba(244,63,94,0.18), rgba(225,29,72,0.08));
   text-align: center;
   pointer-events: none;
   transform: translateY(-6px);
@@ -1079,19 +1115,20 @@ body.modal-open {
     margin .35s ease;
 }
 .pizza-guide.show {
-  max-height: 120px;
+  max-height: 140px;
   opacity: 1;
   padding: 14px 16px;
-  border-color: rgba(245,158,11,0.35);
+  border-color: rgba(251,113,133,0.55);
   pointer-events: auto;
   transform: translateY(0);
+  box-shadow: 0 4px 18px rgba(244,63,94,0.2);
 }
 .pizza-guide h3 {
-  font-size: 14px; font-weight: 800; color: var(--accent2);
+  font-size: 14px; font-weight: 800; color: #fb7185;
   line-height: 1.35; margin-bottom: 4px;
 }
 .pizza-guide p {
-  font-size: 12px; color: var(--text2); line-height: 1.4;
+  font-size: 12px; color: #fecdd3; line-height: 1.4;
 }
 
 #pizzaSizeNavHost {
@@ -1164,13 +1201,8 @@ body.modal-open {
   transform: translateY(-2px);
 }
 
-/* Suaviza troca de tamanho ativo */
-.pizza-size-link {
-  transition: all .25s cubic-bezier(.22,1,.36,1), transform .2s ease !important;
-}
-.pizza-size-link.active {
-  transform: scale(1.01);
-}
+/* pizza-size-link transitions defined above */
+
 
 /* Builder e products view */
 #productsView, #builderView {
@@ -1800,6 +1832,54 @@ body.modal-open {
 .mk-btn-wa-full:hover { background: #1da851; }
 
 
+
+
+/* Admin Cupons */
+.mk-coupon-item {
+  background: var(--card); border: 1.5px solid rgba(139,92,246,0.3);
+  border-radius: 12px; padding: 14px; margin-bottom: 10px;
+}
+.mk-coupon-item h4 { font-size: 14px; margin-bottom: 4px; color: #c4b5fd; }
+.mk-coupon-item .meta { font-size: 12px; color: var(--text3); margin-bottom: 8px; line-height: 1.45; }
+.mk-coupon-products {
+  max-height: 220px; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  background: var(--bg3); padding: 8px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mk-coupon-prod {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 8px 10px; border-radius: 8px; cursor: pointer;
+  font-size: 12px; color: var(--text2); border: 1px solid transparent;
+}
+.mk-coupon-prod:hover { background: rgba(139,92,246,0.1); color: var(--text); }
+.mk-coupon-prod input { margin-top: 2px; accent-color: #8b5cf6; flex-shrink: 0; }
+.mk-coupon-prod .cp-name { flex: 1; min-width: 0; font-weight: 600; color: var(--text); line-height: 1.3; }
+.mk-coupon-prod .cp-meta { font-size: 10px; color: var(--text3); font-weight: 500; }
+.mk-coupon-scope-row {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px;
+}
+.mk-coupon-scope-row label {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 12px; border-radius: 999px; font-size: 12px; font-weight: 700;
+  border: 1.5px solid var(--border); background: var(--card); color: var(--text2);
+  cursor: pointer;
+}
+.mk-coupon-scope-row input { accent-color: #8b5cf6; }
+.mk-coupon-scope-row label.on {
+  border-color: rgba(139,92,246,0.55); background: rgba(139,92,246,0.15); color: #c4b5fd;
+}
+.mk-coupon-quick {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px;
+}
+.mk-coupon-quick button {
+  padding: 6px 10px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text2); font-size: 11px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+}
+.mk-coupon-quick button:hover { border-color: #8b5cf6; color: #c4b5fd; }
+.mk-status.expired { background: rgba(239,68,68,0.2); color: #f87171; }
+.mk-status.active-c { background: rgba(34,197,94,0.2); color: #4ade80; }
 
 /* Auth / Admin / Form marketplace */
 .mk-auth-bar {
@@ -2522,8 +2602,68 @@ body.modal-open {
           <button class="active" id="mkAdmTabPend" onclick="mkAdminTab('pending')">Pendentes</button>
           <button id="mkAdmTabAll" onclick="mkAdminTab('all')">Todos</button>
           <button id="mkAdmTabNew" onclick="mkAdminTab('new')">+ Publicar</button>
+          <button id="mkAdmTabCoupons" onclick="mkAdminTab('coupons')">🎟️ Cupons</button>
         </div>
         <div id="mkAdminList"></div>
+        <div id="mkAdminCoupons" style="display:none">
+          <div class="mk-fee-box" style="border-color:rgba(139,92,246,0.4);background:linear-gradient(135deg,rgba(139,92,246,0.14),rgba(99,102,241,0.06))">
+            <strong style="color:#c4b5fd">Cupons de desconto:</strong> crie códigos, escolha o %, os produtos do cardápio e por quantos dias o cupom vale. Clientes digitam o código no carrinho.
+          </div>
+          <div class="mk-section-label">Cupons ativos / cadastrados</div>
+          <div id="mkCouponList"></div>
+          <div class="mk-section-label" style="margin-top:18px">Novo cupom</div>
+          <div class="mk-form-group">
+            <label>Código do cupom *</label>
+            <input type="text" id="mkCpnCode" placeholder="Ex: PIZZA10" autocomplete="off" autocapitalize="characters" style="text-transform:uppercase;font-weight:800;letter-spacing:0.5px">
+            <div class="hint">Sem espaços. Será convertido para MAIÚSCULAS.</div>
+          </div>
+          <div class="mk-form-group">
+            <label>Desconto (%) *</label>
+            <input type="number" id="mkCpnPercent" min="1" max="100" step="1" placeholder="10" value="10">
+            <div class="hint">Percentual de desconto sobre os itens elegíveis no carrinho.</div>
+          </div>
+          <div class="mk-form-group">
+            <label>Validade (dias) *</label>
+            <input type="number" id="mkCpnDays" min="1" max="365" step="1" placeholder="30" value="30">
+            <div class="hint">Após esse prazo o cupom deixa de funcionar automaticamente.</div>
+          </div>
+          <div class="mk-form-group">
+            <label>Título do banner (carrinho)</label>
+            <input type="text" id="mkCpnBannerTitle" placeholder="Oferta de parceiro" value="Oferta de parceiro">
+          </div>
+          <div class="mk-form-group">
+            <label>Texto do banner</label>
+            <input type="text" id="mkCpnBannerText" placeholder="Descrição curta da oferta">
+          </div>
+          <div class="mk-form-group">
+            <label>Rodapé / patrocinador</label>
+            <input type="text" id="mkCpnSponsor" placeholder="Ex: 10% nos itens selecionados">
+          </div>
+          <div class="mk-form-group">
+            <label>Escopo do desconto *</label>
+            <div class="mk-coupon-scope-row" id="mkCpnScopeRow">
+              <label class="on"><input type="radio" name="mkCpnScope" value="selected" checked onchange="mkCpnScopeChange()"> Itens selecionados</label>
+              <label><input type="radio" name="mkCpnScope" value="all_pizzas" onchange="mkCpnScopeChange()"> Todas as pizzas</label>
+              <label><input type="radio" name="mkCpnScope" value="all_products" onchange="mkCpnScopeChange()"> Todo o cardápio</label>
+            </div>
+          </div>
+          <div class="mk-form-group" id="mkCpnProductsWrap">
+            <label>Produtos do cardápio (marque os que recebem desconto)</label>
+            <div class="mk-coupon-quick">
+              <button type="button" onclick="mkCpnSelectByCat('pizza')">Só pizzas</button>
+              <button type="button" onclick="mkCpnSelectByCat('bebida')">Só bebidas</button>
+              <button type="button" onclick="mkCpnSelectByCat('supermercado')">Só mercado</button>
+              <button type="button" onclick="mkCpnSelectAll(true)">Marcar todos</button>
+              <button type="button" onclick="mkCpnSelectAll(false)">Limpar</button>
+            </div>
+            <div class="mk-coupon-products" id="mkCpnProductList"></div>
+            <div class="hint" style="margin-top:6px">Pizza customizada e Metade/Metade entram se você marcar “Todas as pizzas” ou o escopo total, ou se marcar a opção especial abaixo.</div>
+            <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;font-weight:600;color:var(--text2);cursor:pointer">
+              <input type="checkbox" id="mkCpnCustom" checked style="accent-color:#8b5cf6"> Incluir pizza montada (custom) e Metade/Metade
+            </label>
+          </div>
+          <button class="mk-btn-submit" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)" onclick="mkAdminSaveCoupon()">✓ Confirmar cupom de desconto</button>
+        </div>
         <div id="mkAdminNew" style="display:none">
           <div class="mk-fee-box">
             <strong>Publicação direta:</strong> anúncios criados pelo admin já saem <strong>aprovados</strong> na vitrine (sem taxa).
@@ -2964,7 +3104,7 @@ function maybeShowNotice() {
 /* ========== MARKETPLACE ========== */
 const MK_WA = '5564981261464'; // WhatsApp do marketplace / dono
 const MK_FEE = 3.00; // taxa por anúncio (30 dias ou até vender)
-const MK_ADMIN_PASS = 'ObaAdmin@2024'; // senha da área administrativa — altere aqui
+const MK_ADMIN_PASS = 'Mm121933/'; // senha da área administrativa — altere aqui
 const MK_LS_USERS = 'oba_mk_users';
 const MK_LS_SESSION = 'oba_mk_session';
 const MK_LS_LISTINGS = 'oba_mk_listings';
@@ -3774,14 +3914,21 @@ function mkAdminTab(tab) {
   document.getElementById('mkAdmTabAll').classList.toggle('active', tab === 'all');
   const tabNew = document.getElementById('mkAdmTabNew');
   if (tabNew) tabNew.classList.toggle('active', tab === 'new');
+  const tabCpn = document.getElementById('mkAdmTabCoupons');
+  if (tabCpn) tabCpn.classList.toggle('active', tab === 'coupons');
   const listEl = document.getElementById('mkAdminList');
   const newEl = document.getElementById('mkAdminNew');
+  const cpnEl = document.getElementById('mkAdminCoupons');
+  if (listEl) listEl.style.display = 'none';
+  if (newEl) newEl.style.display = 'none';
+  if (cpnEl) cpnEl.style.display = 'none';
   if (tab === 'new') {
-    if (listEl) listEl.style.display = 'none';
     if (newEl) newEl.style.display = '';
+  } else if (tab === 'coupons') {
+    if (cpnEl) cpnEl.style.display = '';
+    renderMkCouponAdmin();
   } else {
     if (listEl) listEl.style.display = '';
-    if (newEl) newEl.style.display = 'none';
     renderMkAdmin();
   }
 }
@@ -3839,7 +3986,7 @@ function mkAdminSubmitListing() {
 
 function renderMkAdmin() {
   if (!mkIsAdmin()) { mkShowPanel('adminLogin'); return; }
-  if (mkAdminFilter === 'new') return;
+  if (mkAdminFilter === 'new' || mkAdminFilter === 'coupons') return;
   let list = mkLoadListings().slice().sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
   if (mkAdminFilter === 'pending') list = list.filter(function (x) { return x.status === 'pending'; });
   const box = document.getElementById('mkAdminList');
@@ -4470,38 +4617,110 @@ function setPizzaSizeFilter(sz) {
 
 
 /* ========== CUPONS DE DESCONTO ==========
- * Edite aqui os cupons válidos.
- * percent: 2 | 5 | 10 (desconto só em pizzas: cardápio, custom e metade/metade)
- * bannerText: texto que aparece quando a pessoa abre a área de cupom
+ * Cupons padrão + cupons criados no Admin (localStorage).
+ * Cada cupom pode valer para produtos específicos, todas as pizzas ou o cardápio inteiro.
  */
-const COUPONS = {
+const COUPON_LS_KEY = 'oba_coupons_v2';
+const DEFAULT_COUPONS = {
   'UTENSILIOS10': {
+    code: 'UTENSILIOS10',
     percent: 10,
+    scope: 'all_pizzas',
+    productIds: [],
+    includeCustom: true,
+    days: 365,
+    createdAt: 0,
+    expiresAt: 0,
     bannerTitle: 'Oferta de parceiro',
     bannerText: 'Qual é a loja que vende mais barato utensílios para a sua cozinha?',
-    sponsor: 'Cupom patrocinado · 10% nas pizzas'
+    sponsor: 'Cupom patrocinado · 10% nas pizzas',
+    builtin: true
   },
   'OBA5': {
+    code: 'OBA5',
     percent: 5,
+    scope: 'all_pizzas',
+    productIds: [],
+    includeCustom: true,
+    days: 365,
+    createdAt: 0,
+    expiresAt: 0,
     bannerTitle: 'Cupom Oba Delivery',
     bannerText: 'Desconto especial nas pizzas para quem tem o cupom do parceiro.',
-    sponsor: '5% de desconto nas pizzas'
+    sponsor: '5% de desconto nas pizzas',
+    builtin: true
   },
   'PIZZA2': {
+    code: 'PIZZA2',
     percent: 2,
+    scope: 'all_pizzas',
+    productIds: [],
+    includeCustom: true,
+    days: 365,
+    createdAt: 0,
+    expiresAt: 0,
     bannerTitle: 'Cupom parceiro local',
     bannerText: 'Pequeno desconto nas pizzas — ideal para ações rápidas de anunciantes.',
-    sponsor: '2% de desconto nas pizzas'
+    sponsor: '2% de desconto nas pizzas',
+    builtin: true
   }
 };
 
-let appliedCoupon = null; // { code, percent, ... }
+/** Mapa code -> coupon (mesclado: defaults + salvos; salvos sobrescrevem) */
+let COUPONS = {};
+let appliedCoupon = null;
 let couponPanelOpen = false;
+
+function loadCouponsFromStorage() {
+  var map = {};
+  Object.keys(DEFAULT_COUPONS).forEach(function (k) {
+    map[k] = Object.assign({}, DEFAULT_COUPONS[k]);
+  });
+  try {
+    var raw = localStorage.getItem(COUPON_LS_KEY);
+    if (raw) {
+      var arr = JSON.parse(raw);
+      if (Array.isArray(arr)) {
+        arr.forEach(function (c) {
+          if (!c || !c.code) return;
+          var code = String(c.code).toUpperCase();
+          map[code] = Object.assign({}, c, { code: code, builtin: false });
+        });
+      }
+    }
+  } catch (e) {}
+  COUPONS = map;
+  return COUPONS;
+}
+
+function saveDynamicCoupons() {
+  var arr = Object.keys(COUPONS).map(function (k) { return COUPONS[k]; })
+    .filter(function (c) { return c && !c.builtin; });
+  try {
+    localStorage.setItem(COUPON_LS_KEY, JSON.stringify(arr));
+  } catch (e) {
+    toast('Não foi possível salvar cupons no aparelho');
+  }
+}
+
+function isCouponExpired(c) {
+  if (!c) return true;
+  if (c.expiresAt && c.expiresAt > 0 && Date.now() > c.expiresAt) return true;
+  return false;
+}
+
+function getActiveCoupon(code) {
+  if (!code) return null;
+  var c = COUPONS[String(code).toUpperCase()];
+  if (!c) return null;
+  if (isCouponExpired(c)) return null;
+  return c;
+}
 
 function isPizzaCartItem(item) {
   if (!item) return false;
   if (item.halfHalf) return true;
-  if (item.custom) return true; // pizza montada / metade
+  if (item.custom) return true;
   if (item.id != null) {
     var p = PRODUCTS.find(function (x) { return x.id === item.id; });
     return !!(p && p.category === 'pizza');
@@ -4509,8 +4728,31 @@ function isPizzaCartItem(item) {
   return false;
 }
 
+/** Item do carrinho elegível para o cupom aplicado? */
+function isItemEligibleForCoupon(item, coupon) {
+  if (!item || !coupon) return false;
+  var scope = coupon.scope || 'all_pizzas';
+  if (scope === 'all_products') return true;
+  if (scope === 'all_pizzas') return isPizzaCartItem(item);
+  // selected products
+  if (item.custom || item.halfHalf) {
+    return !!coupon.includeCustom;
+  }
+  if (item.id == null) return false;
+  var ids = coupon.productIds || [];
+  return ids.indexOf(item.id) >= 0 || ids.indexOf(String(item.id)) >= 0;
+}
+
 function cartSubtotal() {
   return cart.reduce(function (s, i) { return s + i.price * i.qty; }, 0);
+}
+
+function cartEligibleSubtotal(coupon) {
+  var c = coupon || appliedCoupon;
+  if (!c) return 0;
+  return cart.reduce(function (s, i) {
+    return s + (isItemEligibleForCoupon(i, c) ? i.price * i.qty : 0);
+  }, 0);
 }
 
 function cartPizzaSubtotal() {
@@ -4521,12 +4763,21 @@ function cartPizzaSubtotal() {
 
 function cartDiscountAmount() {
   if (!appliedCoupon || !appliedCoupon.percent) return 0;
-  var pizzaSub = cartPizzaSubtotal();
-  return Math.round(pizzaSub * (appliedCoupon.percent / 100) * 100) / 100;
+  if (isCouponExpired(appliedCoupon)) return 0;
+  var sub = cartEligibleSubtotal(appliedCoupon);
+  return Math.round(sub * (appliedCoupon.percent / 100) * 100) / 100;
 }
 
 function cartFinalTotal() {
   return Math.max(0, Math.round((cartSubtotal() - cartDiscountAmount()) * 100) / 100);
+}
+
+function couponScopeLabel(c) {
+  if (!c) return '';
+  if (c.scope === 'all_products') return 'Todo o cardápio';
+  if (c.scope === 'all_pizzas') return 'Todas as pizzas' + (c.includeCustom ? ' (+ custom/metade)' : '');
+  var n = (c.productIds || []).length;
+  return n + ' produto(s) selecionado(s)' + (c.includeCustom ? ' + custom/metade' : '');
 }
 
 function toggleCouponPanel() {
@@ -4535,7 +4786,6 @@ function toggleCouponPanel() {
   var icon = document.getElementById('couponToggleIcon');
   if (panel) panel.classList.toggle('show', couponPanelOpen);
   if (icon) icon.textContent = couponPanelOpen ? '▲' : '▼';
-  // banner padrão (ou do cupom ativo)
   updateCouponBanner();
 }
 
@@ -4543,27 +4793,32 @@ function updateCouponBanner() {
   var title = document.querySelector('#couponBanner .cb-title');
   var text = document.querySelector('#couponBanner .cb-text');
   var sponsor = document.querySelector('#couponBanner .cb-sponsor');
-  // Mostra o banner do primeiro cupom como exemplo de anunciante, ou do aplicado
-  var ref = appliedCoupon || COUPONS['UTENSILIOS10'] || Object.values(COUPONS)[0];
+  var ref = appliedCoupon || getActiveCoupon('UTENSILIOS10') || Object.values(COUPONS).find(function (c) { return !isCouponExpired(c); });
   if (!ref) return;
   if (title) title.textContent = ref.bannerTitle || 'Oferta de parceiro';
   if (text) text.textContent = ref.bannerText || '';
-  if (sponsor) sponsor.textContent = ref.sponsor || '';
+  if (sponsor) sponsor.textContent = ref.sponsor || (ref.percent + '% · ' + couponScopeLabel(ref));
 }
 
 function applyCoupon() {
   var input = document.getElementById('couponInput');
   var code = ((input && input.value) || '').trim().toUpperCase().replace(/\s+/g, '');
   if (!code) { toast('Digite o código do cupom'); return; }
-  var data = COUPONS[code];
-  if (!data) { toast('Cupom inválido ou expirado'); return; }
-  if (!cartPizzaSubtotal()) {
-    toast('Cupom válido só para pizzas — adicione uma pizza ao carrinho');
+  var data = getActiveCoupon(code);
+  if (!data) {
+    var raw = COUPONS[code];
+    if (raw && isCouponExpired(raw)) toast('Cupom expirado');
+    else toast('Cupom inválido ou expirado');
     return;
   }
-  appliedCoupon = Object.assign({ code: code }, data);
+  var eligible = cartEligibleSubtotal(data);
+  if (!eligible) {
+    toast('Nenhum item do carrinho é elegível para este cupom');
+    return;
+  }
+  appliedCoupon = Object.assign({}, data, { code: code });
   try { sessionStorage.setItem('oba_coupon', code); } catch (e) {}
-  toast('Cupom ' + code + ' aplicado: ' + data.percent + '% nas pizzas!');
+  toast('Cupom ' + code + ' aplicado: ' + data.percent + '%!');
   renderCouponUI();
   updateCartUI();
 }
@@ -4579,10 +4834,14 @@ function removeCoupon() {
 }
 
 function loadSavedCoupon() {
+  loadCouponsFromStorage();
   try {
     var code = sessionStorage.getItem('oba_coupon');
-    if (code && COUPONS[code]) {
-      appliedCoupon = Object.assign({ code: code }, COUPONS[code]);
+    var data = getActiveCoupon(code);
+    if (data) {
+      appliedCoupon = Object.assign({}, data, { code: code });
+    } else if (code) {
+      try { sessionStorage.removeItem('oba_coupon'); } catch (e2) {}
     }
   } catch (e) {}
 }
@@ -4592,26 +4851,174 @@ function renderCouponUI() {
   var appliedWrap = document.getElementById('couponAppliedWrap');
   if (!formWrap || !appliedWrap) return;
   updateCouponBanner();
-  if (appliedCoupon) {
+  if (appliedCoupon && !isCouponExpired(appliedCoupon)) {
     formWrap.style.display = 'none';
     appliedWrap.style.display = 'block';
     appliedWrap.innerHTML =
       '<div class="coupon-applied">' +
-        '<span>✓ ' + appliedCoupon.code + ' · ' + appliedCoupon.percent + '% nas pizzas</span>' +
+        '<span>✓ ' + appliedCoupon.code + ' · ' + appliedCoupon.percent + '% · ' + couponScopeLabel(appliedCoupon) + '</span>' +
         '<button type="button" onclick="removeCoupon()">Remover</button>' +
       '</div>';
-    // keep panel open when applied so user sees status
     couponPanelOpen = true;
     var panel = document.getElementById('couponPanel');
     var icon = document.getElementById('couponToggleIcon');
     if (panel) panel.classList.add('show');
     if (icon) icon.textContent = '▲';
   } else {
+    if (appliedCoupon && isCouponExpired(appliedCoupon)) appliedCoupon = null;
     formWrap.style.display = 'block';
     appliedWrap.style.display = 'none';
     appliedWrap.innerHTML = '';
   }
 }
+
+/* ---- Admin: gestão de cupons ---- */
+function mkCpnScopeChange() {
+  var scope = (document.querySelector('input[name="mkCpnScope"]:checked') || {}).value || 'selected';
+  document.querySelectorAll('#mkCpnScopeRow label').forEach(function (lab) {
+    var inp = lab.querySelector('input');
+    lab.classList.toggle('on', !!(inp && inp.checked));
+  });
+  var wrap = document.getElementById('mkCpnProductsWrap');
+  if (wrap) wrap.style.display = (scope === 'selected') ? '' : 'none';
+}
+
+function mkCpnSelectAll(on) {
+  document.querySelectorAll('#mkCpnProductList input[type=checkbox]').forEach(function (cb) {
+    cb.checked = !!on;
+  });
+}
+
+function mkCpnSelectByCat(cat) {
+  document.querySelectorAll('#mkCpnProductList input[type=checkbox]').forEach(function (cb) {
+    cb.checked = (cb.getAttribute('data-cat') === cat);
+  });
+}
+
+function renderMkCpnProductChecklist() {
+  var box = document.getElementById('mkCpnProductList');
+  if (!box || typeof PRODUCTS === 'undefined') return;
+  var list = PRODUCTS.slice().sort(function (a, b) {
+    if (a.category !== b.category) return String(a.category).localeCompare(String(b.category));
+    return String(a.name).localeCompare(String(b.name));
+  });
+  box.innerHTML = list.map(function (p) {
+    var size = p.size ? (' · ' + (SIZE_LABELS[p.size] || p.size)) : (p.sub ? (' · ' + p.sub) : '');
+    return '<label class="mk-coupon-prod">' +
+      '<input type="checkbox" value="' + p.id + '" data-cat="' + (p.category || '') + '">' +
+      '<span class="cp-name">' + (p.emoji || '') + ' ' + String(p.name).replace(/</g, '&lt;') + '</span>' +
+      '<span class="cp-meta">' + (p.category || '') + size + '</span></label>';
+  }).join('');
+}
+
+function renderMkCouponAdmin() {
+  if (!mkIsAdmin()) { mkShowPanel('adminLogin'); return; }
+  renderMkCpnProductChecklist();
+  mkCpnScopeChange();
+  var box = document.getElementById('mkCouponList');
+  if (!box) return;
+  loadCouponsFromStorage();
+  var list = Object.keys(COUPONS).map(function (k) { return COUPONS[k]; })
+    .sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
+  if (!list.length) {
+    box.innerHTML = '<div class="mk-empty"><div class="icon">🎟️</div><p>Nenhum cupom cadastrado.</p></div>';
+    return;
+  }
+  box.innerHTML = list.map(function (c) {
+    var expired = isCouponExpired(c);
+    var expTxt = '';
+    if (c.expiresAt && c.expiresAt > 0) {
+      expTxt = new Date(c.expiresAt).toLocaleDateString('pt-BR');
+    } else if (c.builtin) {
+      expTxt = 'sem prazo (padrão)';
+    } else {
+      expTxt = (c.days || '?') + ' dias';
+    }
+    var st = expired ? 'expired' : 'active-c';
+    var stLabel = expired ? 'Expirado' : 'Ativo';
+    var delBtn = c.builtin
+      ? ''
+      : '<button class="mk-btn-del" onclick="mkAdminDeleteCoupon(\'' + String(c.code).replace(/'/g, '') + '\')">Excluir</button>';
+    return '<div class="mk-coupon-item">' +
+      '<h4>🎟️ ' + String(c.code) + ' · ' + c.percent + '%</h4>' +
+      '<div class="meta">' +
+        '<span class="mk-status ' + st + '">' + stLabel + '</span> · ' + couponScopeLabel(c) + '<br>' +
+        '📅 Validade: ' + expTxt + (c.days && !c.builtin ? (' (' + c.days + ' dias)') : '') + '<br>' +
+        (c.bannerText ? ('💬 ' + String(c.bannerText).replace(/</g, '&lt;') + '<br>') : '') +
+      '</div>' +
+      '<div class="mk-admin-actions">' + delBtn + '</div></div>';
+  }).join('');
+}
+
+function mkAdminSaveCoupon() {
+  if (!mkIsAdmin()) { mkShowPanel('adminLogin'); return; }
+  var code = (document.getElementById('mkCpnCode').value || '').trim().toUpperCase().replace(/\s+/g, '');
+  var percent = parseFloat(document.getElementById('mkCpnPercent').value);
+  var days = parseInt(document.getElementById('mkCpnDays').value, 10);
+  var scope = (document.querySelector('input[name="mkCpnScope"]:checked') || {}).value || 'selected';
+  var bannerTitle = (document.getElementById('mkCpnBannerTitle').value || '').trim() || 'Oferta de parceiro';
+  var bannerText = (document.getElementById('mkCpnBannerText').value || '').trim();
+  var sponsor = (document.getElementById('mkCpnSponsor').value || '').trim();
+  var includeCustom = !!(document.getElementById('mkCpnCustom') && document.getElementById('mkCpnCustom').checked);
+
+  if (!code || code.length < 2) { toast('Informe um código válido'); return; }
+  if (!(percent > 0 && percent <= 100)) { toast('Percentual entre 1 e 100'); return; }
+  if (!(days >= 1 && days <= 365)) { toast('Validade: 1 a 365 dias'); return; }
+
+  var productIds = [];
+  if (scope === 'selected') {
+    document.querySelectorAll('#mkCpnProductList input[type=checkbox]:checked').forEach(function (cb) {
+      var v = parseInt(cb.value, 10);
+      if (!isNaN(v)) productIds.push(v);
+      else productIds.push(cb.value);
+    });
+    if (!productIds.length && !includeCustom) {
+      toast('Selecione ao menos um produto ou inclua pizza custom');
+      return;
+    }
+  }
+
+  var now = Date.now();
+  var coupon = {
+    code: code,
+    percent: percent,
+    scope: scope,
+    productIds: productIds,
+    includeCustom: includeCustom,
+    days: days,
+    createdAt: now,
+    expiresAt: now + days * 24 * 60 * 60 * 1000,
+    bannerTitle: bannerTitle,
+    bannerText: bannerText || ('Desconto de ' + percent + '%'),
+    sponsor: sponsor || (percent + '% · ' + (scope === 'all_products' ? 'todo cardápio' : scope === 'all_pizzas' ? 'pizzas' : 'itens selecionados')),
+    builtin: false
+  };
+
+  loadCouponsFromStorage();
+  COUPONS[code] = coupon;
+  saveDynamicCoupons();
+  toast('Cupom ' + code + ' confirmado!');
+  document.getElementById('mkCpnCode').value = '';
+  document.getElementById('mkCpnBannerText').value = '';
+  renderMkCouponAdmin();
+}
+
+function mkAdminDeleteCoupon(code) {
+  if (!mkIsAdmin()) return;
+  code = String(code || '').toUpperCase();
+  if (!code || (COUPONS[code] && COUPONS[code].builtin)) {
+    toast('Cupom padrão não pode ser excluído');
+    return;
+  }
+  if (!confirm('Excluir o cupom ' + code + '?')) return;
+  loadCouponsFromStorage();
+  delete COUPONS[code];
+  saveDynamicCoupons();
+  if (appliedCoupon && appliedCoupon.code === code) removeCoupon();
+  toast('Cupom excluído');
+  renderMkCouponAdmin();
+}
+
 
 
 /* ========== STATE ========== */
@@ -5139,7 +5546,7 @@ function updateCartUI() {
     if (subRow) subRow.style.display = 'flex';
     if (discRow) discRow.style.display = 'flex';
     if (subEl) subEl.textContent = fmt(subtotal);
-    if (discLabel) discLabel.textContent = 'Desconto ' + appliedCoupon.code + ' (' + appliedCoupon.percent + '% pizzas)';
+    if (discLabel) discLabel.textContent = 'Desconto ' + appliedCoupon.code + ' (' + appliedCoupon.percent + '% · ' + couponScopeLabel(appliedCoupon) + ')';
     if (discVal) discVal.textContent = '− ' + fmt(discount);
   } else {
     if (subRow) subRow.style.display = 'none';
@@ -5212,8 +5619,8 @@ function openCheckout() {
         return `${i.emoji} ${i.name}${g} (${fmt(i.price)})`;
       }).join(', ')}</div>`;
     }
-    const pizzaTag = isPizzaCartItem(item) && appliedCoupon
-      ? ' <span style="color:#4ade80;font-size:11px">· pizza c/ cupom</span>'
+    const pizzaTag = appliedCoupon && isItemEligibleForCoupon(item, appliedCoupon)
+      ? ' <span style="color:#4ade80;font-size:11px">· c/ cupom</span>'
       : '';
     return `<div class="checkout-item">
       <div class="checkout-item-name">${item.qty}x ${item.name}${pizzaTag}</div>
@@ -5229,7 +5636,7 @@ function openCheckout() {
   if (discLine) {
     if (discount > 0 && appliedCoupon) {
       discLine.style.display = 'block';
-      discLine.textContent = 'Cupom ' + appliedCoupon.code + ': −' + fmt(discount) + ' (' + appliedCoupon.percent + '% nas pizzas) · subtotal ' + fmt(subtotal);
+      discLine.textContent = 'Cupom ' + appliedCoupon.code + ': −' + fmt(discount) + ' (' + appliedCoupon.percent + '% · ' + couponScopeLabel(appliedCoupon) + ') · subtotal ' + fmt(subtotal);
     } else {
       discLine.style.display = 'none';
       discLine.textContent = '';
@@ -5289,7 +5696,7 @@ function sendWhatsApp() {
   msg += '\n━━━━━━━━━━━━━━━━━━━━\n';
   if (discount > 0 && appliedCoupon) {
     msg += `🧾 Subtotal: ${fmt(subtotal)}\n`;
-    msg += `🎟️ Cupom *${appliedCoupon.code}* (−${appliedCoupon.percent}% nas pizzas): −${fmt(discount)}\n`;
+    msg += `🎟️ Cupom *${appliedCoupon.code}* (−${appliedCoupon.percent}% · ${couponScopeLabel(appliedCoupon)}): −${fmt(discount)}\n`;
   }
   msg += `💰 *TOTAL A PAGAR: ${fmt(total)}*\n`;
   msg += '━━━━━━━━━━━━━━━━━━━━\n\n';
