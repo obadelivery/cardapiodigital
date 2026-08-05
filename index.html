@@ -665,6 +665,180 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 .empty-icon { font-size: 48px; margin-bottom: 12px; }
 .empty p { font-size: 14px; }
 
+
+/* HALF / HALF PIZZA */
+.card-half {
+  border-color: rgba(245,158,11,0.45);
+  background: linear-gradient(160deg, rgba(245,158,11,0.12), rgba(217,119,6,0.04));
+  position: relative;
+}
+.card-half:hover {
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(245,158,11,0.18);
+}
+.card-half .card-img {
+  background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(239,68,68,0.12));
+  font-size: 42px;
+  height: 110px;
+}
+.card-half-badge {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  font-size: 9px; font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase;
+  background: var(--accent); color: #000; padding: 3px 8px; border-radius: 999px;
+}
+.card-half .card-name { color: var(--accent2); }
+.card-half .card-price { font-size: 12px; font-weight: 700; color: var(--text2); }
+
+.half-modal .modal-box { max-width: 480px; max-height: 92dvh; }
+.half-hero {
+  padding: 18px 16px 12px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(245,158,11,0.18), rgba(239,68,68,0.08));
+  border-bottom: 1px solid rgba(245,158,11,0.25);
+}
+.half-hero .half-icon { font-size: 40px; line-height: 1; margin-bottom: 6px; }
+.half-hero h2 { font-size: 17px; font-weight: 800; color: var(--accent2); }
+.half-hero p { font-size: 12px; color: var(--text3); margin-top: 4px; line-height: 1.4; }
+.half-steps {
+  display: flex; gap: 6px; padding: 12px 16px 0; flex-wrap: wrap;
+}
+.half-step-dot {
+  flex: 1; min-width: 70px; text-align: center;
+  font-size: 10px; font-weight: 700; color: var(--text3);
+  padding: 8px 4px; border-radius: 10px; background: var(--card);
+  border: 1.5px solid var(--border);
+}
+.half-step-dot.active {
+  color: #000; background: var(--accent); border-color: var(--accent);
+}
+.half-step-dot.done {
+  color: #4ade80; border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.1);
+}
+.half-body { padding: 14px 16px; }
+.half-label {
+  font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 10px;
+}
+.half-label span { display: block; font-size: 11px; font-weight: 500; color: var(--text3); margin-top: 2px; }
+.half-size-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+}
+.half-size-btn {
+  padding: 14px 10px; border-radius: 12px; border: 1.5px solid var(--border);
+  background: var(--card); color: var(--text2); cursor: pointer; font-family: inherit;
+  text-align: center; transition: all .15s; min-height: 64px;
+}
+.half-size-btn:hover { border-color: var(--accent); color: var(--text); }
+.half-size-btn.active {
+  background: var(--accent); border-color: var(--accent); color: #000;
+  box-shadow: 0 4px 14px rgba(245,158,11,0.35);
+}
+.half-size-btn .hs-emoji { font-size: 22px; display: block; margin-bottom: 4px; }
+.half-size-btn .hs-label { font-size: 12px; font-weight: 800; }
+.half-size-btn .hs-sub { font-size: 10px; opacity: 0.8; margin-top: 2px; }
+
+.half-flavor-list {
+  display: flex; flex-direction: column; gap: 8px;
+  max-height: min(42dvh, 340px); overflow-y: auto; -webkit-overflow-scrolling: touch;
+}
+.half-flavor {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px; border-radius: 12px; border: 1.5px solid var(--border);
+  background: var(--card); cursor: pointer; text-align: left; font-family: inherit;
+  color: var(--text); transition: all .15s; width: 100%;
+}
+.half-flavor:hover { border-color: var(--border-hover); }
+.half-flavor.active {
+  border-color: var(--accent); background: var(--accent-dim);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.half-flavor .hf-emoji { font-size: 26px; flex-shrink: 0; }
+.half-flavor .hf-info { flex: 1; min-width: 0; }
+.half-flavor .hf-name { font-size: 13px; font-weight: 700; line-height: 1.25; }
+.half-flavor .hf-desc {
+  font-size: 11px; color: var(--text3); margin-top: 2px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.half-flavor .hf-price { font-size: 14px; font-weight: 800; color: var(--accent); white-space: nowrap; font-family: 'Space Grotesk', sans-serif; }
+
+.half-side-tabs {
+  display: flex; gap: 8px; margin-bottom: 12px;
+}
+.half-side-tab {
+  flex: 1; padding: 12px; border-radius: 12px; border: 1.5px solid var(--border);
+  background: var(--card); color: var(--text2); font-weight: 700; font-size: 12px;
+  cursor: pointer; font-family: inherit; text-align: center; transition: all .15s;
+}
+.half-side-tab.active-a {
+  background: rgba(245,158,11,0.18); border-color: var(--accent); color: var(--accent);
+}
+.half-side-tab.active-b {
+  background: rgba(239,68,68,0.15); border-color: #ef4444; color: #f87171;
+}
+.half-side-tab .hst-title { font-size: 11px; opacity: 0.85; font-weight: 600; }
+.half-side-tab .hst-flavor { font-size: 13px; font-weight: 800; margin-top: 2px; }
+
+.half-remove-box {
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 12px; margin-bottom: 12px;
+}
+.half-remove-box h4 {
+  font-size: 12px; font-weight: 700; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 8px;
+}
+.half-ing-list { display: flex; flex-direction: column; gap: 6px; max-height: 180px; overflow-y: auto; }
+.half-ing-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 8px 10px; border-radius: 10px; background: rgba(10,10,11,0.45);
+  border: 1px solid var(--border); font-size: 12px;
+}
+.half-ing-row .hi-name { flex: 1; min-width: 100px; font-weight: 600; color: var(--text); }
+.half-ing-row label {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 11px; font-weight: 600; color: var(--text3); cursor: pointer;
+  padding: 4px 8px; border-radius: 8px; background: var(--bg3); border: 1px solid var(--border);
+}
+.half-ing-row label.on-a { color: var(--accent); border-color: rgba(245,158,11,0.4); background: var(--accent-dim); }
+.half-ing-row label.on-b { color: #f87171; border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.12); }
+.half-ing-row input { accent-color: var(--accent); width: 14px; height: 14px; }
+
+.half-summary {
+  background: var(--accent-dim); border: 1.5px solid rgba(245,158,11,0.3);
+  border-radius: 12px; padding: 14px; margin-top: 4px;
+}
+.half-summary .hs-line {
+  display: flex; justify-content: space-between; gap: 8px;
+  font-size: 13px; margin-bottom: 6px; color: var(--text2);
+}
+.half-summary .hs-line strong { color: var(--text); font-weight: 700; }
+.half-summary .hs-total {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(245,158,11,0.25);
+  font-size: 14px; font-weight: 700;
+}
+.half-summary .hs-total span:last-child {
+  font-size: 24px; font-weight: 800; color: var(--accent);
+  font-family: 'Space Grotesk', sans-serif;
+}
+.half-note {
+  font-size: 11px; color: var(--text3); margin-top: 8px; line-height: 1.4;
+  text-align: center;
+}
+.half-nav {
+  display: flex; gap: 8px; padding: 12px 16px;
+  padding-bottom: max(12px, var(--safe-bottom));
+  border-top: 1px solid var(--border);
+}
+.half-nav button {
+  flex: 1; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 14px;
+  cursor: pointer; font-family: inherit; min-height: 48px; border: none;
+}
+.half-btn-back {
+  background: transparent; color: var(--text2); border: 1.5px solid var(--border) !important;
+}
+.half-btn-next { background: var(--accent); color: #000; }
+.half-btn-next:disabled { opacity: 0.45; cursor: not-allowed; }
+.half-btn-add { background: var(--accent); color: #000; flex: 1.4; }
+
 /* TOAST */
 .toast {
   position: fixed; bottom: calc(24px + var(--safe-bottom)); left: 50%;
@@ -1712,6 +1886,26 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
     <div class="modal-actions">
       <button class="btn-add-detail" onclick="closeNotice()" style="background:var(--accent);color:#000;">Entendi, quero pedir</button>
     </div>
+  </div>
+</div>
+
+
+<!-- Modal Pizza Metade / Metade -->
+<div class="modal half-modal" id="halfModal">
+  <div class="modal-box">
+    <div class="half-hero">
+      <div class="half-icon">🍕➕🍕</div>
+      <h2>Pizza Metade / Metade</h2>
+      <p>Escolha o tamanho, um sabor de cada lado e, se quiser, retire ingredientes de uma metade ou das duas.</p>
+    </div>
+    <div class="half-steps" id="halfSteps">
+      <div class="half-step-dot active" data-step="1">1 · Tamanho</div>
+      <div class="half-step-dot" data-step="2">2 · 1ª metade</div>
+      <div class="half-step-dot" data-step="3">3 · 2ª metade</div>
+      <div class="half-step-dot" data-step="4">4 · Retirar</div>
+    </div>
+    <div class="half-body" id="halfBody"></div>
+    <div class="half-nav" id="halfNav"></div>
   </div>
 </div>
 
@@ -3480,6 +3674,284 @@ function mkContactSeller(id) {
 }
 
 
+
+/* ========== PIZZA METADE / METADE ========== */
+const HALF_SIZES = [
+  { id: '8', label: '8 fatias', sub: '40 cm · grande', emoji: '🍕' },
+  { id: '6', label: '6 fatias', sub: '35 cm', emoji: '🍕' },
+  { id: '4', label: '4 fatias', sub: '30 cm', emoji: '🍕' },
+  { id: 'brotinho', label: 'Brotinho', sub: '18 cm', emoji: '🍕' },
+];
+
+let halfState = {
+  step: 1,
+  size: null,
+  halfA: null, // product id
+  halfB: null,
+  removeA: {}, // ingName -> true
+  removeB: {},
+  qty: 1
+};
+
+function pizzaFlavorName(p) {
+  if (!p || !p.name) return '';
+  return p.name
+    .replace(/^Pizza\s+/i, '')
+    .replace(/\s*\d+\s*fatias?/gi, '')
+    .replace(/\s*Brotinho/gi, '')
+    .trim();
+}
+
+function pizzasBySize(size) {
+  return PRODUCTS.filter(function (p) {
+    return p.category === 'pizza' && p.size === size;
+  });
+}
+
+function parsePizzaIngs(desc) {
+  if (!desc) return [];
+  var raw = String(desc).replace(/\s+e\s+/gi, ', ').replace(/\.$/, '');
+  return raw.split(/,\s*/).map(function (s) {
+    return s.trim();
+  }).filter(Boolean).map(function (s) {
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  });
+}
+
+function halfPrice() {
+  var a = PRODUCTS.find(function (x) { return x.id === halfState.halfA; });
+  var b = PRODUCTS.find(function (x) { return x.id === halfState.halfB; });
+  if (!a || !b) return 0;
+  return Math.round(((a.price + b.price) / 2) * 100) / 100;
+}
+
+function openHalfBuilder() {
+  halfState = { step: 1, size: null, halfA: null, halfB: null, removeA: {}, removeB: {}, qty: 1 };
+  document.getElementById('halfModal').classList.add('open');
+  renderHalfModal();
+}
+
+function closeHalfBuilder() {
+  document.getElementById('halfModal').classList.remove('open');
+}
+
+function halfSetStep(n) {
+  halfState.step = n;
+  renderHalfModal();
+}
+
+function halfPickSize(size) {
+  halfState.size = size;
+  halfState.halfA = null;
+  halfState.halfB = null;
+  halfState.removeA = {};
+  halfState.removeB = {};
+  halfState.step = 2;
+  renderHalfModal();
+}
+
+function halfPickA(id) {
+  halfState.halfA = id;
+  halfState.removeA = {};
+  halfState.step = 3;
+  renderHalfModal();
+}
+
+function halfPickB(id) {
+  halfState.halfB = id;
+  halfState.removeB = {};
+  halfState.step = 4;
+  renderHalfModal();
+}
+
+function halfToggleRemove(side, name) {
+  var map = side === 'A' ? halfState.removeA : halfState.removeB;
+  if (map[name]) delete map[name];
+  else map[name] = true;
+  renderHalfModal();
+}
+
+function halfRemovedList(side) {
+  var map = side === 'A' ? halfState.removeA : halfState.removeB;
+  return Object.keys(map).filter(function (k) { return map[k]; });
+}
+
+function renderHalfSteps() {
+  var dots = document.querySelectorAll('#halfSteps .half-step-dot');
+  dots.forEach(function (el) {
+    var s = parseInt(el.getAttribute('data-step'), 10);
+    el.classList.remove('active', 'done');
+    if (s === halfState.step) el.classList.add('active');
+    else if (s < halfState.step) el.classList.add('done');
+  });
+}
+
+function renderHalfModal() {
+  renderHalfSteps();
+  var body = document.getElementById('halfBody');
+  var nav = document.getElementById('halfNav');
+  var step = halfState.step;
+
+  if (step === 1) {
+    body.innerHTML =
+      '<div class="half-label">Escolha o tamanho da pizza<span>O mesmo tamanho vale para as duas metades</span></div>' +
+      '<div class="half-size-grid">' +
+      HALF_SIZES.map(function (s) {
+        return '<button type="button" class="half-size-btn' + (halfState.size === s.id ? ' active' : '') + '" onclick="halfPickSize(\'' + s.id + '\')">' +
+          '<span class="hs-emoji">' + s.emoji + '</span>' +
+          '<span class="hs-label">' + s.label + '</span>' +
+          '<div class="hs-sub">' + s.sub + '</div></button>';
+      }).join('') +
+      '</div>' +
+      '<p class="half-note">Preço = média dos dois sabores no tamanho escolhido.<br>Ex.: Mussarela R$ 50 + Calabresa R$ 65 → R$ 57,50</p>';
+    nav.innerHTML =
+      '<button type="button" class="half-btn-back" onclick="closeHalfBuilder()">Fechar</button>';
+    return;
+  }
+
+  if (step === 2 || step === 3) {
+    var side = step === 2 ? 'A' : 'B';
+    var selected = step === 2 ? halfState.halfA : halfState.halfB;
+    var list = pizzasBySize(halfState.size);
+    var sizeLab = (HALF_SIZES.find(function (s) { return s.id === halfState.size; }) || {}).label || '';
+    var title = step === 2
+      ? '1ª metade (lado esquerdo)'
+      : '2ª metade (lado direito)';
+    var hint = step === 2
+      ? 'Toque no sabor desta metade · ' + sizeLab
+      : 'Toque no sabor da outra metade · ' + sizeLab;
+
+    body.innerHTML =
+      '<div class="half-label">' + title + '<span>' + hint + '</span></div>' +
+      '<div class="half-flavor-list">' +
+      list.map(function (p) {
+        var active = selected === p.id ? ' active' : '';
+        var fn = step === 2 ? 'halfPickA' : 'halfPickB';
+        return '<button type="button" class="half-flavor' + active + '" onclick="' + fn + '(' + p.id + ')">' +
+          '<span class="hf-emoji">' + (p.emoji || '🍕') + '</span>' +
+          '<div class="hf-info"><div class="hf-name">' + pizzaFlavorName(p) + '</div>' +
+          '<div class="hf-desc">' + (p.description || '') + '</div></div>' +
+          '<span class="hf-price">' + fmt(p.price) + '</span></button>';
+      }).join('') +
+      '</div>';
+
+    nav.innerHTML =
+      '<button type="button" class="half-btn-back" onclick="halfSetStep(' + (step - 1) + ')">← Voltar</button>';
+    return;
+  }
+
+  // step 4 — remove ingredients + summary
+  var pa = PRODUCTS.find(function (x) { return x.id === halfState.halfA; });
+  var pb = PRODUCTS.find(function (x) { return x.id === halfState.halfB; });
+  var ingsA = parsePizzaIngs(pa && pa.description);
+  var ingsB = parsePizzaIngs(pb && pb.description);
+  // union unique for display? Better show per-half lists
+  var price = halfPrice();
+  var sizeLab = (HALF_SIZES.find(function (s) { return s.id === halfState.size; }) || {}).label || '';
+  var remA = halfRemovedList('A');
+  var remB = halfRemovedList('B');
+
+  function ingRows(ings, side) {
+    if (!ings.length) return '<p style="font-size:12px;color:var(--text3)">Sem lista de ingredientes</p>';
+    return '<div class="half-ing-list">' + ings.map(function (name) {
+      var map = side === 'A' ? halfState.removeA : halfState.removeB;
+      var on = !!map[name];
+      var cls = on ? (side === 'A' ? ' on-a' : ' on-b') : '';
+      var safe = name.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+      return '<div class="half-ing-row">' +
+        '<span class="hi-name">' + name + '</span>' +
+        '<label class="' + cls.trim() + '">' +
+        '<input type="checkbox" ' + (on ? 'checked' : '') + ' onchange="halfToggleRemove(\'' + side + '\',\'' + safe + '\')">' +
+        ' Retirar desta metade</label></div>';
+    }).join('') + '</div>';
+  }
+
+  body.innerHTML =
+    '<div class="half-label">Retirar ingredientes? <span>Opcional — marque só o que NÃO quer em cada metade</span></div>' +
+    '<div class="half-side-tabs">' +
+      '<div class="half-side-tab active-a"><div class="hst-title">1ª metade</div><div class="hst-flavor">' + pizzaFlavorName(pa) + '</div></div>' +
+      '<div class="half-side-tab active-b"><div class="hst-title">2ª metade</div><div class="hst-flavor">' + pizzaFlavorName(pb) + '</div></div>' +
+    '</div>' +
+    '<div class="half-remove-box"><h4>🍕 1ª metade — ' + pizzaFlavorName(pa) + '</h4>' + ingRows(ingsA, 'A') + '</div>' +
+    '<div class="half-remove-box"><h4>🍕 2ª metade — ' + pizzaFlavorName(pb) + '</h4>' + ingRows(ingsB, 'B') + '</div>' +
+    '<div class="half-summary">' +
+      '<div class="hs-line"><span>Tamanho</span><strong>' + sizeLab + '</strong></div>' +
+      '<div class="hs-line"><span>1ª metade</span><strong>' + pizzaFlavorName(pa) + ' (' + fmt(pa.price) + ')</strong></div>' +
+      '<div class="hs-line"><span>2ª metade</span><strong>' + pizzaFlavorName(pb) + ' (' + fmt(pb.price) + ')</strong></div>' +
+      (remA.length ? '<div class="hs-line"><span>Retirar na 1ª</span><strong style="color:#fbbf24">' + remA.join(', ') + '</strong></div>' : '') +
+      (remB.length ? '<div class="hs-line"><span>Retirar na 2ª</span><strong style="color:#f87171">' + remB.join(', ') + '</strong></div>' : '') +
+      '<div class="hs-total"><span>Total (média)</span><span>' + fmt(price) + '</span></div>' +
+      '<p class="half-note" style="margin:8px 0 0">(' + fmt(pa.price) + ' + ' + fmt(pb.price) + ') ÷ 2 = ' + fmt(price) + '</p>' +
+    '</div>';
+
+  nav.innerHTML =
+    '<button type="button" class="half-btn-back" onclick="halfSetStep(3)">← Voltar</button>' +
+    '<button type="button" class="half-btn-add" onclick="addHalfToCart()">🛒 Adicionar ao carrinho</button>';
+}
+
+function addHalfToCart() {
+  var pa = PRODUCTS.find(function (x) { return x.id === halfState.halfA; });
+  var pb = PRODUCTS.find(function (x) { return x.id === halfState.halfB; });
+  if (!pa || !pb || !halfState.size) {
+    toast('Escolha as duas metades');
+    return;
+  }
+  var price = halfPrice();
+  var sizeLab = (HALF_SIZES.find(function (s) { return s.id === halfState.size; }) || {}).label || halfState.size;
+  var remA = halfRemovedList('A');
+  var remB = halfRemovedList('B');
+  var detailParts = [
+    'Tamanho: ' + sizeLab,
+    '1ª metade: ' + pizzaFlavorName(pa),
+    '2ª metade: ' + pizzaFlavorName(pb)
+  ];
+  if (remA.length) detailParts.push('Retirar na 1ª (' + pizzaFlavorName(pa) + '): ' + remA.join(', '));
+  if (remB.length) detailParts.push('Retirar na 2ª (' + pizzaFlavorName(pb) + '): ' + remB.join(', '));
+
+  cart.push({
+    uid: Date.now(),
+    name: 'Pizza Metade/Metade ' + sizeLab + ' — ' + pizzaFlavorName(pa) + ' / ' + pizzaFlavorName(pb),
+    price: price,
+    qty: 1,
+    custom: true,
+    halfHalf: true,
+    size: halfState.size,
+    halfAName: pizzaFlavorName(pa),
+    halfBName: pizzaFlavorName(pb),
+    halfAPrice: pa.price,
+    halfBPrice: pb.price,
+    removeA: remA,
+    removeB: remB,
+    detail: detailParts.join(' · '),
+    ings: [
+      { name: '1ª metade: ' + pizzaFlavorName(pa), emoji: '🍕', price: pa.price / 2, fixed: true },
+      { name: '2ª metade: ' + pizzaFlavorName(pb), emoji: '🍕', price: pb.price / 2, fixed: true }
+    ].concat(
+      remA.map(function (n) { return { name: 'Retirar 1ª: ' + n, emoji: '🚫', price: 0, fixed: true }; }),
+      remB.map(function (n) { return { name: 'Retirar 2ª: ' + n, emoji: '🚫', price: 0, fixed: true }; })
+    )
+  });
+  saveCart();
+  closeHalfBuilder();
+  toast('Pizza metade/metade adicionada!');
+}
+
+function halfCardHtml() {
+  return '<article class="card card-half" onclick="openHalfBuilder()">' +
+    '<span class="card-half-badge">Novo</span>' +
+    '<div class="card-img">🍕|🍕</div>' +
+    '<div class="card-body">' +
+      '<div class="card-name">Metade / Metade</div>' +
+      '<div class="card-desc">Monte sua pizza com 2 sabores: escolha o tamanho, um sabor de cada lado e retire o que não quiser.</div>' +
+      '<div class="card-footer">' +
+        '<span class="card-price">Preço = média</span>' +
+        '<button class="btn-add" onclick="event.stopPropagation();openHalfBuilder()">Montar</button>' +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}
+
+
 /* ========== STATE ========== */
 let cart = [];
 let filter = 'all';
@@ -3614,10 +4086,16 @@ function renderProducts() {
   let html = '';
   let lastSize = '';
   let midAdInserted = false;
+  let halfCardInserted = false;
 
   list.forEach(function (p) {
     if (p.category === 'pizza' && p.size && p.size !== lastSize) {
       html += '<div class="size-div">' + (SIZE_LABELS[p.size] || p.size) + '</div>';
+      // Card especial Metade/Metade no início da 1ª seção de pizzas
+      if (!halfCardInserted && (filter === 'all' || filter === 'pizza')) {
+        html += halfCardHtml();
+        halfCardInserted = true;
+      }
       lastSize = p.size;
     } else if (filter === 'all' && p.category !== 'pizza') {
       if (p.category === 'bebida' && lastSize !== 'bebida') {
@@ -4101,6 +4579,10 @@ function init() {
   // Fechar modal ao clicar no fundo (fora do box)
   document.getElementById('productModal').addEventListener('click', function(e) {
     if (e.target === this) closeProduct();
+  });
+  var halfModalEl = document.getElementById('halfModal');
+  if (halfModalEl) halfModalEl.addEventListener('click', function(e) {
+    if (e.target === this) closeHalfBuilder();
   });
   document.getElementById('checkoutModal').addEventListener('click', function(e) {
     if (e.target === this) closeCheckout();
