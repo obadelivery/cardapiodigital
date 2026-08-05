@@ -997,6 +997,281 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 .notice-ad .ad-body h3 { font-size: 13px; }
 .notice-ad .ad-body p { font-size: 11px; }
 .notice-ad .ad-cta { padding: 8px 10px; font-size: 10px; }
+
+/* ========== MARKETPLACE ========== */
+.fab-market {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: linear-gradient(135deg, #06b6d4, #0284c7);
+  box-shadow: 0 6px 24px rgba(6,182,212,0.45);
+  right: 20px;
+  bottom: calc(84px + var(--safe-bottom));
+  z-index: 40;
+}
+.fab-market:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+}
+
+.mk-modal {
+  position: fixed; inset: 0; z-index: 85;
+  background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+  display: flex; align-items: stretch; justify-content: center;
+  padding: 0; opacity: 0; visibility: hidden; transition: all .3s;
+}
+.mk-modal.open { opacity: 1; visibility: visible; }
+.mk-box {
+  background: var(--bg);
+  width: 100%; max-width: 560px;
+  height: 100dvh; max-height: 100dvh;
+  display: flex; flex-direction: column;
+  box-shadow: var(--shadow);
+  transform: translateY(24px); transition: transform .3s;
+}
+.mk-modal.open .mk-box { transform: translateY(0); }
+
+.mk-header {
+  flex-shrink: 0;
+  padding: 14px 16px;
+  padding-top: max(14px, var(--safe-top));
+  border-bottom: 1px solid var(--border);
+  background: rgba(10,10,11,0.95);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; gap: 12px;
+}
+.mk-header h2 {
+  font-size: 17px; font-weight: 800; flex: 1;
+  background: linear-gradient(135deg, #22d3ee, #0ea5e9);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.mk-header .mk-sub {
+  display: block; font-size: 11px; color: var(--text3); font-weight: 500;
+  -webkit-text-fill-color: var(--text3); margin-top: 2px;
+}
+.mk-back-btn {
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text); width: 40px; height: 40px; border-radius: 10px;
+  font-size: 18px; cursor: pointer; display: none; align-items: center; justify-content: center;
+  font-family: inherit; flex-shrink: 0;
+}
+.mk-back-btn.show { display: flex; }
+.mk-close {
+  background: none; border: none; color: var(--text2);
+  font-size: 22px; cursor: pointer; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; flex-shrink: 0;
+}
+.mk-close:hover { background: var(--bg3); color: var(--text); }
+
+.mk-body {
+  flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  padding: 14px 14px calc(20px + var(--safe-bottom));
+}
+
+/* Banner Anuncie aqui */
+.mk-banner {
+  background: linear-gradient(135deg, rgba(6,182,212,0.2), rgba(2,132,199,0.08));
+  border: 1.5px solid rgba(6,182,212,0.4);
+  border-radius: 14px; padding: 16px; margin-bottom: 14px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.mk-banner-top { display: flex; align-items: center; gap: 12px; }
+.mk-banner-icon {
+  width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+  background: rgba(6,182,212,0.25); display: flex; align-items: center; justify-content: center;
+  font-size: 24px; border: 1.5px solid rgba(6,182,212,0.35);
+}
+.mk-banner h3 { font-size: 15px; font-weight: 800; color: #67e8f9; margin-bottom: 2px; }
+.mk-banner p { font-size: 12px; color: var(--text2); line-height: 1.4; }
+.mk-banner-wa {
+  width: 100%; padding: 12px; background: #25d366; color: #fff;
+  border: none; border-radius: 10px; font-weight: 800; font-size: 13px;
+  cursor: pointer; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px;
+}
+.mk-banner-wa:hover { background: #1da851; }
+
+/* Categorias marketplace */
+.mk-cats {
+  display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 4px;
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.mk-cats::-webkit-scrollbar { display: none; }
+.mk-cat {
+  flex-shrink: 0; padding: 8px 14px; border-radius: 999px;
+  border: 1.5px solid var(--border); background: var(--card);
+  color: var(--text2); font-size: 12px; font-weight: 700;
+  cursor: pointer; font-family: inherit; transition: all .15s;
+  display: flex; align-items: center; gap: 6px; white-space: nowrap;
+}
+.mk-cat:hover { border-color: rgba(6,182,212,0.5); color: var(--text); }
+.mk-cat.active {
+  background: rgba(6,182,212,0.2); border-color: #06b6d4; color: #67e8f9;
+}
+
+/* Grid de anúncios */
+.mk-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+}
+@media (min-width: 480px) { .mk-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
+.mk-card {
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: 14px; overflow: hidden; cursor: pointer;
+  transition: all .2s; display: flex; flex-direction: column;
+}
+.mk-card:hover {
+  border-color: rgba(6,182,212,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(6,182,212,0.12);
+}
+.mk-card-img {
+  height: 120px; background: var(--bg3);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.mk-card-img img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.mk-card-img .mk-placeholder {
+  font-size: 40px; opacity: 0.7;
+}
+.mk-card-badge {
+  position: absolute; top: 8px; left: 8px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  background: rgba(0,0,0,0.65); color: #67e8f9;
+  padding: 3px 8px; border-radius: 6px; letter-spacing: 0.3px;
+}
+.mk-card-body { padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.mk-card-name {
+  font-size: 13px; font-weight: 700; line-height: 1.3; color: var(--text);
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.mk-card-price {
+  font-size: 16px; font-weight: 800; color: #22d3ee;
+  font-family: 'Space Grotesk', sans-serif; margin-top: 4px;
+}
+.mk-card-loc {
+  font-size: 11px; color: var(--text3); margin-top: 2px;
+}
+
+.mk-empty {
+  grid-column: 1 / -1; text-align: center; padding: 40px 16px; color: var(--text3);
+}
+.mk-empty .icon { font-size: 40px; margin-bottom: 10px; }
+
+/* Detalhe do anúncio */
+.mk-detail { display: none; }
+.mk-detail.show { display: block; }
+.mk-list-view.hide { display: none; }
+
+.mk-gallery {
+  position: relative;
+  background: var(--bg3);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  aspect-ratio: 16/11;
+}
+.mk-gallery-main {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: #0c0c0e;
+}
+.mk-gallery-main img, .mk-gallery-main video {
+  width: 100%; height: 100%; object-fit: contain; display: block;
+}
+.mk-gallery-nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.15);
+  color: #fff; font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-family: inherit; z-index: 2;
+}
+.mk-gallery-nav.prev { left: 8px; }
+.mk-gallery-nav.next { right: 8px; }
+.mk-gallery-nav:hover { background: rgba(6,182,212,0.7); }
+.mk-gallery-counter {
+  position: absolute; bottom: 10px; right: 10px;
+  background: rgba(0,0,0,0.7); color: #fff;
+  font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 999px;
+}
+.mk-thumbs {
+  display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 14px;
+  scrollbar-width: none;
+}
+.mk-thumbs::-webkit-scrollbar { display: none; }
+.mk-thumb {
+  flex-shrink: 0; width: 56px; height: 56px; border-radius: 10px;
+  border: 2px solid transparent; overflow: hidden; cursor: pointer;
+  background: var(--bg3); position: relative;
+}
+.mk-thumb.active { border-color: #06b6d4; }
+.mk-thumb img, .mk-thumb video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.mk-thumb .vid-badge {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35); font-size: 16px; pointer-events: none;
+}
+
+.mk-detail-title {
+  font-size: 18px; font-weight: 800; line-height: 1.3; margin-bottom: 6px;
+}
+.mk-detail-price {
+  font-size: 26px; font-weight: 800; color: #22d3ee;
+  font-family: 'Space Grotesk', sans-serif; margin-bottom: 8px;
+}
+.mk-detail-meta {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+}
+.mk-chip {
+  font-size: 11px; font-weight: 600; color: var(--text2);
+  background: var(--card); border: 1px solid var(--border);
+  padding: 5px 10px; border-radius: 999px;
+}
+.mk-section-label {
+  font-size: 12px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.4px; color: var(--text3); margin: 16px 0 8px;
+}
+.mk-desc {
+  font-size: 14px; color: var(--text2); line-height: 1.55;
+  white-space: pre-wrap;
+}
+.mk-seller {
+  margin-top: 16px; padding: 14px;
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: 14px; display: flex; align-items: center; gap: 12px;
+}
+.mk-seller-avatar {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(6,182,212,0.2); display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.mk-seller-info { flex: 1; min-width: 0; }
+.mk-seller-info strong { font-size: 14px; display: block; }
+.mk-seller-info span { font-size: 12px; color: var(--text3); }
+.mk-seller-wa {
+  flex-shrink: 0; width: 48px; height: 48px; border-radius: 14px;
+  background: #25d366; border: none; color: #fff; font-size: 24px;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+}
+.mk-seller-wa:hover { background: #1da851; transform: scale(1.05); }
+
+.mk-detail-actions {
+  margin-top: 16px; display: flex; flex-direction: column; gap: 10px;
+}
+.mk-btn-wa-full {
+  width: 100%; padding: 16px; background: #25d366; color: #fff;
+  border: none; border-radius: 12px; font-weight: 800; font-size: 15px;
+  cursor: pointer; font-family: inherit; min-height: 52px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.mk-btn-wa-full:hover { background: #1da851; }
+
+
 </style>
 </head>
 <body>
@@ -1138,7 +1413,11 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
   </div>
 </main>
 
-<!-- Botão flutuante único: sobe ao topo + mostra publicidade -->
+<!-- Marketplace + Topo flutuantes -->
+<button class="fab fab-market" id="fabMarket" onclick="openMarketplace()" aria-label="Marketplace">
+  🏪
+  <span class="fab-ad-label">Market</span>
+</button>
 <button class="fab fab-top" id="fabTop" onclick="openAd('voltar_topo')" aria-label="Voltar ao topo">
   ⬆️
   <span class="fab-ad-label">Topo</span>
@@ -1286,6 +1565,43 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
         Falar no WhatsApp
       </button>
       <button class="btn-back" onclick="closeAd()">Fechar</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- MARKETPLACE MODAL -->
+<div class="mk-modal" id="mkModal">
+  <div class="mk-box">
+    <div class="mk-header">
+      <button class="mk-back-btn" id="mkBackBtn" onclick="mkBackToList()" aria-label="Voltar">←</button>
+      <div style="flex:1;min-width:0">
+        <h2 id="mkHeaderTitle">🏪 Marketplace</h2>
+        <span class="mk-sub" id="mkHeaderSub">Anúncios da região</span>
+      </div>
+      <button class="mk-close" onclick="closeMarketplace()" aria-label="Fechar">✕</button>
+    </div>
+    <div class="mk-body" id="mkBody">
+      <!-- LIST VIEW -->
+      <div class="mk-list-view" id="mkListView">
+        <div class="mk-banner">
+          <div class="mk-banner-top">
+            <div class="mk-banner-icon">📢</div>
+            <div>
+              <h3>Anuncie aqui!</h3>
+              <p>Motos, carros, utilidades e muito mais. Seu anúncio chega a quem já está pedindo na região.</p>
+            </div>
+          </div>
+          <button class="mk-banner-wa" onclick="mkAnnounceWhatsApp()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Anunciar no WhatsApp
+          </button>
+        </div>
+        <nav class="mk-cats" id="mkCats"></nav>
+        <div class="mk-grid" id="mkGrid"></div>
+      </div>
+      <!-- DETAIL VIEW -->
+      <div class="mk-detail" id="mkDetail"></div>
     </div>
   </div>
 </div>
@@ -1617,6 +1933,305 @@ function maybeShowNotice() {
   // Pequeno atraso para não competir com o loader
   setTimeout(openNotice, 700);
 }
+
+
+/* ========== MARKETPLACE ========== */
+const MK_WA = '5564981261464'; // WhatsApp do marketplace / dono
+const MK_CATS = [
+  { id: 'all', label: 'Todos', emoji: '✨' },
+  { id: 'motos', label: 'Motos', emoji: '🏍️' },
+  { id: 'carros', label: 'Carros', emoji: '🚗' },
+  { id: 'utilidades', label: 'Utilidades', emoji: '🔧' },
+  { id: 'eletronicos', label: 'Eletrônicos', emoji: '📱' },
+  { id: 'outros', label: 'Outros', emoji: '📦' },
+];
+
+/* Edite os anúncios aqui.
+ * media: array de { type: 'image'|'video', url: '...' }
+ * wa: telefone do vendedor só dígitos (ex: 5564999999999)
+ */
+const MK_ITEMS = [
+  {
+    id: 1,
+    title: 'Honda CG 160 Titan 2022',
+    category: 'motos',
+    price: 14500,
+    location: 'Rio Verde — GO',
+    emoji: '🏍️',
+    seller: 'João Vendedor',
+    wa: '5564981261464',
+    description: 'Honda CG 160 Titan 2022 em ótimo estado.\n• Único dono\n• 18.000 km\n• Documentação em dia\n• Revisão recente\n• Aceita troca com volta',
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1568772585401-f208132fcdd7?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1449426468159-d96dbf643f56?w=800&q=80' },
+    ]
+  },
+  {
+    id: 2,
+    title: 'Fiat Uno Way 1.0 2014',
+    category: 'carros',
+    price: 28900,
+    location: 'Rio Verde — GO',
+    emoji: '🚗',
+    seller: 'Maria Autos',
+    wa: '5564981261464',
+    description: 'Fiat Uno Way 1.0 flex 2014.\n• 95.000 km\n• Ar-condicionado\n• Direção hidráulica\n• Vidros elétricos\n• IPVA pago\n• Pronto para transferir',
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=800&q=80' },
+    ]
+  },
+  {
+    id: 3,
+    title: 'Furadeira e kit ferramentas',
+    category: 'utilidades',
+    price: 220,
+    location: 'Rio Verde — GO',
+    emoji: '🔧',
+    seller: 'Pedro Utilidades',
+    wa: '5564981261464',
+    description: 'Kit completo de ferramentas + furadeira.\n• Furadeira 550W\n• Jogo de chaves\n• Maleta organizada\n• Pouco uso, estado de novo',
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&q=80' },
+    ]
+  },
+  {
+    id: 4,
+    title: 'iPhone 12 128GB',
+    category: 'eletronicos',
+    price: 1890,
+    location: 'Rio Verde — GO',
+    emoji: '📱',
+    seller: 'Tech Store',
+    wa: '5564981261464',
+    description: 'iPhone 12 128GB azul.\n• Bateria 87%\n• Sem marcas de queda\n• Acompanha carregador original\n• Caixa e nota fiscal',
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80' },
+    ]
+  },
+  {
+    id: 5,
+    title: 'Yamaha Fazer 250 2020',
+    category: 'motos',
+    price: 16800,
+    location: 'Rio Verde — GO',
+    emoji: '🏍️',
+    seller: 'Motos RV',
+    wa: '5564981261464',
+    description: 'Yamaha Fazer 250 ABS 2020.\n• 22.000 km\n• Abs e freio a disco\n• Pneus novos\n• Manual e chave reserva',
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1558981852-426c6c22a060?w=800&q=80' },
+    ]
+  },
+  {
+    id: 6,
+    title: 'Bicicleta mountain bike',
+    category: 'outros',
+    price: 750,
+    location: 'Rio Verde — GO',
+    emoji: '🚲',
+    seller: 'Ciclo Shop',
+    wa: '5564981261464',
+    description: 'Mountain bike aro 29.\n• 21 marchas\n• Suspensão dianteira\n• Freios a disco\n• Ideal para trilha e cidade',
+    media: [
+      { type: 'image', url: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800&q=80' },
+      { type: 'image', url: 'https://images.unsplash.com/photo-1571068316344-75bc76f77890?w=800&q=80' },
+    ]
+  },
+];
+
+let mkFilter = 'all';
+let mkCurrentId = null;
+let mkMediaIndex = 0;
+
+function fmtMk(v) {
+  return 'R$ ' + Number(v).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function openMarketplace() {
+  mkFilter = 'all';
+  mkCurrentId = null;
+  mkMediaIndex = 0;
+  document.getElementById('mkBackBtn').classList.remove('show');
+  document.getElementById('mkHeaderTitle').textContent = '🏪 Marketplace';
+  document.getElementById('mkHeaderSub').textContent = 'Anúncios da região';
+  document.getElementById('mkListView').classList.remove('hide');
+  document.getElementById('mkDetail').classList.remove('show');
+  document.getElementById('mkDetail').innerHTML = '';
+  renderMkCats();
+  renderMkGrid();
+  document.getElementById('mkModal').classList.add('open');
+  document.getElementById('mkBody').scrollTop = 0;
+}
+
+function closeMarketplace() {
+  document.getElementById('mkModal').classList.remove('open');
+  mkCurrentId = null;
+  // pausar vídeos se houver
+  document.querySelectorAll('#mkDetail video').forEach(function (v) { try { v.pause(); } catch (e) {} });
+}
+
+function mkBackToList() {
+  mkCurrentId = null;
+  mkMediaIndex = 0;
+  document.getElementById('mkBackBtn').classList.remove('show');
+  document.getElementById('mkHeaderTitle').textContent = '🏪 Marketplace';
+  document.getElementById('mkHeaderSub').textContent = 'Anúncios da região';
+  document.getElementById('mkDetail').classList.remove('show');
+  document.getElementById('mkDetail').innerHTML = '';
+  document.getElementById('mkListView').classList.remove('hide');
+  document.getElementById('mkBody').scrollTop = 0;
+}
+
+function mkAnnounceWhatsApp() {
+  const msg = 'Olá! Quero *anunciar no Marketplace* do Oba Delivery. Como funciona?';
+  window.open('https://wa.me/' + MK_WA + '?text=' + encodeURIComponent(msg), '_blank');
+}
+
+function renderMkCats() {
+  document.getElementById('mkCats').innerHTML = MK_CATS.map(function (c) {
+    return '<button class="mk-cat ' + (mkFilter === c.id ? 'active' : '') + '" onclick="setMkFilter(\'' + c.id + '\')">' +
+      c.emoji + ' ' + c.label + '</button>';
+  }).join('');
+}
+
+function setMkFilter(id) {
+  mkFilter = id;
+  renderMkCats();
+  renderMkGrid();
+}
+
+function renderMkGrid() {
+  const list = mkFilter === 'all' ? MK_ITEMS : MK_ITEMS.filter(function (i) { return i.category === mkFilter; });
+  const grid = document.getElementById('mkGrid');
+  if (!list.length) {
+    grid.innerHTML = '<div class="mk-empty"><div class="icon">📭</div><p>Nenhum anúncio nesta categoria</p></div>';
+    return;
+  }
+  grid.innerHTML = list.map(function (item) {
+    const cat = MK_CATS.find(function (c) { return c.id === item.category; });
+    const img = (item.media && item.media[0] && item.media[0].type === 'image') ? item.media[0].url : '';
+    const imgHtml = img
+      ? '<img src="' + img + '" alt="' + item.title.replace(/"/g, '&quot;') + '" loading="lazy">'
+      : '<span class="mk-placeholder">' + (item.emoji || '📦') + '</span>';
+    return '<article class="mk-card" onclick="openMkItem(' + item.id + ')">' +
+      '<div class="mk-card-img">' +
+        (cat ? '<span class="mk-card-badge">' + cat.emoji + ' ' + cat.label + '</span>' : '') +
+        imgHtml +
+      '</div>' +
+      '<div class="mk-card-body">' +
+        '<div class="mk-card-name">' + item.title + '</div>' +
+        '<div class="mk-card-price">' + fmtMk(item.price) + '</div>' +
+        (item.location ? '<div class="mk-card-loc">📍 ' + item.location + '</div>' : '') +
+      '</div>' +
+    '</article>';
+  }).join('');
+}
+
+function openMkItem(id) {
+  const item = MK_ITEMS.find(function (x) { return x.id === id; });
+  if (!item) return;
+  mkCurrentId = id;
+  mkMediaIndex = 0;
+  document.getElementById('mkListView').classList.add('hide');
+  document.getElementById('mkBackBtn').classList.add('show');
+  document.getElementById('mkHeaderTitle').textContent = item.emoji + ' ' + item.title;
+  document.getElementById('mkHeaderSub').textContent = fmtMk(item.price);
+  const el = document.getElementById('mkDetail');
+  el.classList.add('show');
+  el.innerHTML = buildMkDetail(item);
+  document.getElementById('mkBody').scrollTop = 0;
+  mkShowMedia(0);
+}
+
+function buildMkDetail(item) {
+  const cat = MK_CATS.find(function (c) { return c.id === item.category; });
+  const media = item.media || [];
+  const thumbs = media.map(function (m, i) {
+    if (m.type === 'video') {
+      return '<div class="mk-thumb' + (i === 0 ? ' active' : '') + '" onclick="mkShowMedia(' + i + ')">' +
+        '<video src="' + m.url + '" muted preload="metadata"></video>' +
+        '<span class="vid-badge">▶</span></div>';
+    }
+    return '<div class="mk-thumb' + (i === 0 ? ' active' : '') + '" onclick="mkShowMedia(' + i + ')">' +
+      '<img src="' + m.url + '" alt="" loading="lazy"></div>';
+  }).join('');
+
+  return '<div class="mk-gallery">' +
+      '<div class="mk-gallery-main" id="mkGalleryMain"></div>' +
+      (media.length > 1 ? '<button class="mk-gallery-nav prev" onclick="mkMediaStep(-1)" aria-label="Anterior">‹</button>' +
+        '<button class="mk-gallery-nav next" onclick="mkMediaStep(1)" aria-label="Próxima">›</button>' : '') +
+      '<span class="mk-gallery-counter" id="mkGalleryCounter">1 / ' + Math.max(1, media.length) + '</span>' +
+    '</div>' +
+    (media.length > 1 ? '<div class="mk-thumbs" id="mkThumbs">' + thumbs + '</div>' : '') +
+    '<div class="mk-detail-title">' + item.title + '</div>' +
+    '<div class="mk-detail-price">' + fmtMk(item.price) + '</div>' +
+    '<div class="mk-detail-meta">' +
+      (cat ? '<span class="mk-chip">' + cat.emoji + ' ' + cat.label + '</span>' : '') +
+      (item.location ? '<span class="mk-chip">📍 ' + item.location + '</span>' : '') +
+    '</div>' +
+    '<div class="mk-section-label">Descrição</div>' +
+    '<div class="mk-desc">' + (item.description || 'Sem descrição').replace(/</g, '&lt;') + '</div>' +
+    '<div class="mk-seller">' +
+      '<div class="mk-seller-avatar">👤</div>' +
+      '<div class="mk-seller-info">' +
+        '<strong>' + (item.seller || 'Vendedor') + '</strong>' +
+        '<span>Anunciante no Oba Delivery</span>' +
+      '</div>' +
+      '<button class="mk-seller-wa" onclick="mkContactSeller(' + item.id + ')" aria-label="WhatsApp do vendedor">💬</button>' +
+    '</div>' +
+    '<div class="mk-detail-actions">' +
+      '<button class="mk-btn-wa-full" onclick="mkContactSeller(' + item.id + ')">' +
+        '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>' +
+        ' Falar com o vendedor' +
+      '</button>' +
+    '</div>';
+}
+
+function mkShowMedia(index) {
+  const item = MK_ITEMS.find(function (x) { return x.id === mkCurrentId; });
+  if (!item) return;
+  const media = item.media || [];
+  if (!media.length) {
+    document.getElementById('mkGalleryMain').innerHTML = '<span style="font-size:64px">' + (item.emoji || '📦') + '</span>';
+    return;
+  }
+  mkMediaIndex = Math.max(0, Math.min(media.length - 1, index));
+  const m = media[mkMediaIndex];
+  const main = document.getElementById('mkGalleryMain');
+  // pause previous videos
+  main.querySelectorAll('video').forEach(function (v) { try { v.pause(); } catch (e) {} });
+  if (m.type === 'video') {
+    main.innerHTML = '<video src="' + m.url + '" controls playsinline style="width:100%;height:100%;object-fit:contain;background:#000"></video>';
+  } else {
+    main.innerHTML = '<img src="' + m.url + '" alt="">';
+  }
+  const counter = document.getElementById('mkGalleryCounter');
+  if (counter) counter.textContent = (mkMediaIndex + 1) + ' / ' + media.length;
+  document.querySelectorAll('#mkThumbs .mk-thumb').forEach(function (t, i) {
+    t.classList.toggle('active', i === mkMediaIndex);
+  });
+}
+
+function mkMediaStep(dir) {
+  const item = MK_ITEMS.find(function (x) { return x.id === mkCurrentId; });
+  if (!item || !item.media) return;
+  const n = item.media.length;
+  mkShowMedia((mkMediaIndex + dir + n) % n);
+}
+
+function mkContactSeller(id) {
+  const item = MK_ITEMS.find(function (x) { return x.id === id; });
+  if (!item) return;
+  const phone = (item.wa && String(item.wa).replace(/\D/g, '')) || MK_WA;
+  const msg = 'Olá! Venho pelo anúncio que vi no *Oba Delivery*.\n\n📌 *' + item.title + '*\n💰 ' + fmtMk(item.price) + '\n\nTenho interesse e gostaria de mais informações.';
+  window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
+}
+
 
 /* ========== STATE ========== */
 let cart = [];
@@ -2244,6 +2859,9 @@ function init() {
   });
   document.getElementById('noticeModal').addEventListener('click', function(e) {
     if (e.target === this) closeNotice();
+  });
+  document.getElementById('mkModal').addEventListener('click', function(e) {
+    if (e.target === this) closeMarketplace();
   });
 
   setTimeout(() => document.getElementById('loader').classList.add('hide'), 600);
