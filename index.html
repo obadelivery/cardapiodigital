@@ -1272,6 +1272,175 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 .mk-btn-wa-full:hover { background: #1da851; }
 
 
+
+/* Auth / Admin / Form marketplace */
+.mk-auth-bar {
+  display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;
+}
+.mk-auth-bar button {
+  flex: 1; min-width: 120px; padding: 11px 12px; border-radius: 10px;
+  font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit;
+  border: 1.5px solid var(--border); background: var(--card); color: var(--text);
+  min-height: 42px;
+}
+.mk-auth-bar .primary {
+  background: linear-gradient(135deg, #06b6d4, #0284c7); border-color: transparent; color: #fff;
+}
+.mk-auth-bar .admin-btn {
+  background: transparent; border-color: rgba(245,158,11,0.4); color: var(--accent);
+  flex: 0 0 auto; min-width: auto; padding: 11px 14px;
+}
+.mk-fee-box {
+  background: linear-gradient(135deg, rgba(245,158,11,0.14), rgba(217,119,6,0.06));
+  border: 1.5px solid rgba(245,158,11,0.35);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 14px;
+  font-size: 12px; color: var(--text2); line-height: 1.45;
+}
+.mk-fee-box strong { color: var(--accent); }
+.mk-panel { display: none; }
+.mk-panel.show { display: block; }
+.mk-form-group { margin-bottom: 12px; }
+.mk-form-group label {
+  display: block; font-size: 12px; font-weight: 700; color: var(--text2);
+  margin-bottom: 6px;
+}
+.mk-form-group input, .mk-form-group select, .mk-form-group textarea {
+  width: 100%; padding: 12px 14px; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--card); color: var(--text);
+  font-size: 14px; font-family: inherit; outline: none;
+}
+.mk-form-group input:focus, .mk-form-group select:focus, .mk-form-group textarea:focus {
+  border-color: #06b6d4;
+}
+.mk-form-group textarea { min-height: 100px; resize: vertical; }
+.mk-form-group .hint { font-size: 11px; color: var(--text3); margin-top: 4px; }
+.mk-btn-submit {
+  width: 100%; padding: 14px; border: none; border-radius: 12px;
+  background: linear-gradient(135deg, #06b6d4, #0284c7); color: #fff;
+  font-weight: 800; font-size: 14px; cursor: pointer; font-family: inherit;
+  min-height: 48px; margin-top: 4px;
+}
+.mk-btn-submit:hover { filter: brightness(1.08); }
+.mk-btn-outline {
+  width: 100%; padding: 12px; border-radius: 12px; margin-top: 8px;
+  background: transparent; border: 1.5px solid var(--border); color: var(--text2);
+  font-weight: 700; font-size: 13px; cursor: pointer; font-family: inherit;
+}
+.mk-status {
+  display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase;
+  padding: 3px 8px; border-radius: 6px; letter-spacing: 0.3px;
+}
+.mk-status.pending { background: rgba(245,158,11,0.2); color: #fbbf24; }
+.mk-status.approved { background: rgba(34,197,94,0.2); color: #4ade80; }
+.mk-status.rejected { background: rgba(239,68,68,0.2); color: #f87171; }
+.mk-my-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+.mk-my-item {
+  background: var(--card); border: 1.5px solid var(--border); border-radius: 12px;
+  padding: 12px; display: flex; gap: 12px; align-items: flex-start;
+}
+.mk-my-item .thumb {
+  width: 56px; height: 56px; border-radius: 10px; background: var(--bg3);
+  overflow: hidden; flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+}
+.mk-my-item .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.mk-my-item .info { flex: 1; min-width: 0; }
+.mk-my-item .info strong { font-size: 13px; display: block; margin-bottom: 2px; }
+.mk-my-item .info .price { font-size: 14px; font-weight: 800; color: #22d3ee; }
+.mk-admin-item {
+  background: var(--card); border: 1.5px solid var(--border); border-radius: 12px;
+  padding: 14px; margin-bottom: 10px;
+}
+.mk-admin-item h4 { font-size: 14px; margin-bottom: 4px; }
+.mk-admin-item .meta { font-size: 12px; color: var(--text3); margin-bottom: 8px; line-height: 1.4; }
+.mk-admin-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.mk-admin-actions button {
+  flex: 1; min-width: 100px; padding: 10px; border-radius: 10px; border: none;
+  font-weight: 800; font-size: 12px; cursor: pointer; font-family: inherit; min-height: 40px;
+}
+.mk-btn-approve { background: #22c55e; color: #000; }
+.mk-btn-reject { background: #ef4444; color: #fff; }
+.mk-btn-del { background: var(--bg3); color: var(--text2); border: 1px solid var(--border) !important; }
+.mk-tabs {
+  display: flex; gap: 6px; margin-bottom: 14px; overflow-x: auto;
+}
+.mk-tabs button {
+  flex-shrink: 0; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--border);
+  background: var(--card); color: var(--text2); font-size: 12px; font-weight: 700;
+  cursor: pointer; font-family: inherit;
+}
+.mk-tabs button.active { background: rgba(6,182,212,0.2); border-color: #06b6d4; color: #67e8f9; }
+.mk-user-chip {
+  font-size: 11px; color: var(--text3); margin-bottom: 10px;
+}
+.mk-user-chip strong { color: #67e8f9; }
+
+
+
+.mk-status.sold { background: rgba(34,197,94,0.25); color: #86efac; }
+.mk-status.cancelled { background: rgba(113,113,122,0.3); color: #a1a1aa; }
+.mk-demo-banner {
+  background: linear-gradient(135deg, rgba(139,92,246,0.16), rgba(99,102,241,0.06));
+  border: 1.5px dashed rgba(139,92,246,0.45);
+  border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;
+  font-size: 12px; color: #c4b5fd; line-height: 1.45; text-align: center;
+}
+.mk-card-badge.demo {
+  background: rgba(139,92,246,0.85); color: #fff;
+}
+.mk-upload-thumb {
+  width: 64px; height: 64px; border-radius: 10px; object-fit: cover;
+  border: 1.5px solid var(--border);
+}
+.mk-my-actions {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px;
+}
+.mk-my-actions button {
+  padding: 7px 10px; border-radius: 8px; border: none;
+  font-size: 11px; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.mk-btn-sold { background: #22c55e; color: #000; }
+.mk-btn-cancel { background: var(--bg3); color: var(--text2); border: 1px solid var(--border) !important; }
+.mk-btn-delete { background: rgba(239,68,68,0.2); color: #f87171; }
+.mk-gallery-main iframe {
+  width: 100%; height: 100%; border: 0; display: block; background: #000;
+}
+
+
+.mk-tutorial {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.mk-tutorial summary {
+  padding: 12px 14px;
+  font-size: 13px; font-weight: 700; color: #67e8f9;
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; gap: 8px;
+}
+.mk-tutorial summary::-webkit-details-marker { display: none; }
+.mk-tutorial summary::before {
+  content: '▶'; font-size: 10px; transition: transform .15s;
+}
+.mk-tutorial[open] summary::before { transform: rotate(90deg); }
+.mk-tutorial-body {
+  padding: 0 14px 14px;
+  font-size: 12px; color: var(--text2); line-height: 1.55;
+}
+.mk-tutorial-body ol { padding-left: 18px; margin: 6px 0 10px; }
+.mk-tutorial-body li { margin-bottom: 6px; }
+.mk-tutorial-body code {
+  background: var(--bg3); padding: 2px 6px; border-radius: 6px;
+  font-size: 11px; color: #fbbf24; word-break: break-all;
+}
+.mk-tutorial-body .ex {
+  background: rgba(6,182,212,0.1); border-left: 3px solid #06b6d4;
+  padding: 8px 10px; border-radius: 0 8px 8px 0; margin-top: 8px;
+  font-size: 11px;
+}
+
 </style>
 </head>
 <body>
@@ -1589,17 +1758,283 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
             <div class="mk-banner-icon">📢</div>
             <div>
               <h3>Anuncie aqui!</h3>
-              <p>Motos, carros, utilidades e muito mais. Seu anúncio chega a quem já está pedindo na região.</p>
+              <p>Motos, carros, utilidades e muito mais. Taxa por anúncio + aprovação da equipe.</p>
             </div>
           </div>
-          <button class="mk-banner-wa" onclick="mkAnnounceWhatsApp()">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Anunciar no WhatsApp
-          </button>
+          <div class="mk-auth-bar" id="mkAuthBar"></div>
+        </div>
+        <div class="mk-fee-box">
+          <strong>💰 Taxa de anúncio:</strong> R$ 3,00 por publicação (válido por 30 dias ou até vender).<br>
+          O anúncio só aparece no Marketplace após <strong>pagamento e aprovação</strong> da administração.
         </div>
         <nav class="mk-cats" id="mkCats"></nav>
         <div class="mk-grid" id="mkGrid"></div>
       </div>
+
+      <!-- LOGIN -->
+      <div class="mk-panel" id="mkLoginPanel">
+        <div class="mk-section-label" style="margin-top:0">Entrar como anunciante</div>
+        <div class="mk-form-group">
+          <label>E-mail</label>
+          <input type="email" id="mkLoginEmail" placeholder="seu@email.com" autocomplete="username">
+        </div>
+        <div class="mk-form-group">
+          <label>Senha</label>
+          <input type="password" id="mkLoginPass" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button class="mk-btn-submit" onclick="mkDoLogin()">Entrar</button>
+        <button class="mk-btn-outline" onclick="mkShowPanel('register')">Criar conta de anunciante</button>
+        <button class="mk-btn-outline" onclick="mkShowPanel('list')">← Voltar ao Marketplace</button>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="mk-panel" id="mkRegisterPanel">
+        <div class="mk-section-label" style="margin-top:0">Criar conta de anunciante</div>
+        <div class="mk-form-group">
+          <label>Nome / Empresa</label>
+          <input type="text" id="mkRegName" placeholder="Como quer aparecer nos anúncios">
+        </div>
+        <div class="mk-form-group">
+          <label>E-mail</label>
+          <input type="email" id="mkRegEmail" placeholder="seu@email.com">
+        </div>
+        <div class="mk-form-group">
+          <label>WhatsApp (com DDD)</label>
+          <input type="tel" id="mkRegWa" placeholder="64999999999">
+          <div class="hint">Só números. Ex: 64981261464</div>
+        </div>
+        <div class="mk-form-group">
+          <label>Senha</label>
+          <input type="password" id="mkRegPass" placeholder="Mín. 6 caracteres">
+        </div>
+        <button class="mk-btn-submit" onclick="mkDoRegister()">Criar conta</button>
+        <button class="mk-btn-outline" onclick="mkShowPanel('login')">Já tenho conta</button>
+        <button class="mk-btn-outline" onclick="mkShowPanel('list')">← Voltar</button>
+      </div>
+
+      <!-- PAINEL ANUNCIANTE -->
+      <div class="mk-panel" id="mkDashPanel">
+        <div class="mk-user-chip" id="mkUserChip"></div>
+        <div class="mk-tabs">
+          <button class="active" id="mkTabMy" onclick="mkDashTab('my')">Meus anúncios</button>
+          <button id="mkTabNew" onclick="mkDashTab('new')">+ Novo anúncio</button>
+        </div>
+        <div id="mkDashMy"></div>
+        <div id="mkDashNew" style="display:none">
+          <div class="mk-fee-box">
+            <strong>Taxa:</strong> R$ 3,00 · válido por 30 dias ou até vender o item.<br>
+            Após enviar, você será direcionado ao WhatsApp para liberação/pagamento.
+            O anúncio fica <strong>pendente</strong> até a administração aprovar.
+          </div>
+          <div class="mk-form-group">
+            <label>Título do anúncio *</label>
+            <input type="text" id="mkNewTitle" placeholder="Ex: Honda CG 160 2022">
+          </div>
+          <div class="mk-form-group">
+            <label>Categoria *</label>
+            <select id="mkNewCat">
+              <option value="motos">🏍️ Motos</option>
+              <option value="carros">🚗 Carros</option>
+              <option value="utilidades">🔧 Utilidades</option>
+              <option value="eletronicos">📱 Eletrônicos</option>
+              <option value="outros">📦 Outros</option>
+            </select>
+          </div>
+          <div class="mk-form-group">
+            <label>Preço (R$) *</label>
+            <input type="number" id="mkNewPrice" min="1" step="0.01" placeholder="15000">
+          </div>
+          <div class="mk-form-group">
+            <label>Cidade / Local</label>
+            <input type="text" id="mkNewLoc" placeholder="Rio Verde — GO">
+          </div>
+          <div class="mk-form-group">
+            <label>Descrição *</label>
+            <textarea id="mkNewDesc" placeholder="Detalhes do item, estado, documentação..."></textarea>
+          </div>
+          <div class="mk-form-group">
+            <label>WhatsApp do vendedor *</label>
+            <input type="tel" id="mkNewWa" placeholder="64999999999">
+          </div>
+          <div class="mk-form-group">
+            <label>Links de fotos e vídeos * (uma URL por linha)</label>
+            <textarea id="mkNewMedia" placeholder="https://i.ibb.co/xxxx/foto1.jpg&#10;https://www.youtube.com/watch?v=xxxxx&#10;https://drive.google.com/file/d/xxxxx/view"></textarea>
+            <div class="hint">Cole o link de cada foto ou vídeo. Abra os tutoriais abaixo se precisar.</div>
+          </div>
+
+          <details class="mk-tutorial">
+            <summary>📷 Como obter o link de uma foto (ImgBB — grátis)</summary>
+            <div class="mk-tutorial-body">
+              <ol>
+                <li>Abra <strong>https://imgbb.com</strong> no navegador (funciona no celular).</li>
+                <li>Toque em <strong>Start uploading</strong> / enviar.</li>
+                <li>Escolha a foto da galeria.</li>
+                <li>Após o envio, em <strong>Direct links</strong> / Links diretos, toque em <strong>Copy</strong>.</li>
+                <li>Cole o link no campo acima (uma foto por linha).</li>
+              </ol>
+              <div class="ex">✅ Link bom termina com .jpg / .png / .webp — ex: <code>https://i.ibb.co/abc/moto.jpg</code></div>
+              <p style="margin-top:8px">Alternativas: <strong>postimages.org</strong> ou <strong>imgur.com</strong> (upload → copiar “direct link”).</p>
+            </div>
+          </details>
+
+          <details class="mk-tutorial">
+            <summary>📁 Google Drive — passo a passo (foto ou vídeo)</summary>
+            <div class="mk-tutorial-body">
+              <ol>
+                <li>Envie o arquivo para o <strong>Google Drive</strong>.</li>
+                <li>Toque no arquivo → <strong>Compartilhar</strong>.</li>
+                <li>Acesso geral: <strong>Qualquer pessoa com o link</strong> → Leitor.</li>
+                <li>Toque em <strong>Copiar link</strong>. Fica assim:<br>
+                  <code>https://drive.google.com/file/d/ID_DO_ARQUIVO/view?usp=sharing</code>
+                </li>
+                <li>Cole esse link no anúncio — o sistema converte sozinho.</li>
+              </ol>
+              <p><strong>Se a foto não aparecer</strong>, converta manualmente:</p>
+              <ol>
+                <li>Copie só o <strong>ID</strong> (entre <code>/d/</code> e <code>/view</code>).</li>
+                <li>Use este formato:<br>
+                  <code>https://drive.google.com/uc?export=view&amp;id=ID_DO_ARQUIVO</code>
+                </li>
+              </ol>
+              <div class="ex">Ex.: ID <code>1aBcD2eFg</code> → <code>https://drive.google.com/uc?export=view&amp;id=1aBcD2eFg</code></div>
+              <p style="margin-top:8px">🎥 Vídeo no Drive: cole o link normal de compartilhamento (<code>/file/d/.../view</code>).</p>
+            </div>
+          </details>
+
+          <details class="mk-tutorial">
+            <summary>▶️ Vídeo do YouTube</summary>
+            <div class="mk-tutorial-body">
+              <ol>
+                <li>Abra o vídeo no YouTube → <strong>Compartilhar</strong> → <strong>Copiar link</strong>.</li>
+                <li>Cole no campo (<code>youtube.com/watch?v=...</code> ou <code>youtu.be/...</code>).</li>
+              </ol>
+            </div>
+          </details>
+
+          <button class="mk-btn-submit" onclick="mkSubmitListing()">Enviar anúncio (R$ 3,00)</button>
+        </div>
+        <button class="mk-btn-outline" onclick="mkLogout()">Sair da conta</button>
+        <button class="mk-btn-outline" onclick="mkShowPanel('list')">← Voltar ao Marketplace</button>
+      </div>
+
+      <!-- ADMIN LOGIN -->
+      <div class="mk-panel" id="mkAdminLoginPanel">
+        <div class="mk-section-label" style="margin-top:0">Área administrativa</div>
+        <div class="mk-form-group">
+          <label>Senha do administrador</label>
+          <input type="password" id="mkAdminPass" placeholder="Senha admin">
+        </div>
+        <button class="mk-btn-submit" onclick="mkAdminLogin()">Entrar no painel</button>
+        <button class="mk-btn-outline" onclick="mkShowPanel('list')">← Voltar</button>
+      </div>
+
+      <!-- ADMIN PANEL -->
+      <div class="mk-panel" id="mkAdminPanel">
+        <div class="mk-section-label" style="margin-top:0">Painel admin · Moderação</div>
+        <div class="mk-tabs">
+          <button class="active" id="mkAdmTabPend" onclick="mkAdminTab('pending')">Pendentes</button>
+          <button id="mkAdmTabAll" onclick="mkAdminTab('all')">Todos</button>
+          <button id="mkAdmTabNew" onclick="mkAdminTab('new')">+ Publicar</button>
+        </div>
+        <div id="mkAdminList"></div>
+        <div id="mkAdminNew" style="display:none">
+          <div class="mk-fee-box">
+            <strong>Publicação direta:</strong> anúncios criados pelo admin já saem <strong>aprovados</strong> na vitrine (sem taxa).
+          </div>
+          <div class="mk-form-group">
+            <label>Título *</label>
+            <input type="text" id="mkAdmTitle" placeholder="Ex: Honda CG 160 2022">
+          </div>
+          <div class="mk-form-group">
+            <label>Categoria *</label>
+            <select id="mkAdmCat">
+              <option value="motos">🏍️ Motos</option>
+              <option value="carros">🚗 Carros</option>
+              <option value="utilidades">🔧 Utilidades</option>
+              <option value="eletronicos">📱 Eletrônicos</option>
+              <option value="outros">📦 Outros</option>
+            </select>
+          </div>
+          <div class="mk-form-group">
+            <label>Preço (R$) *</label>
+            <input type="number" id="mkAdmPrice" min="1" step="0.01" placeholder="15000">
+          </div>
+          <div class="mk-form-group">
+            <label>Cidade / Local</label>
+            <input type="text" id="mkAdmLoc" placeholder="Rio Verde — GO">
+          </div>
+          <div class="mk-form-group">
+            <label>Nome do vendedor *</label>
+            <input type="text" id="mkAdmSeller" placeholder="Nome que aparece no anúncio">
+          </div>
+          <div class="mk-form-group">
+            <label>WhatsApp do vendedor *</label>
+            <input type="tel" id="mkAdmWa" placeholder="64999999999">
+          </div>
+          <div class="mk-form-group">
+            <label>Descrição *</label>
+            <textarea id="mkAdmDesc" placeholder="Detalhes do item..."></textarea>
+          </div>
+          <div class="mk-form-group">
+            <label>Links de fotos e vídeos (uma URL por linha)</label>
+            <textarea id="mkAdmMedia" placeholder="https://i.ibb.co/...&#10;https://youtube.com/watch?v=..."></textarea>
+          </div>
+
+          <details class="mk-tutorial">
+            <summary>📷 Como obter o link de uma foto (ImgBB — grátis)</summary>
+            <div class="mk-tutorial-body">
+              <ol>
+                <li>Abra <strong>https://imgbb.com</strong> no navegador (funciona no celular).</li>
+                <li>Toque em <strong>Start uploading</strong> / enviar.</li>
+                <li>Escolha a foto da galeria.</li>
+                <li>Após o envio, em <strong>Direct links</strong> / Links diretos, toque em <strong>Copy</strong>.</li>
+                <li>Cole o link no campo acima (uma foto por linha).</li>
+              </ol>
+              <div class="ex">✅ Link bom termina com .jpg / .png / .webp — ex: <code>https://i.ibb.co/abc/moto.jpg</code></div>
+              <p style="margin-top:8px">Alternativas: <strong>postimages.org</strong> ou <strong>imgur.com</strong> (upload → copiar “direct link”).</p>
+            </div>
+          </details>
+
+          <details class="mk-tutorial">
+            <summary>📁 Google Drive — passo a passo (foto ou vídeo)</summary>
+            <div class="mk-tutorial-body">
+              <ol>
+                <li>Envie o arquivo para o <strong>Google Drive</strong>.</li>
+                <li>Toque no arquivo → <strong>Compartilhar</strong>.</li>
+                <li>Acesso geral: <strong>Qualquer pessoa com o link</strong> → Leitor.</li>
+                <li>Toque em <strong>Copiar link</strong>. Fica assim:<br>
+                  <code>https://drive.google.com/file/d/ID_DO_ARQUIVO/view?usp=sharing</code>
+                </li>
+                <li>Cole esse link no anúncio — o sistema converte sozinho.</li>
+              </ol>
+              <p><strong>Se a foto não aparecer</strong>, converta manualmente:</p>
+              <ol>
+                <li>Copie só o <strong>ID</strong> (entre <code>/d/</code> e <code>/view</code>).</li>
+                <li>Use este formato:<br>
+                  <code>https://drive.google.com/uc?export=view&amp;id=ID_DO_ARQUIVO</code>
+                </li>
+              </ol>
+              <div class="ex">Ex.: ID <code>1aBcD2eFg</code> → <code>https://drive.google.com/uc?export=view&amp;id=1aBcD2eFg</code></div>
+              <p style="margin-top:8px">🎥 Vídeo no Drive: cole o link normal de compartilhamento (<code>/file/d/.../view</code>).</p>
+            </div>
+          </details>
+
+          <details class="mk-tutorial">
+            <summary>▶️ Vídeo do YouTube</summary>
+            <div class="mk-tutorial-body">
+              <ol>
+                <li>Abra o vídeo no YouTube → <strong>Compartilhar</strong> → <strong>Copiar link</strong>.</li>
+                <li>Cole no campo (<code>youtube.com/watch?v=...</code> ou <code>youtu.be/...</code>).</li>
+              </ol>
+            </div>
+          </details>
+
+          <button class="mk-btn-submit" onclick="mkAdminSubmitListing()">✓ Publicar anúncio agora</button>
+        </div>
+        <button class="mk-btn-outline" onclick="mkAdminLogout()">Sair do admin</button>
+        <button class="mk-btn-outline" onclick="mkShowPanel('list')">← Marketplace</button>
+      </div>
+
       <!-- DETAIL VIEW -->
       <div class="mk-detail" id="mkDetail"></div>
     </div>
@@ -1608,6 +2043,10 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 
 <div class="toast" id="toast"></div>
 
+<!-- Firebase (nuvem) — preencha MK_FIREBASE abaixo para ativar -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
 <script>
 /* ========== DATA ========== */
 const PRODUCTS = [
@@ -1937,6 +2376,121 @@ function maybeShowNotice() {
 
 /* ========== MARKETPLACE ========== */
 const MK_WA = '5564981261464'; // WhatsApp do marketplace / dono
+const MK_FEE = 3.00; // taxa por anúncio (30 dias ou até vender)
+const MK_ADMIN_PASS = 'ObaAdmin@2024'; // senha da área administrativa — altere aqui
+const MK_LS_USERS = 'oba_mk_users';
+const MK_LS_SESSION = 'oba_mk_session';
+const MK_LS_LISTINGS = 'oba_mk_listings';
+const MK_LS_ADMIN = 'oba_mk_admin';
+
+/* ========== FIREBASE / NUVEM ==========
+ * 1) Crie um projeto em https://console.firebase.google.com
+ * 2) Ative Firestore (modo de teste ou regras abaixo) e Storage
+ * 3) Em Configurações do projeto → Seus apps → Web → copie a config
+ * 4) Cole abaixo e defina enabled: true
+ *
+ * Regras Firestore sugeridas (teste — restrinja depois):
+ *   allow read, write: if true;
+ * Regras Storage sugeridas (teste):
+ *   allow read, write: if true;
+ */
+const MK_FIREBASE = {
+  enabled: false, // ← mude para true após preencher
+  apiKey: '',
+  authDomain: '',
+  projectId: '',
+  storageBucket: '',
+  messagingSenderId: '',
+  appId: ''
+};
+
+let mkDb = null;
+let mkStorage = null;
+let mkCloud = false;
+let mkCacheUsers = null;      // array | null = ainda não carregou
+let mkCacheListings = null;
+let mkCloudReadyPromise = null;
+
+function mkFirebaseConfigured() {
+  return !!(MK_FIREBASE && MK_FIREBASE.enabled && MK_FIREBASE.apiKey && MK_FIREBASE.projectId);
+}
+
+function mkInitCloud() {
+  if (mkCloudReadyPromise) return mkCloudReadyPromise;
+  mkCloudReadyPromise = new Promise(function (resolve) {
+    if (!mkFirebaseConfigured()) {
+      mkCloud = false;
+      resolve(false);
+      return;
+    }
+    try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp({
+          apiKey: MK_FIREBASE.apiKey,
+          authDomain: MK_FIREBASE.authDomain,
+          projectId: MK_FIREBASE.projectId,
+          storageBucket: MK_FIREBASE.storageBucket,
+          messagingSenderId: MK_FIREBASE.messagingSenderId,
+          appId: MK_FIREBASE.appId
+        });
+      }
+      mkDb = firebase.firestore();
+      mkStorage = firebase.storage();
+      mkCloud = true;
+
+      // listeners em tempo real
+      mkDb.collection('mk_users').onSnapshot(function (snap) {
+        mkCacheUsers = snap.docs.map(function (d) {
+          return Object.assign({ id: d.id }, d.data());
+        });
+      }, function (err) { console.warn('mk_users listen', err); });
+
+      mkDb.collection('mk_listings').onSnapshot(function (snap) {
+        mkCacheListings = snap.docs.map(function (d) {
+          return Object.assign({ id: d.id }, d.data());
+        });
+        // atualiza UI se marketplace aberto
+        try {
+          const modal = document.getElementById('mkModal');
+          if (modal && modal.classList.contains('open')) {
+            if (mkView === 'list') renderMkGrid();
+            if (mkView === 'dash') renderMkDash();
+            if (mkView === 'admin') renderMkAdmin();
+          }
+        } catch (e) {}
+      }, function (err) { console.warn('mk_listings listen', err); });
+
+      // carga inicial
+      Promise.all([
+        mkDb.collection('mk_users').get(),
+        mkDb.collection('mk_listings').get()
+      ]).then(function (results) {
+        mkCacheUsers = results[0].docs.map(function (d) {
+          return Object.assign({ id: d.id }, d.data());
+        });
+        mkCacheListings = results[1].docs.map(function (d) {
+          return Object.assign({ id: d.id }, d.data());
+        });
+        resolve(true);
+      }).catch(function (err) {
+        console.warn('Firebase load error', err);
+        mkCloud = false;
+        resolve(false);
+      });
+    } catch (err) {
+      console.warn('Firebase init error', err);
+      mkCloud = false;
+      resolve(false);
+    }
+  });
+  return mkCloudReadyPromise;
+}
+
+/** Remove undefined (Firestore não aceita) */
+function mkClean(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 const MK_CATS = [
   { id: 'all', label: 'Todos', emoji: '✨' },
   { id: 'motos', label: 'Motos', emoji: '🏍️' },
@@ -2047,49 +2601,713 @@ const MK_ITEMS = [
 let mkFilter = 'all';
 let mkCurrentId = null;
 let mkMediaIndex = 0;
+let mkView = 'list'; // list | login | register | dash | adminLogin | admin
+let mkAdminFilter = 'pending';
 
 function fmtMk(v) {
   return 'R$ ' + Number(v).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function mkEsc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+/* ---- Storage ---- */
+function mkLoadUsers() {
+  if (mkCloud && mkCacheUsers) return mkCacheUsers.slice();
+  try { return JSON.parse(localStorage.getItem(MK_LS_USERS) || '[]'); } catch (e) { return []; }
+}
+function mkSaveUsers(arr) {
+  mkCacheUsers = arr.slice();
+  try { localStorage.setItem(MK_LS_USERS, JSON.stringify(arr)); } catch (e) {}
+  if (mkCloud && mkDb) {
+    // grava cada usuário (doc id = user.id)
+    arr.forEach(function (u) {
+      if (!u || !u.id) return;
+      mkDb.collection('mk_users').doc(String(u.id)).set(mkClean(u), { merge: true })
+        .catch(function (err) { console.warn('save user', err); });
+    });
+  }
+}
+function mkGetSession() {
+  try { return JSON.parse(localStorage.getItem(MK_LS_SESSION) || 'null'); } catch (e) { return null; }
+}
+function mkSetSession(user) {
+  try {
+    if (user) localStorage.setItem(MK_LS_SESSION, JSON.stringify(user));
+    else localStorage.removeItem(MK_LS_SESSION);
+  } catch (e) {}
+}
+function mkLoadListings() {
+  if (mkCloud && mkCacheListings) return mkCacheListings.slice();
+  try { return JSON.parse(localStorage.getItem(MK_LS_LISTINGS) || '[]'); } catch (e) { return []; }
+}
+function mkSaveListings(arr) {
+  mkCacheListings = arr.slice();
+  try { localStorage.setItem(MK_LS_LISTINGS, JSON.stringify(arr)); } catch (e) {}
+  // nuvem: sincronização item a item é feita por mkCloudUpsertListing / mkCloudDeleteListing
+}
+function mkIsAdmin() {
+  try { return localStorage.getItem(MK_LS_ADMIN) === '1'; } catch (e) { return false; }
+}
+function mkSetAdmin(on) {
+  try {
+    if (on) localStorage.setItem(MK_LS_ADMIN, '1');
+    else localStorage.removeItem(MK_LS_ADMIN);
+  } catch (e) {}
+}
+
+function mkCloudUpsertListing(item) {
+  if (!mkCloud || !mkDb || !item || !item.id) return Promise.resolve();
+  return mkDb.collection('mk_listings').doc(String(item.id)).set(mkClean(item), { merge: true })
+    .catch(function (err) {
+      console.warn('cloud upsert listing', err);
+      toast('Aviso: não foi possível salvar na nuvem. Dados locais ok.');
+    });
+}
+function mkCloudDeleteListing(id) {
+  if (!mkCloud || !mkDb || !id) return Promise.resolve();
+  return mkDb.collection('mk_listings').doc(String(id)).delete()
+    .catch(function (err) { console.warn('cloud delete listing', err); });
+}
+function mkCloudUpsertUser(user) {
+  if (!mkCloud || !mkDb || !user || !user.id) return Promise.resolve();
+  return mkDb.collection('mk_users').doc(String(user.id)).set(mkClean(user), { merge: true })
+    .catch(function (err) { console.warn('cloud upsert user', err); });
+}
+
+/** Upload de imagem para Firebase Storage; retorna URL pública */
+function mkUploadImageFile(file, listingId, index) {
+  return new Promise(function (resolve, reject) {
+    if (!mkCloud || !mkStorage) {
+      // fallback base64
+      const reader = new FileReader();
+      reader.onload = function (e) { resolve({ type: 'image', url: e.target.result }); };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+      return;
+    }
+    const path = 'marketplace/' + listingId + '/' + Date.now() + '_' + index + '_' + (file.name || 'img.jpg').replace(/[^\w.\-]+/g, '_');
+    const ref = mkStorage.ref().child(path);
+    ref.put(file).then(function (snap) {
+      return snap.ref.getDownloadURL();
+    }).then(function (url) {
+      resolve({ type: 'image', url: url });
+    }).catch(function (err) {
+      console.warn('upload fail, fallback base64', err);
+      const reader = new FileReader();
+      reader.onload = function (e) { resolve({ type: 'image', url: e.target.result }); };
+      reader.onerror = function () { reject(err); };
+      reader.readAsDataURL(file);
+    });
+  });
+}
+
+/** Anúncios fixos (seed) + aprovados pelos usuários */
+function mkGetPublicItems() {
+  // Novos anúncios aprovados primeiro (mais recentes no topo). Exemplos só no final.
+  const approved = mkLoadListings()
+    .filter(function (x) { return x.status === 'approved'; })
+    .sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
+  const demos = MK_ITEMS.map(function (x) {
+    return Object.assign({}, x, { demo: true });
+  });
+  return approved.concat(demos);
+}
+
+function mkFindItem(id) {
+  return mkGetPublicItems().find(function (x) { return String(x.id) === String(id); })
+    || mkLoadListings().find(function (x) { return String(x.id) === String(id); });
+}
+
+/* ---- Views ---- */
+function mkHideAllPanels() {
+  ['mkListView', 'mkLoginPanel', 'mkRegisterPanel', 'mkDashPanel', 'mkAdminLoginPanel', 'mkAdminPanel', 'mkDetail'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('show');
+    if (id === 'mkListView') el.classList.add('hide');
+    else if (id === 'mkDetail') el.classList.remove('show');
+    else el.classList.remove('show');
+  });
+  // list view uses .hide, panels use .show
+  const list = document.getElementById('mkListView');
+  if (list) { list.classList.add('hide'); list.style.display = ''; }
+}
+
+function mkShowPanel(name) {
+  mkView = name;
+  document.getElementById('mkBackBtn').classList.remove('show');
+  document.getElementById('mkDetail').classList.remove('show');
+  document.getElementById('mkDetail').innerHTML = '';
+
+  ['mkListView', 'mkLoginPanel', 'mkRegisterPanel', 'mkDashPanel', 'mkAdminLoginPanel', 'mkAdminPanel'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.classList.remove('show');
+    el.classList.add('hide');
+    el.style.display = 'none';
+  });
+
+  if (name === 'list') {
+    const list = document.getElementById('mkListView');
+    list.classList.remove('hide');
+    list.style.display = '';
+    document.getElementById('mkHeaderTitle').textContent = '🏪 Marketplace';
+    document.getElementById('mkHeaderSub').textContent = 'Anúncios da região';
+    renderMkAuthBar();
+    renderMkCats();
+    renderMkGrid();
+  } else if (name === 'login') {
+    document.getElementById('mkLoginPanel').style.display = 'block';
+    document.getElementById('mkLoginPanel').classList.add('show');
+    document.getElementById('mkHeaderTitle').textContent = '🔐 Entrar';
+    document.getElementById('mkHeaderSub').textContent = 'Área do anunciante';
+  } else if (name === 'register') {
+    document.getElementById('mkRegisterPanel').style.display = 'block';
+    document.getElementById('mkRegisterPanel').classList.add('show');
+    document.getElementById('mkHeaderTitle').textContent = '📝 Criar conta';
+    document.getElementById('mkHeaderSub').textContent = 'Anuncie no Marketplace';
+  } else if (name === 'dash') {
+    document.getElementById('mkDashPanel').style.display = 'block';
+    document.getElementById('mkDashPanel').classList.add('show');
+    document.getElementById('mkHeaderTitle').textContent = '👤 Meu painel';
+    document.getElementById('mkHeaderSub').textContent = 'Gerenciar anúncios';
+    renderMkDash();
+  } else if (name === 'adminLogin') {
+    document.getElementById('mkAdminLoginPanel').style.display = 'block';
+    document.getElementById('mkAdminLoginPanel').classList.add('show');
+    document.getElementById('mkHeaderTitle').textContent = '🛡️ Admin';
+    document.getElementById('mkHeaderSub').textContent = 'Moderação de anúncios';
+  } else if (name === 'admin') {
+    document.getElementById('mkAdminPanel').style.display = 'block';
+    document.getElementById('mkAdminPanel').classList.add('show');
+    document.getElementById('mkHeaderTitle').textContent = '🛡️ Painel admin';
+    document.getElementById('mkHeaderSub').textContent = 'Aprovar ou excluir';
+    renderMkAdmin();
+  }
+  document.getElementById('mkBody').scrollTop = 0;
 }
 
 function openMarketplace() {
   mkFilter = 'all';
   mkCurrentId = null;
   mkMediaIndex = 0;
-  document.getElementById('mkBackBtn').classList.remove('show');
-  document.getElementById('mkHeaderTitle').textContent = '🏪 Marketplace';
-  document.getElementById('mkHeaderSub').textContent = 'Anúncios da região';
-  document.getElementById('mkListView').classList.remove('hide');
-  document.getElementById('mkDetail').classList.remove('show');
-  document.getElementById('mkDetail').innerHTML = '';
-  renderMkCats();
-  renderMkGrid();
   document.getElementById('mkModal').classList.add('open');
-  document.getElementById('mkBody').scrollTop = 0;
+  const go = function () {
+    if (mkIsAdmin()) mkShowPanel('admin');
+    else mkShowPanel('list');
+  };
+  mkInitCloud().then(go).catch(go);
+  const fileInput = document.getElementById('mkNewFiles');
+  if (fileInput && !fileInput._mkBound) {
+    fileInput.addEventListener('change', mkPreviewUploads);
+    fileInput._mkBound = true;
+  }
 }
 
 function closeMarketplace() {
   document.getElementById('mkModal').classList.remove('open');
   mkCurrentId = null;
-  // pausar vídeos se houver
   document.querySelectorAll('#mkDetail video').forEach(function (v) { try { v.pause(); } catch (e) {} });
 }
 
 function mkBackToList() {
-  mkCurrentId = null;
-  mkMediaIndex = 0;
-  document.getElementById('mkBackBtn').classList.remove('show');
-  document.getElementById('mkHeaderTitle').textContent = '🏪 Marketplace';
-  document.getElementById('mkHeaderSub').textContent = 'Anúncios da região';
-  document.getElementById('mkDetail').classList.remove('show');
-  document.getElementById('mkDetail').innerHTML = '';
-  document.getElementById('mkListView').classList.remove('hide');
-  document.getElementById('mkBody').scrollTop = 0;
+  mkShowPanel('list');
 }
 
-function mkAnnounceWhatsApp() {
-  const msg = 'Olá! Quero *anunciar no Marketplace* do Oba Delivery. Como funciona?';
-  window.open('https://wa.me/' + MK_WA + '?text=' + encodeURIComponent(msg), '_blank');
+function renderMkAuthBar() {
+  const bar = document.getElementById('mkAuthBar');
+  if (!bar) return;
+  const session = mkGetSession();
+  // indicador de nuvem
+  let cloudHint = document.getElementById('mkCloudHint');
+  if (!cloudHint) {
+    cloudHint = document.createElement('div');
+    cloudHint.id = 'mkCloudHint';
+    cloudHint.style.cssText = 'font-size:11px;margin-bottom:8px;color:var(--text3)';
+    bar.parentNode.insertBefore(cloudHint, bar);
+  }
+  if (mkCloud) {
+    cloudHint.innerHTML = '☁️ <strong style="color:#67e8f9">Nuvem ativa</strong> — anúncios sincronizados entre dispositivos';
+  } else if (mkFirebaseConfigured()) {
+    cloudHint.innerHTML = '⚠️ Config Firebase presente, conectando…';
+  } else {
+    cloudHint.innerHTML = '💾 Modo local — para nuvem, configure <code>MK_FIREBASE</code> no código';
+  }
+
+  if (session) {
+    bar.innerHTML =
+      '<button class="primary" onclick="mkShowPanel(\'dash\')">➕ Meus anúncios / Novo</button>' +
+      '<button class="admin-btn" onclick="mkShowPanel(\'adminLogin\')">Admin</button>';
+  } else {
+    bar.innerHTML =
+      '<button class="primary" onclick="mkShowPanel(\'login\')">Entrar / Anunciar</button>' +
+      '<button onclick="mkShowPanel(\'register\')">Criar conta</button>' +
+      '<button class="admin-btn" onclick="mkShowPanel(\'adminLogin\')">Admin</button>';
+  }
+}
+
+function mkDoRegister() {
+  const name = (document.getElementById('mkRegName').value || '').trim();
+  const email = (document.getElementById('mkRegEmail').value || '').trim().toLowerCase();
+  const wa = (document.getElementById('mkRegWa').value || '').replace(/\D/g, '');
+  const pass = document.getElementById('mkRegPass').value || '';
+  if (!name || !email || !pass) { toast('Preencha nome, e-mail e senha'); return; }
+  if (pass.length < 6) { toast('Senha com no mínimo 6 caracteres'); return; }
+  if (wa.length < 10) { toast('Informe um WhatsApp válido'); return; }
+  const users = mkLoadUsers();
+  if (users.some(function (u) { return u.email === email; })) {
+    toast('Este e-mail já está cadastrado'); return;
+  }
+  const user = { id: 'u' + Date.now(), name: name, email: email, wa: wa, pass: pass };
+  users.push(user);
+  mkSaveUsers(users);
+  mkCloudUpsertUser(user);
+  mkSetSession({ id: user.id, name: user.name, email: user.email, wa: user.wa });
+  toast(mkCloud ? 'Conta criada na nuvem!' : 'Conta criada!');
+  mkShowPanel('dash');
+}
+
+function mkDoLogin() {
+  const email = (document.getElementById('mkLoginEmail').value || '').trim().toLowerCase();
+  const pass = document.getElementById('mkLoginPass').value || '';
+  const user = mkLoadUsers().find(function (u) { return u.email === email && u.pass === pass; });
+  if (!user) { toast('E-mail ou senha incorretos'); return; }
+  mkSetSession({ id: user.id, name: user.name, email: user.email, wa: user.wa });
+  toast('Bem-vindo, ' + user.name.split(' ')[0] + '!');
+  mkShowPanel('dash');
+}
+
+function mkLogout() {
+  mkSetSession(null);
+  toast('Sessão encerrada');
+  mkShowPanel('list');
+}
+
+function mkDashTab(tab) {
+  document.getElementById('mkTabMy').classList.toggle('active', tab === 'my');
+  document.getElementById('mkTabNew').classList.toggle('active', tab === 'new');
+  document.getElementById('mkDashMy').style.display = tab === 'my' ? '' : 'none';
+  document.getElementById('mkDashNew').style.display = tab === 'new' ? '' : 'none';
+}
+
+function renderMkDash() {
+  const session = mkGetSession();
+  if (!session) { mkShowPanel('login'); return; }
+  document.getElementById('mkUserChip').innerHTML =
+    'Logado como <strong>' + mkEsc(session.name) + '</strong> · ' + mkEsc(session.email);
+  const mine = mkLoadListings().filter(function (x) { return x.userId === session.id; })
+    .sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
+  const box = document.getElementById('mkDashMy');
+  if (!mine.length) {
+    box.innerHTML = '<div class="mk-empty"><div class="icon">📭</div><p>Você ainda não tem anúncios.<br>Use a aba <strong>+ Novo anúncio</strong>.</p></div>';
+  } else {
+    box.innerHTML = '<div class="mk-my-list">' + mine.map(function (item) {
+      const img = (item.media && item.media[0] && item.media[0].type === 'image') ? item.media[0].url : '';
+      const st = item.status || 'pending';
+      const stLabel = ({
+        approved: 'Aprovado', rejected: 'Recusado', pending: 'Pendente',
+        sold: 'Vendido', cancelled: 'Desistiu de vender'
+      })[st] || st;
+      const actions = [];
+      if (st === 'approved' || st === 'pending') {
+        actions.push('<button class="mk-btn-sold" onclick="mkAdvertiserSetStatus(\'' + item.id + '\',\'sold\')">✓ Vendido</button>');
+        actions.push('<button class="mk-btn-cancel" onclick="mkAdvertiserSetStatus(\'' + item.id + '\',\'cancelled\')">Desistiu de vender</button>');
+      }
+      actions.push('<button class="mk-btn-delete" onclick="mkAdvertiserDelete(\'' + item.id + '\')">Excluir</button>');
+      return '<div class="mk-my-item">' +
+        '<div class="thumb">' + (img ? '<img src="' + mkEsc(img) + '" alt="">' : (item.emoji || '📦')) + '</div>' +
+        '<div class="info">' +
+          '<strong>' + mkEsc(item.title) + '</strong>' +
+          '<div class="price">' + fmtMk(item.price) + '</div>' +
+          '<span class="mk-status ' + st + '">' + stLabel + '</span>' +
+          '<div class="mk-my-actions">' + actions.join('') + '</div>' +
+        '</div></div>';
+    }).join('') + '</div>';
+  }
+  // pré-preenche WA
+  const waInput = document.getElementById('mkNewWa');
+  if (waInput && !waInput.value) waInput.value = session.wa || '';
+  mkDashTab('my');
+}
+
+function mkDriveFileId(url) {
+  const m = (url || '').match(/\/file\/d\/([^/]+)/);
+  if (m) return m[1];
+  const m2 = (url || '').match(/[?&]id=([^&]+)/);
+  return m2 ? m2[1] : '';
+}
+
+function mkDetectMediaType(url) {
+  const u = (url || '').trim();
+  const lower = u.toLowerCase();
+  if (/youtube\.com|youtu\.be/.test(lower)) return 'youtube';
+  if (/drive\.google\.com|docs\.google\.com/.test(lower)) {
+    // vídeo explícito ou link /preview → player Drive
+    if (/\.(mp4|webm|mov|mkv)(\?|$)/i.test(lower) || /\/preview/.test(lower) || /[?&]type=video/.test(lower)) {
+      return 'gdrive';
+    }
+    // foto Drive (uc?export=view ou file/d) → imagem direta
+    return 'image';
+  }
+  if (/\.(mp4|webm|ogg|mov)(\?|$)/i.test(lower)) return 'video';
+  if (u.indexOf('data:image') === 0) return 'image';
+  return 'image';
+}
+
+function mkYoutubeEmbed(url) {
+  let id = '';
+  const m1 = url.match(/[?&]v=([^&]+)/);
+  const m2 = url.match(/youtu\.be\/([^?&]+)/);
+  const m3 = url.match(/youtube\.com\/embed\/([^?&]+)/);
+  if (m1) id = m1[1];
+  else if (m2) id = m2[1];
+  else if (m3) id = m3[1];
+  if (!id) return url;
+  return 'https://www.youtube.com/embed/' + id;
+}
+
+function mkGdriveEmbed(url) {
+  const id = mkDriveFileId(url);
+  if (id) return 'https://drive.google.com/file/d/' + id + '/preview';
+  return url;
+}
+
+/** Converte link do Drive em URL de visualização de imagem */
+function mkGdriveImageUrl(url) {
+  const id = mkDriveFileId(url);
+  if (id) return 'https://drive.google.com/uc?export=view&id=' + id;
+  return url;
+}
+
+function mkNormalizeMediaUrl(url) {
+  const u = (url || '').trim();
+  if (!u) return u;
+  const lower = u.toLowerCase();
+  if (/drive\.google\.com|docs\.google\.com/.test(lower)) {
+    // se já for uc?export=view, mantém
+    if (/uc\?.*export=view/i.test(u) || /uc\?.*id=/i.test(u)) return u;
+    // vídeo → mantém link original (player iframe)
+    if (/\.(mp4|webm|mov|mkv)(\?|$)/i.test(lower) || /[?&]type=video/.test(lower)) return u;
+    // foto → link direto
+    return mkGdriveImageUrl(u);
+  }
+  return u;
+}
+
+function mkParseMedia(text) {
+  return (text || '').split(/\n+/).map(function (line) {
+    return line.trim();
+  }).filter(Boolean).map(function (raw) {
+    const url = mkNormalizeMediaUrl(raw);
+    const type = mkDetectMediaType(raw.indexOf('drive.google') >= 0 && /\.(mp4|webm|mov)/i.test(raw) ? raw : url);
+    // se original era drive e não é vídeo, type image com url convertida
+    if (/drive\.google\.com/i.test(raw) && type === 'image') {
+      return { type: 'image', url: mkGdriveImageUrl(raw) };
+    }
+    if (/drive\.google\.com/i.test(raw) && type === 'gdrive') {
+      return { type: 'gdrive', url: raw };
+    }
+    return { type: mkDetectMediaType(url), url: url };
+  });
+}
+
+/** Lê/envia arquivos de imagem; retorna Promise de media[] */
+function mkReadUploadedFiles(listingId) {
+  return new Promise(function (resolve) {
+    const input = document.getElementById('mkNewFiles');
+    if (!input || !input.files || !input.files.length) {
+      resolve([]);
+      return;
+    }
+    const files = Array.prototype.slice.call(input.files).filter(function (f) {
+      return f.type && f.type.indexOf('image/') === 0;
+    });
+    if (!files.length) { resolve([]); return; }
+
+    // Sem nuvem: limite menor (localStorage)
+    if (!mkCloud) {
+      const tooBig = files.filter(function (f) { return f.size > 1.6e6; });
+      if (tooBig.length) toast('Algumas imagens > 1,5 MB foram ignoradas (modo local)');
+    }
+
+    const usable = mkCloud ? files : files.filter(function (f) { return f.size <= 1.6e6; });
+    if (!usable.length) { resolve([]); return; }
+
+    Promise.all(usable.map(function (file, idx) {
+      return mkUploadImageFile(file, listingId || ('tmp_' + Date.now()), idx);
+    })).then(resolve).catch(function (err) {
+      console.warn(err);
+      resolve([]);
+    });
+  });
+}
+
+function mkClearUploadPreview() {
+  const prev = document.getElementById('mkUploadPreview');
+  if (prev) prev.innerHTML = '';
+  const input = document.getElementById('mkNewFiles');
+  if (input) input.value = '';
+}
+
+function mkPreviewUploads() {
+  const input = document.getElementById('mkNewFiles');
+  const prev = document.getElementById('mkUploadPreview');
+  if (!input || !prev) return;
+  prev.innerHTML = '';
+  Array.prototype.forEach.call(input.files || [], function (file) {
+    if (!file.type || file.type.indexOf('image/') !== 0) return;
+    const img = document.createElement('img');
+    img.className = 'mk-upload-thumb';
+    img.alt = file.name;
+    const reader = new FileReader();
+    reader.onload = function (e) { img.src = e.target.result; };
+    reader.readAsDataURL(file);
+    prev.appendChild(img);
+  });
+}
+
+function mkAdvertiserSetStatus(id, status) {
+  const session = mkGetSession();
+  if (!session) return;
+  const all = mkLoadListings();
+  const item = all.find(function (x) { return String(x.id) === String(id) && x.userId === session.id; });
+  if (!item) return;
+  const labels = { sold: 'marcado como VENDIDO', cancelled: 'marcado como DESISTIU DE VENDER' };
+  if (!confirm('Confirmar: ' + (labels[status] || status) + '?')) return;
+  item.status = status;
+  item.updatedAt = Date.now();
+  mkSaveListings(all);
+  mkCloudUpsertListing(item);
+  toast(status === 'sold' ? 'Anúncio marcado como vendido' : 'Anúncio: desistiu de vender');
+  renderMkDash();
+}
+
+function mkAdvertiserDelete(id) {
+  const session = mkGetSession();
+  if (!session) return;
+  if (!confirm('Excluir este anúncio permanentemente? Esta ação não pode ser desfeita.')) return;
+  const all = mkLoadListings().filter(function (x) {
+    return !(String(x.id) === String(id) && x.userId === session.id);
+  });
+  mkSaveListings(all);
+  mkCloudDeleteListing(id);
+  toast('Anúncio excluído');
+  renderMkDash();
+}
+
+function mkSubmitListing() {
+  const session = mkGetSession();
+  if (!session) { mkShowPanel('login'); return; }
+  const title = (document.getElementById('mkNewTitle').value || '').trim();
+  const category = document.getElementById('mkNewCat').value;
+  const price = parseFloat(document.getElementById('mkNewPrice').value);
+  const location = (document.getElementById('mkNewLoc').value || '').trim();
+  const description = (document.getElementById('mkNewDesc').value || '').trim();
+  const wa = (document.getElementById('mkNewWa').value || '').replace(/\D/g, '');
+  const media = mkParseMedia(document.getElementById('mkNewMedia').value);
+
+  if (!title || !description || !wa) { toast('Preencha título, descrição e WhatsApp'); return; }
+  if (!(price > 0)) { toast('Informe um preço válido'); return; }
+  if (wa.length < 10) { toast('WhatsApp inválido'); return; }
+
+  const btn = document.querySelector('#mkDashNew .mk-btn-submit');
+  if (btn) { btn.disabled = true; btn.textContent = 'Enviando…'; }
+
+  (function () {
+    const listingId = 'u' + Date.now();
+    const cat = MK_CATS.find(function (c) { return c.id === category; });
+    const listing = {
+      id: listingId,
+      title: title,
+      category: category,
+      price: price,
+      location: location || 'Não informado',
+      emoji: cat ? cat.emoji : '📦',
+      seller: session.name,
+      wa: wa,
+      description: description,
+      media: media,
+      status: 'pending',
+      userId: session.id,
+      userEmail: session.email,
+      createdAt: Date.now(),
+      fee: MK_FEE
+    };
+
+    const all = mkLoadListings();
+    all.push(listing);
+    mkSaveListings(all);
+    mkCloudUpsertListing(listing);
+
+    document.getElementById('mkNewTitle').value = '';
+    document.getElementById('mkNewPrice').value = '';
+    document.getElementById('mkNewLoc').value = '';
+    document.getElementById('mkNewDesc').value = '';
+    document.getElementById('mkNewMedia').value = '';
+    toast('Anúncio enviado! Redirecionando ao WhatsApp…');
+
+    const msg = 'Olá! Acabei de anunciar no marketplace Oba Delivery, preciso que libere a postagem do anúncio.\n\n' +
+      '📌 *' + title + '*\n' +
+      '💰 ' + fmtMk(price) + '\n' +
+      '📂 ' + (cat ? cat.label : category) + '\n' +
+      '👤 ' + session.name + ' (' + session.email + ')\n' +
+      '📱 Vendedor: ' + wa + '\n' +
+      '💵 Taxa: ' + fmtMk(MK_FEE) + ' (30 dias ou até vender)\n' +
+      '🆔 ID: ' + listing.id;
+
+    setTimeout(function () {
+      window.open('https://wa.me/' + MK_WA + '?text=' + encodeURIComponent(msg), '_blank');
+      if (btn) { btn.disabled = false; btn.textContent = 'Enviar anúncio (R$ 3,00)'; }
+      renderMkDash();
+      mkDashTab('my');
+    }, 500);
+  })();
+}
+
+
+/* ---- Admin ---- */
+function mkAdminLogin() {
+  const pass = document.getElementById('mkAdminPass').value || '';
+  if (pass !== MK_ADMIN_PASS) { toast('Senha incorreta'); return; }
+  mkSetAdmin(true);
+  toast('Admin autenticado');
+  mkShowPanel('admin');
+}
+function mkAdminLogout() {
+  mkSetAdmin(false);
+  toast('Saiu do admin');
+  mkShowPanel('list');
+}
+function mkAdminTab(tab) {
+  mkAdminFilter = tab;
+  document.getElementById('mkAdmTabPend').classList.toggle('active', tab === 'pending');
+  document.getElementById('mkAdmTabAll').classList.toggle('active', tab === 'all');
+  const tabNew = document.getElementById('mkAdmTabNew');
+  if (tabNew) tabNew.classList.toggle('active', tab === 'new');
+  const listEl = document.getElementById('mkAdminList');
+  const newEl = document.getElementById('mkAdminNew');
+  if (tab === 'new') {
+    if (listEl) listEl.style.display = 'none';
+    if (newEl) newEl.style.display = '';
+  } else {
+    if (listEl) listEl.style.display = '';
+    if (newEl) newEl.style.display = 'none';
+    renderMkAdmin();
+  }
+}
+
+function mkAdminSubmitListing() {
+  if (!mkIsAdmin()) { mkShowPanel('adminLogin'); return; }
+  const title = (document.getElementById('mkAdmTitle').value || '').trim();
+  const category = document.getElementById('mkAdmCat').value;
+  const price = parseFloat(document.getElementById('mkAdmPrice').value);
+  const location = (document.getElementById('mkAdmLoc').value || '').trim();
+  const seller = (document.getElementById('mkAdmSeller').value || '').trim();
+  const description = (document.getElementById('mkAdmDesc').value || '').trim();
+  const wa = (document.getElementById('mkAdmWa').value || '').replace(/\D/g, '');
+  const media = mkParseMedia(document.getElementById('mkAdmMedia').value);
+
+  if (!title || !description || !seller || !wa) { toast('Preencha título, vendedor, descrição e WhatsApp'); return; }
+  if (!(price > 0)) { toast('Informe um preço válido'); return; }
+  if (wa.length < 10) { toast('WhatsApp inválido'); return; }
+
+  const cat = MK_CATS.find(function (c) { return c.id === category; });
+  const listing = {
+    id: 'a' + Date.now(),
+    title: title,
+    category: category,
+    price: price,
+    location: location || 'Não informado',
+    emoji: cat ? cat.emoji : '📦',
+    seller: seller,
+    wa: wa,
+    description: description,
+    media: media,
+    status: 'approved',
+    userId: 'admin',
+    userEmail: 'admin',
+    createdAt: Date.now(),
+    fee: 0,
+    byAdmin: true
+  };
+  const all = mkLoadListings();
+  all.push(listing);
+  mkSaveListings(all);
+  mkCloudUpsertListing(listing);
+
+  document.getElementById('mkAdmTitle').value = '';
+  document.getElementById('mkAdmPrice').value = '';
+  document.getElementById('mkAdmLoc').value = '';
+  document.getElementById('mkAdmSeller').value = '';
+  document.getElementById('mkAdmDesc').value = '';
+  document.getElementById('mkAdmWa').value = '';
+  document.getElementById('mkAdmMedia').value = '';
+
+  toast('Anúncio publicado na vitrine!');
+  mkAdminTab('all');
+}
+
+function renderMkAdmin() {
+  if (!mkIsAdmin()) { mkShowPanel('adminLogin'); return; }
+  if (mkAdminFilter === 'new') return;
+  let list = mkLoadListings().slice().sort(function (a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
+  if (mkAdminFilter === 'pending') list = list.filter(function (x) { return x.status === 'pending'; });
+  const box = document.getElementById('mkAdminList');
+  if (!list.length) {
+    box.innerHTML = '<div class="mk-empty"><div class="icon">✅</div><p>Nenhum anúncio aqui no momento.</p></div>';
+    return;
+  }
+  box.innerHTML = list.map(function (item) {
+    const st = item.status || 'pending';
+    const stLabel = ({
+      approved: 'Aprovado', rejected: 'Recusado', pending: 'Pendente',
+      sold: 'Vendido', cancelled: 'Desistiu de vender'
+    })[st] || st;
+    return '<div class="mk-admin-item">' +
+      '<h4>' + mkEsc(item.emoji || '') + ' ' + mkEsc(item.title) + '</h4>' +
+      '<div class="meta">' +
+        '<span class="mk-status ' + st + '">' + stLabel + '</span> · ' + fmtMk(item.price) + '<br>' +
+        '👤 ' + mkEsc(item.seller) + ' · ' + mkEsc(item.userEmail || '') + '<br>' +
+        '📱 ' + mkEsc(item.wa) + ' · 💵 Taxa ' + fmtMk(item.fee || MK_FEE) + '<br>' +
+        '🆔 ' + mkEsc(item.id) +
+      '</div>' +
+      '<div class="mk-admin-actions">' +
+        (st !== 'approved' ? '<button class="mk-btn-approve" onclick="mkAdminSetStatus(\'' + item.id + '\',\'approved\')">✓ Aprovar</button>' : '') +
+        (st === 'approved' ? '<button class="mk-btn-sold" onclick="mkAdminSetStatus(\'' + item.id + '\',\'sold\')">Vendido</button>' : '') +
+        (st !== 'rejected' && st !== 'cancelled' ? '<button class="mk-btn-reject" onclick="mkAdminSetStatus(\'' + item.id + '\',\'rejected\')">✕ Recusar</button>' : '') +
+        '<button class="mk-btn-del" onclick="mkAdminDelete(\'' + item.id + '\')">Excluir</button>' +
+      '</div></div>';
+  }).join('');
+}
+
+function mkAdminSetStatus(id, status) {
+  const all = mkLoadListings();
+  const item = all.find(function (x) { return String(x.id) === String(id); });
+  if (!item) return;
+  item.status = status;
+  item.updatedAt = Date.now();
+  mkSaveListings(all);
+  mkCloudUpsertListing(item);
+  const msgs = {
+    approved: 'Anúncio aprovado e publicado!',
+    rejected: 'Anúncio recusado',
+    sold: 'Anúncio marcado como vendido',
+    cancelled: 'Anúncio: desistiu de vender'
+  };
+  toast(msgs[status] || 'Status atualizado');
+  renderMkAdmin();
+}
+
+function mkAdminDelete(id) {
+  if (!confirm('Excluir este anúncio permanentemente?')) return;
+  const all = mkLoadListings().filter(function (x) { return String(x.id) !== String(id); });
+  mkSaveListings(all);
+  mkCloudDeleteListing(id);
+  toast('Anúncio excluído');
+  renderMkAdmin();
 }
 
 function renderMkCats() {
@@ -2105,41 +3323,68 @@ function setMkFilter(id) {
   renderMkGrid();
 }
 
+function renderMkCard(item) {
+  const cat = MK_CATS.find(function (c) { return c.id === item.category; });
+  const firstImg = (item.media || []).find(function (m) { return m.type === 'image'; });
+  const img = firstImg ? firstImg.url : '';
+  const imgHtml = img
+    ? '<img src="' + mkEsc(img) + '" alt="' + mkEsc(item.title) + '" loading="lazy">'
+    : '<span class="mk-placeholder">' + (item.emoji || '📦') + '</span>';
+  const badge = item.demo
+    ? '<span class="mk-card-badge demo">Ilustrativo</span>'
+    : (cat ? '<span class="mk-card-badge">' + cat.emoji + ' ' + cat.label + '</span>' : '');
+  return '<article class="mk-card" onclick="openMkItem(\'' + String(item.id).replace(/'/g, '') + '\')">' +
+    '<div class="mk-card-img">' + badge + imgHtml + '</div>' +
+    '<div class="mk-card-body">' +
+      '<div class="mk-card-name">' + mkEsc(item.title) + '</div>' +
+      '<div class="mk-card-price">' + fmtMk(item.price) + '</div>' +
+      (item.location ? '<div class="mk-card-loc">📍 ' + mkEsc(item.location) + '</div>' : '') +
+    '</div>' +
+  '</article>';
+}
+
 function renderMkGrid() {
-  const list = mkFilter === 'all' ? MK_ITEMS : MK_ITEMS.filter(function (i) { return i.category === mkFilter; });
+  let list = mkGetPublicItems();
+  if (mkFilter !== 'all') list = list.filter(function (i) { return i.category === mkFilter; });
   const grid = document.getElementById('mkGrid');
   if (!list.length) {
     grid.innerHTML = '<div class="mk-empty"><div class="icon">📭</div><p>Nenhum anúncio nesta categoria</p></div>';
     return;
   }
-  grid.innerHTML = list.map(function (item) {
-    const cat = MK_CATS.find(function (c) { return c.id === item.category; });
-    const img = (item.media && item.media[0] && item.media[0].type === 'image') ? item.media[0].url : '';
-    const imgHtml = img
-      ? '<img src="' + img + '" alt="' + item.title.replace(/"/g, '&quot;') + '" loading="lazy">'
-      : '<span class="mk-placeholder">' + (item.emoji || '📦') + '</span>';
-    return '<article class="mk-card" onclick="openMkItem(' + item.id + ')">' +
-      '<div class="mk-card-img">' +
-        (cat ? '<span class="mk-card-badge">' + cat.emoji + ' ' + cat.label + '</span>' : '') +
-        imgHtml +
-      '</div>' +
-      '<div class="mk-card-body">' +
-        '<div class="mk-card-name">' + item.title + '</div>' +
-        '<div class="mk-card-price">' + fmtMk(item.price) + '</div>' +
-        (item.location ? '<div class="mk-card-loc">📍 ' + item.location + '</div>' : '') +
-      '</div>' +
-    '</article>';
-  }).join('');
+
+  // Separar: reais (aprovados) no topo · depois aviso · depois ilustrativos
+  const reais = list.filter(function (i) { return !i.demo; });
+  const demos = list.filter(function (i) { return i.demo; });
+
+  let html = '';
+  if (reais.length) {
+    html += reais.map(renderMkCard).join('');
+  }
+  if (demos.length) {
+    html += '<div class="mk-demo-banner" style="grid-column:1/-1">📌 Anúncios ilustrativos de como seu anúncio aparece aqui no Marketplace Oba</div>';
+    html += demos.map(renderMkCard).join('');
+  }
+  grid.innerHTML = html;
 }
 
 function openMkItem(id) {
-  const item = MK_ITEMS.find(function (x) { return x.id === id; });
+  const item = mkFindItem(id);
   if (!item) return;
+  // só mostra publicamente se seed ou approved
+  if (item.status && item.status !== 'approved' && !mkIsAdmin()) {
+    toast('Este anúncio ainda não está público');
+    return;
+  }
   mkCurrentId = id;
   mkMediaIndex = 0;
   document.getElementById('mkListView').classList.add('hide');
+  document.getElementById('mkListView').style.display = 'none';
+  ['mkLoginPanel', 'mkRegisterPanel', 'mkDashPanel', 'mkAdminLoginPanel', 'mkAdminPanel'].forEach(function (pid) {
+    const p = document.getElementById(pid);
+    if (p) { p.style.display = 'none'; p.classList.remove('show'); }
+  });
   document.getElementById('mkBackBtn').classList.add('show');
-  document.getElementById('mkHeaderTitle').textContent = item.emoji + ' ' + item.title;
+  document.getElementById('mkHeaderTitle').textContent = (item.emoji || '') + ' ' + item.title;
   document.getElementById('mkHeaderSub').textContent = fmtMk(item.price);
   const el = document.getElementById('mkDetail');
   el.classList.add('show');
@@ -2152,13 +3397,12 @@ function buildMkDetail(item) {
   const cat = MK_CATS.find(function (c) { return c.id === item.category; });
   const media = item.media || [];
   const thumbs = media.map(function (m, i) {
-    if (m.type === 'video') {
+    if (m.type === 'youtube' || m.type === 'gdrive' || m.type === 'video') {
       return '<div class="mk-thumb' + (i === 0 ? ' active' : '') + '" onclick="mkShowMedia(' + i + ')">' +
-        '<video src="' + m.url + '" muted preload="metadata"></video>' +
-        '<span class="vid-badge">▶</span></div>';
+        '<span class="vid-badge" style="position:static;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.5)">▶</span></div>';
     }
     return '<div class="mk-thumb' + (i === 0 ? ' active' : '') + '" onclick="mkShowMedia(' + i + ')">' +
-      '<img src="' + m.url + '" alt="" loading="lazy"></div>';
+      '<img src="' + mkEsc(m.url) + '" alt="" loading="lazy"></div>';
   }).join('');
 
   return '<div class="mk-gallery">' +
@@ -2168,24 +3412,24 @@ function buildMkDetail(item) {
       '<span class="mk-gallery-counter" id="mkGalleryCounter">1 / ' + Math.max(1, media.length) + '</span>' +
     '</div>' +
     (media.length > 1 ? '<div class="mk-thumbs" id="mkThumbs">' + thumbs + '</div>' : '') +
-    '<div class="mk-detail-title">' + item.title + '</div>' +
+    '<div class="mk-detail-title">' + mkEsc(item.title) + '</div>' +
     '<div class="mk-detail-price">' + fmtMk(item.price) + '</div>' +
     '<div class="mk-detail-meta">' +
       (cat ? '<span class="mk-chip">' + cat.emoji + ' ' + cat.label + '</span>' : '') +
-      (item.location ? '<span class="mk-chip">📍 ' + item.location + '</span>' : '') +
+      (item.location ? '<span class="mk-chip">📍 ' + mkEsc(item.location) + '</span>' : '') +
     '</div>' +
     '<div class="mk-section-label">Descrição</div>' +
-    '<div class="mk-desc">' + (item.description || 'Sem descrição').replace(/</g, '&lt;') + '</div>' +
+    '<div class="mk-desc">' + mkEsc(item.description || 'Sem descrição') + '</div>' +
     '<div class="mk-seller">' +
       '<div class="mk-seller-avatar">👤</div>' +
       '<div class="mk-seller-info">' +
-        '<strong>' + (item.seller || 'Vendedor') + '</strong>' +
+        '<strong>' + mkEsc(item.seller || 'Vendedor') + '</strong>' +
         '<span>Anunciante no Oba Delivery</span>' +
       '</div>' +
-      '<button class="mk-seller-wa" onclick="mkContactSeller(' + item.id + ')" aria-label="WhatsApp do vendedor">💬</button>' +
+      '<button class="mk-seller-wa" onclick="mkContactSeller(\'' + String(item.id).replace(/'/g, '') + '\')" aria-label="WhatsApp">💬</button>' +
     '</div>' +
     '<div class="mk-detail-actions">' +
-      '<button class="mk-btn-wa-full" onclick="mkContactSeller(' + item.id + ')">' +
+      '<button class="mk-btn-wa-full" onclick="mkContactSeller(\'' + String(item.id).replace(/'/g, '') + '\')">' +
         '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>' +
         ' Falar com o vendedor' +
       '</button>' +
@@ -2193,7 +3437,7 @@ function buildMkDetail(item) {
 }
 
 function mkShowMedia(index) {
-  const item = MK_ITEMS.find(function (x) { return x.id === mkCurrentId; });
+  const item = mkFindItem(mkCurrentId);
   if (!item) return;
   const media = item.media || [];
   if (!media.length) {
@@ -2203,12 +3447,15 @@ function mkShowMedia(index) {
   mkMediaIndex = Math.max(0, Math.min(media.length - 1, index));
   const m = media[mkMediaIndex];
   const main = document.getElementById('mkGalleryMain');
-  // pause previous videos
   main.querySelectorAll('video').forEach(function (v) { try { v.pause(); } catch (e) {} });
-  if (m.type === 'video') {
-    main.innerHTML = '<video src="' + m.url + '" controls playsinline style="width:100%;height:100%;object-fit:contain;background:#000"></video>';
+  if (m.type === 'youtube') {
+    main.innerHTML = '<iframe src="' + mkEsc(mkYoutubeEmbed(m.url)) + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  } else if (m.type === 'gdrive') {
+    main.innerHTML = '<iframe src="' + mkEsc(mkGdriveEmbed(m.url)) + '" allow="autoplay" allowfullscreen></iframe>';
+  } else if (m.type === 'video') {
+    main.innerHTML = '<video src="' + mkEsc(m.url) + '" controls playsinline style="width:100%;height:100%;object-fit:contain;background:#000"></video>';
   } else {
-    main.innerHTML = '<img src="' + m.url + '" alt="">';
+    main.innerHTML = '<img src="' + mkEsc(m.url) + '" alt="">';
   }
   const counter = document.getElementById('mkGalleryCounter');
   if (counter) counter.textContent = (mkMediaIndex + 1) + ' / ' + media.length;
@@ -2218,14 +3465,14 @@ function mkShowMedia(index) {
 }
 
 function mkMediaStep(dir) {
-  const item = MK_ITEMS.find(function (x) { return x.id === mkCurrentId; });
+  const item = mkFindItem(mkCurrentId);
   if (!item || !item.media) return;
   const n = item.media.length;
   mkShowMedia((mkMediaIndex + dir + n) % n);
 }
 
 function mkContactSeller(id) {
-  const item = MK_ITEMS.find(function (x) { return x.id === id; });
+  const item = mkFindItem(id);
   if (!item) return;
   const phone = (item.wa && String(item.wa).replace(/\D/g, '')) || MK_WA;
   const msg = 'Olá! Venho pelo anúncio que vi no *Oba Delivery*.\n\n📌 *' + item.title + '*\n💰 ' + fmtMk(item.price) + '\n\nTenho interesse e gostaria de mais informações.';
@@ -2842,6 +4089,10 @@ function sendWhatsApp() {
 
 /* ========== INIT ========== */
 function init() {
+  mkInitCloud().then(function (ok) {
+    if (ok) console.log('[Oba] Marketplace em nuvem (Firebase)');
+    else console.log('[Oba] Marketplace em modo local');
+  });
   loadCart();
   renderCats();
   renderProducts();
