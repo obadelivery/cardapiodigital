@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
-<title>Oba Dellivery Pizzas & Mercadinho Express— Cardápio e catálogo Digital</title>
+<title>OBA DELIVERY PIZZAS &amp; MERCADINHO EXPRESS — Cardápio e catálogo Digital</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -81,9 +81,16 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
   font-size: 22px; box-shadow: 0 4px 16px rgba(245,158,11,0.3);
 }
 .brand h1 {
-  font-size: 18px; font-weight: 700; letter-spacing: -0.3px;
+  font-size: 15px; font-weight: 800; letter-spacing: -0.2px;
+  line-height: 1.25;
+  text-transform: uppercase;
   background: linear-gradient(135deg, var(--accent2), var(--accent));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  max-width: none;
+  word-break: break-word;
 }
 .brand span { font-size: 11px; color: var(--text3); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; display: block; margin-top: 1px; }
 
@@ -1032,6 +1039,155 @@ body.modal-open {
 }
 .pizza-size-hint strong { color: var(--accent); }
 
+
+/* Special cards fixed below top ad */
+.special-top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 14px;
+}
+@media (max-width: 360px) {
+  .special-top { grid-template-columns: 1fr; }
+}
+.special-top .card {
+  margin: 0;
+  animation: fadeSlideIn .45s cubic-bezier(.22,1,.36,1) both;
+}
+.special-top .card:nth-child(2) { animation-delay: .08s; }
+
+/* Banner guia de fatias — transição suave */
+.pizza-guide {
+  display: block;
+  margin: 4px 0 12px;
+  padding: 0 16px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  background: linear-gradient(135deg, rgba(245,158,11,0.16), rgba(217,119,6,0.06));
+  text-align: center;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    max-height .4s cubic-bezier(.22,1,.36,1),
+    opacity .35s ease,
+    transform .4s cubic-bezier(.22,1,.36,1),
+    padding .35s ease,
+    border-color .3s ease,
+    margin .35s ease;
+}
+.pizza-guide.show {
+  max-height: 120px;
+  opacity: 1;
+  padding: 14px 16px;
+  border-color: rgba(245,158,11,0.35);
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.pizza-guide h3 {
+  font-size: 14px; font-weight: 800; color: var(--accent2);
+  line-height: 1.35; margin-bottom: 4px;
+}
+.pizza-guide p {
+  font-size: 12px; color: var(--text2); line-height: 1.4;
+}
+
+#pizzaSizeNavHost {
+  display: block;
+  margin-bottom: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-8px);
+  transition:
+    max-height .45s cubic-bezier(.22,1,.36,1),
+    opacity .35s ease,
+    transform .4s cubic-bezier(.22,1,.36,1),
+    margin .35s ease;
+}
+#pizzaSizeNavHost.show {
+  max-height: 320px;
+  opacity: 1;
+  margin-bottom: 12px;
+  transform: translateY(0);
+  overflow: visible;
+}
+#pizzaSizeNavHost .pizza-size-nav {
+  grid-column: auto;
+  margin-bottom: 0;
+}
+#pizzaSizeNavHost .pizza-size-link {
+  animation: fadeSlideIn .4s cubic-bezier(.22,1,.36,1) both;
+}
+#pizzaSizeNavHost .pizza-size-link:nth-child(1) { animation-delay: .02s; }
+#pizzaSizeNavHost .pizza-size-link:nth-child(2) { animation-delay: .06s; }
+#pizzaSizeNavHost .pizza-size-link:nth-child(3) { animation-delay: .10s; }
+#pizzaSizeNavHost .pizza-size-link:nth-child(4) { animation-delay: .14s; }
+
+/* Grade de produtos — fade + slide ao trocar filtro/tamanho */
+.grid.is-animating .card,
+.grid.is-animating .size-div,
+.grid.is-animating .pizza-size-hint,
+.grid.is-animating .ad-slot,
+.grid.is-animating .super-empty,
+.grid.is-animating .empty {
+  animation: fadeSlideIn .42s cubic-bezier(.22,1,.36,1) both;
+}
+.grid.is-animating .card:nth-child(1) { animation-delay: .02s; }
+.grid.is-animating .card:nth-child(2) { animation-delay: .05s; }
+.grid.is-animating .card:nth-child(3) { animation-delay: .08s; }
+.grid.is-animating .card:nth-child(4) { animation-delay: .11s; }
+.grid.is-animating .card:nth-child(5) { animation-delay: .14s; }
+.grid.is-animating .card:nth-child(6) { animation-delay: .17s; }
+.grid.is-animating .card:nth-child(7) { animation-delay: .20s; }
+.grid.is-animating .card:nth-child(8) { animation-delay: .23s; }
+.grid.is-animating .card:nth-child(n+9) { animation-delay: .26s; }
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Transição suave nas abas de categoria */
+.cat {
+  transition: all .25s cubic-bezier(.22,1,.36,1), transform .2s ease;
+}
+.cat.active {
+  transform: translateY(-2px);
+}
+
+/* Suaviza troca de tamanho ativo */
+.pizza-size-link {
+  transition: all .25s cubic-bezier(.22,1,.36,1), transform .2s ease !important;
+}
+.pizza-size-link.active {
+  transform: scale(1.01);
+}
+
+/* Builder e products view */
+#productsView, #builderView {
+  transition: opacity .3s ease;
+}
+#builderView.show {
+  animation: fadeSlideIn .4s cubic-bezier(.22,1,.36,1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Esconde banner antigo de monte pizza no topo */
 #btnMontePizza { display: none !important; }
 
@@ -1224,10 +1380,12 @@ body.modal-open {
 @media (max-width: 640px) {
   .header .btn-cart span.label { display: none; }
   .header .btn-cart.has-items span.label { display: inline !important; }
-  .brand h1 { font-size: 14px; max-width: 55vw; line-height: 1.2; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .brand span { font-size: 10px; }
-  .brand-icon { width: 40px; height: 40px; font-size: 20px; flex-shrink: 0; }
+  .brand h1 { font-size: 12px; max-width: none; line-height: 1.2; overflow: visible; text-overflow: unset; white-space: normal; text-transform: uppercase; }
+  .brand span { font-size: 9px; }
+  .brand-icon { width: 36px; height: 36px; font-size: 18px; flex-shrink: 0; }
   .brand { min-width: 0; flex: 1; }
+  .header-inner { align-items: flex-start; }
+  .btn-cart { flex-shrink: 0; padding: 8px 12px; }
   .main { padding: 12px; padding-bottom: calc(96px + var(--safe-bottom)); }
 }
 
@@ -1825,7 +1983,7 @@ body.modal-open {
     <div class="brand">
       <div class="brand-icon">🍕</div>
       <div>
-        <h1>Oba Dellivery Pizzas & Mercadinho Express</h1>
+        <h1>OBA DELIVERY PIZZAS &amp; MERCADINHO EXPRESS</h1>
         <span>Cardápio/Catálogo Digital</span>
       </div>
     </div>
@@ -1850,7 +2008,10 @@ body.modal-open {
     </div>
   </div>
 
-  <!-- Monte sua pizza (botão de acesso) -->
+  <!-- Cards especiais: Metade/Metade + Monte sua Pizza (fixos abaixo do slot topo) -->
+  <div class="special-top" id="specialTopCards"></div>
+
+  <!-- Monte sua pizza (botão legado, oculto) -->
   <div class="promo-banner clickable" id="btnMontePizza" onclick="openBuilder()" style="cursor: pointer; border-color: rgba(245,158,11,0.45); background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(217,119,6,0.08));">
     <div class="promo-icon">🧑‍🍳</div>
     <div class="promo-text">
@@ -1861,6 +2022,13 @@ body.modal-open {
 
   <!-- Categories -->
   <nav class="cats" id="cats" role="tablist"></nav>
+
+  <!-- Banner guia + tamanhos de pizza (abaixo do menu de categorias) -->
+  <div class="pizza-guide" id="pizzaGuide">
+    <h3>🍕 Escolha qual pizza e de quantas fatias você vai comprar hoje</h3>
+    <p>Toque em um tamanho abaixo e veja os sabores logo em seguida</p>
+  </div>
+  <div id="pizzaSizeNavHost"></div>
 
   <!-- Products -->
   <div id="productsView">
@@ -4190,6 +4358,49 @@ function addHalfToCart() {
   toast('Pizza metade/metade adicionada!');
 }
 
+
+
+function animateProductGrid() {
+  var grid = document.getElementById('grid');
+  if (!grid) return;
+  grid.classList.remove('is-animating');
+  // reflow
+  void grid.offsetWidth;
+  grid.classList.add('is-animating');
+  clearTimeout(grid._animT);
+  grid._animT = setTimeout(function () {
+    grid.classList.remove('is-animating');
+  }, 700);
+}
+
+function updatePizzaGuideUI() {
+  var guide = document.getElementById('pizzaGuide');
+  var host = document.getElementById('pizzaSizeNavHost');
+  var show = (filter === 'all' || filter === 'pizza') && !builderOpen;
+  if (guide) guide.classList.toggle('show', !!show);
+  if (host) {
+    if (show) {
+      host.innerHTML = pizzaSizeNavHtml();
+      // força reflow antes de aplicar .show (anima entrada)
+      void host.offsetHeight;
+      host.classList.add('show');
+    } else {
+      host.classList.remove('show');
+      // limpa após a transição para não ocupar espaço
+      clearTimeout(host._clearT);
+      host._clearT = setTimeout(function () {
+        if (!host.classList.contains('show')) host.innerHTML = '';
+      }, 420);
+    }
+  }
+}
+
+function renderSpecialTopCards() {
+  var el = document.getElementById('specialTopCards');
+  if (!el) return;
+  el.innerHTML = halfCardHtml() + builderCardHtml();
+}
+
 function halfCardHtml() {
   return '<article class="card card-half" onclick="openHalfBuilder()">' +
     '<span class="card-half-badge">Novo</span>' +
@@ -4248,8 +4459,12 @@ function setPizzaSizeFilter(sz) {
     renderCats();
   }
   renderProducts();
-  var nav = document.querySelector('.pizza-size-nav');
-  if (nav) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  var host = document.getElementById('pizzaSizeNavHost');
+  if (host && host.classList.contains('show')) host.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  else {
+    var nav = document.querySelector('.pizza-size-nav');
+    if (nav) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 
@@ -4441,9 +4656,15 @@ function setFilter(id) {
   const pv = document.getElementById('productsView');
   const bv = document.getElementById('builderView');
   pv.style.display = 'block';
+  pv.style.opacity = '0';
   bv.classList.remove('show');
   renderSuperSubs();
   renderProducts();
+  // fade-in suave da área de produtos
+  requestAnimationFrame(function () {
+    pv.style.transition = 'opacity .28s ease';
+    pv.style.opacity = '1';
+  });
   document.getElementById('cats').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -4451,6 +4672,7 @@ function openBuilder() {
   builderOpen = true;
   filter = null;
   renderCats();
+  updatePizzaGuideUI();
   document.getElementById('superSubsWrap').classList.remove('show');
   const pv = document.getElementById('productsView');
   const bv = document.getElementById('builderView');
@@ -4522,6 +4744,7 @@ function productCardHtml(p) {
 function renderProducts() {
   const grid = document.getElementById('grid');
   renderSuperSubs();
+  updatePizzaGuideUI();
 
   // Slot meio estático: esconde na aba Todos e na aba Pizzas (injetamos no grid)
   const staticMid = document.getElementById('adSlotMidStatic');
@@ -4538,6 +4761,7 @@ function renderProducts() {
       var sub = SUPER_SUBCATS.find(function (s) { return s.id === superSub; });
       var label = sub ? sub.emoji + ' ' + sub.label : 'esta seção';
       grid.innerHTML = '<div class="super-empty"><div class="icon">📭</div><h4>Sem estoque no momento</h4><p>Ainda não há produtos em <strong>' + label + '</strong>.</p></div>';
+    animateProductGrid();
       return;
     }
     var smHtml = '';
@@ -4547,6 +4771,7 @@ function renderProducts() {
     }
     smHtml += smList.map(productCardHtml).join('');
     grid.innerHTML = smHtml;
+    animateProductGrid();
     return;
   }
 
@@ -4555,9 +4780,11 @@ function renderProducts() {
     var bev = PRODUCTS.filter(function (p) { return p.category === 'bebida'; });
     if (!bev.length) {
       grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="empty-icon">😕</div><p>Nenhum produto nesta categoria</p></div>';
+    animateProductGrid();
       return;
     }
     grid.innerHTML = '<div class="size-div">🥤 Bebidas</div>' + bev.map(productCardHtml).join('');
+    animateProductGrid();
     return;
   }
 
@@ -4565,16 +4792,14 @@ function renderProducts() {
   if (filter === 'all' || filter === 'pizza') {
     if (!pizzaSizeFilter) pizzaSizeFilter = '8';
 
+    updatePizzaGuideUI();
+
     var html = '';
 
-    // 1) Navegação de tamanhos (sempre visível, uma linha sob a outra)
-    html += pizzaSizeNavHtml();
+    // Pizzas do tamanho selecionado (logo abaixo das faixas de fatias)
+    var sizeLab = SIZE_LABELS[pizzaSizeFilter] || pizzaSizeFilter;
+    html += '<div class="size-div">' + sizeLab + '</div>';
 
-    // 2) Dois cards especiais: Metade/Metade + Monte sua pizza
-    html += halfCardHtml();
-    html += builderCardHtml();
-
-    // 3) Pizzas do tamanho selecionado
     var pizzas = PRODUCTS.filter(function (p) {
       return p.category === 'pizza' && p.size === pizzaSizeFilter;
     });
@@ -4584,12 +4809,10 @@ function renderProducts() {
       html += '<div class="pizza-size-hint">Nenhuma pizza neste tamanho no momento.<br>Toque em outro tamanho acima.</div>';
     }
 
-    // 4) Slot publicidade MEIO
-    //    - Aba Todos: depois das pizzas, antes das bebidas
-    //    - Aba Pizzas: no final da lista de pizzas
+    // Slot publicidade MEIO
     html += midAdBlockHtml();
 
-    // 5) Na aba Todos: bebidas + supermercado depois do slot meio
+    // Na aba Todos: bebidas + supermercado depois do slot meio
     if (filter === 'all') {
       var bebidas = PRODUCTS.filter(function (p) { return p.category === 'bebida'; });
       if (bebidas.length) {
@@ -4606,11 +4829,13 @@ function renderProducts() {
     }
 
     grid.innerHTML = html;
+    animateProductGrid();
     return;
   }
 
   // fallback
   grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="empty-icon">😕</div><p>Nenhum produto nesta categoria</p></div>';
+    animateProductGrid();
 }
 
 /* ========== BUILDER ========== */
@@ -5031,7 +5256,7 @@ function sendWhatsApp() {
   });
 
   let msg = '🧾 *COMPROVANTE DE PEDIDO*\n';
-  msg += '🍕 *Oba Dellivery Pizzas & Mercadinho Express *\n';
+  msg += '🍕 *OBA DELIVERY PIZZAS & MERCADINHO EXPRESS*\n';
   msg += '━━━━━━━━━━━━━━━━━━━━\n';
   msg += `📅 ${dataHora}\n`;
   msg += '━━━━━━━━━━━━━━━━━━━━\n\n';
@@ -5087,6 +5312,7 @@ function init() {
   });
   loadCart();
   loadSavedCoupon();
+  renderSpecialTopCards();
   renderCats();
   renderProducts();
   renderAdSlots();
