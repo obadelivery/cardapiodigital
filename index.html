@@ -952,6 +952,89 @@ body.modal-open {
   font-size: 13px; color: #4ade80; font-weight: 700; margin-top: 6px; text-align: center;
 }
 
+
+/* Card Monte sua pizza (ao lado de Metade/Metade) */
+.card-builder {
+  border-color: rgba(34,197,94,0.45);
+  background: linear-gradient(160deg, rgba(34,197,94,0.12), rgba(22,163,74,0.04));
+  position: relative;
+}
+.card-builder:hover {
+  border-color: #22c55e;
+  box-shadow: 0 12px 40px rgba(34,197,94,0.18);
+}
+.card-builder .card-img {
+  background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(245,158,11,0.1));
+  font-size: 42px;
+  height: 110px;
+}
+.card-builder-badge {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  font-size: 9px; font-weight: 800; letter-spacing: 0.4px; text-transform: uppercase;
+  background: #22c55e; color: #000; padding: 3px 8px; border-radius: 999px;
+}
+.card-builder .card-name { color: #4ade80; }
+.card-builder .card-price { font-size: 12px; font-weight: 700; color: var(--text2); }
+
+/* Navegação por tamanho de pizza (sempre visível) */
+.pizza-size-nav {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.pizza-size-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid rgba(245,158,11,0.25);
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: all .15s;
+  min-height: 48px;
+}
+.pizza-size-link:hover {
+  border-color: var(--accent);
+  background: rgba(245,158,11,0.2);
+  transform: translateY(-1px);
+}
+.pizza-size-link.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  box-shadow: 0 4px 16px rgba(245,158,11,0.35);
+}
+.pizza-size-link .psl-left {
+  display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0;
+}
+.pizza-size-link .psl-arrow {
+  font-size: 16px; flex-shrink: 0; opacity: 0.85;
+}
+.pizza-size-hint {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 20px 12px;
+  font-size: 13px;
+  color: var(--text3);
+  background: var(--card);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius);
+}
+.pizza-size-hint strong { color: var(--accent); }
+
+/* Esconde banner antigo de monte pizza no topo */
+#btnMontePizza { display: none !important; }
+
 /* TOAST */
 .toast {
   position: fixed; bottom: calc(24px + var(--safe-bottom)); left: 50%;
@@ -4122,6 +4205,53 @@ function halfCardHtml() {
   '</article>';
 }
 
+function builderCardHtml() {
+  return '<article class="card card-builder" onclick="openBuilder()">' +
+    '<span class="card-builder-badge">Do seu jeito</span>' +
+    '<div class="card-img">🧑‍🍳</div>' +
+    '<div class="card-body">' +
+      '<div class="card-name">Monte a sua Pizza</div>' +
+      '<div class="card-desc">Escolha massa, molho, queijos, carnes e vegetais. Você monta do seu jeito, grama a grama.</div>' +
+      '<div class="card-footer">' +
+        '<span class="card-price">Personalizar</span>' +
+        '<button class="btn-add" style="background:#22c55e" onclick="event.stopPropagation();openBuilder()">Montar</button>' +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}
+
+const PIZZA_SIZE_ORDER = ['8', '6', '4', 'brotinho'];
+
+function pizzaSizeNavHtml() {
+  return '<nav class="pizza-size-nav" aria-label="Tamanhos de pizza">' +
+    PIZZA_SIZE_ORDER.map(function (sz) {
+      var label = SIZE_LABELS[sz] || sz;
+      var active = pizzaSizeFilter === sz ? ' active' : '';
+      return '<button type="button" class="pizza-size-link' + active + '" onclick="setPizzaSizeFilter(\'' + sz + '\')">' +
+        '<span class="psl-left">' + label + '</span>' +
+        '<span class="psl-arrow">' + (pizzaSizeFilter === sz ? '✓' : '›') + '</span>' +
+      '</button>';
+    }).join('') +
+  '</nav>';
+}
+
+function setPizzaSizeFilter(sz) {
+  pizzaSizeFilter = sz;
+  // Garante visão de pizzas
+  if (filter !== 'all' && filter !== 'pizza') {
+    filter = 'pizza';
+    builderOpen = false;
+    var pv = document.getElementById('productsView');
+    var bv = document.getElementById('builderView');
+    if (pv) pv.style.display = 'block';
+    if (bv) bv.classList.remove('show');
+    renderCats();
+  }
+  renderProducts();
+  var nav = document.querySelector('.pizza-size-nav');
+  if (nav) nav.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 
 
 /* ========== CUPONS DE DESCONTO ==========
@@ -4276,6 +4406,8 @@ let superSub = 'cesta';
 let selectedIngs = {};
 let activeIngCat = 'massa';
 let builderOpen = false;
+/** Filtro de tamanho de pizza: null | '8' | '6' | '4' | 'brotinho' */
+let pizzaSizeFilter = '8';
 
 /* ========== HELPERS ========== */
 const fmt = v => 'R$ ' + v.toFixed(2).replace('.', ',');
@@ -4301,6 +4433,10 @@ function setFilter(id) {
   filter = id;
   builderOpen = false;
   if (id === 'supermercado') superSub = 'cesta';
+  // Ao entrar em Pizzas / Todos, mantém ou define tamanho padrão
+  if (id === 'pizza' || id === 'all') {
+    if (!pizzaSizeFilter) pizzaSizeFilter = '8';
+  }
   renderCats();
   const pv = document.getElementById('productsView');
   const bv = document.getElementById('builderView');
@@ -4369,94 +4505,110 @@ function midAdBlockHtml() {
   '</div>';
 }
 
+function productCardHtml(p) {
+  return '<article class="card" onclick="openProduct(' + p.id + ')">' +
+    '<div class="card-img">' + p.emoji + '</div>' +
+    '<div class="card-body">' +
+      '<div class="card-name">' + p.name + '</div>' +
+      '<div class="card-desc">' + p.description + '</div>' +
+      '<div class="card-footer">' +
+        '<span class="card-price">' + fmt(p.price) + '</span>' +
+        '<button class="btn-add" onclick="event.stopPropagation();openProduct(' + p.id + ')">+ Add</button>' +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}
+
 function renderProducts() {
   const grid = document.getElementById('grid');
   renderSuperSubs();
 
-  // Aba Todos: slot meio entra no grid (entre pizzas e bebidas). Outras abas: bloco estático.
+  // Slot meio estático: esconde na aba Todos e na aba Pizzas (injetamos no grid)
   const staticMid = document.getElementById('adSlotMidStatic');
   if (staticMid) {
-    staticMid.style.display = (filter === 'all') ? 'none' : '';
+    staticMid.style.display = (filter === 'all' || filter === 'pizza') ? 'none' : '';
   }
 
-  let list;
-  if (filter === 'all') {
-    list = PRODUCTS;
-  } else if (filter === 'supermercado') {
-    list = PRODUCTS.filter(p => p.category === 'supermercado' && p.sub === superSub);
-  } else {
-    list = PRODUCTS.filter(p => p.category === filter);
-  }
-
-  if (filter === 'supermercado' && !list.length) {
-    const sub = SUPER_SUBCATS.find(s => s.id === superSub);
-    const label = sub ? sub.emoji + ' ' + sub.label : 'esta seção';
-    grid.innerHTML = '<div class="super-empty"><div class="icon">📭</div><h4>Sem estoque no momento</h4><p>Ainda não há produtos em <strong>' + label + '</strong>.</p></div>';
+  // —— Supermercado ——
+  if (filter === 'supermercado') {
+    var smList = PRODUCTS.filter(function (p) {
+      return p.category === 'supermercado' && p.sub === superSub;
+    });
+    if (!smList.length) {
+      var sub = SUPER_SUBCATS.find(function (s) { return s.id === superSub; });
+      var label = sub ? sub.emoji + ' ' + sub.label : 'esta seção';
+      grid.innerHTML = '<div class="super-empty"><div class="icon">📭</div><h4>Sem estoque no momento</h4><p>Ainda não há produtos em <strong>' + label + '</strong>.</p></div>';
+      return;
+    }
+    var smHtml = '';
+    var sub2 = SUPER_SUBCATS.find(function (s) { return s.id === superSub; });
+    if (sub2) {
+      smHtml += '<div class="size-div" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.3);color:#4ade80;">' + sub2.emoji + ' ' + sub2.label + '</div>';
+    }
+    smHtml += smList.map(productCardHtml).join('');
+    grid.innerHTML = smHtml;
     return;
   }
 
-  if (!list.length) {
-    grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="empty-icon">😕</div><p>Nenhum produto nesta categoria</p></div>';
+  // —— Bebidas ——
+  if (filter === 'bebida') {
+    var bev = PRODUCTS.filter(function (p) { return p.category === 'bebida'; });
+    if (!bev.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="empty-icon">😕</div><p>Nenhum produto nesta categoria</p></div>';
+      return;
+    }
+    grid.innerHTML = '<div class="size-div">🥤 Bebidas</div>' + bev.map(productCardHtml).join('');
     return;
   }
 
-  let html = '';
-  let lastSize = '';
-  let midAdInserted = false;
-  let halfCardInserted = false;
+  // —— Todos ou Pizzas ——
+  if (filter === 'all' || filter === 'pizza') {
+    if (!pizzaSizeFilter) pizzaSizeFilter = '8';
 
-  list.forEach(function (p) {
-    if (p.category === 'pizza' && p.size && p.size !== lastSize) {
-      html += '<div class="size-div">' + (SIZE_LABELS[p.size] || p.size) + '</div>';
-      // Card especial Metade/Metade no início da 1ª seção de pizzas
-      if (!halfCardInserted && (filter === 'all' || filter === 'pizza')) {
-        html += halfCardHtml();
-        halfCardInserted = true;
-      }
-      lastSize = p.size;
-    } else if (filter === 'all' && p.category !== 'pizza') {
-      if (p.category === 'bebida' && lastSize !== 'bebida') {
-        // Depois da última pizza (brotinho), antes de Bebidas
-        if (!midAdInserted) {
-          html += midAdBlockHtml();
-          midAdInserted = true;
-        }
+    var html = '';
+
+    // 1) Navegação de tamanhos (sempre visível, uma linha sob a outra)
+    html += pizzaSizeNavHtml();
+
+    // 2) Dois cards especiais: Metade/Metade + Monte sua pizza
+    html += halfCardHtml();
+    html += builderCardHtml();
+
+    // 3) Slot publicidade MEIO logo abaixo dos dois cards
+    html += midAdBlockHtml();
+
+    // 4) Pizzas do tamanho selecionado
+    var pizzas = PRODUCTS.filter(function (p) {
+      return p.category === 'pizza' && p.size === pizzaSizeFilter;
+    });
+    if (pizzas.length) {
+      html += pizzas.map(productCardHtml).join('');
+    } else {
+      html += '<div class="pizza-size-hint">Nenhuma pizza neste tamanho no momento.<br>Toque em outro tamanho acima.</div>';
+    }
+
+    // 5) Na aba Todos: bebidas + supermercado depois das pizzas
+    if (filter === 'all') {
+      var bebidas = PRODUCTS.filter(function (p) { return p.category === 'bebida'; });
+      if (bebidas.length) {
         html += '<div class="size-div">🥤 Bebidas</div>';
-        lastSize = 'bebida';
-      } else if (p.category === 'supermercado' && lastSize !== 'supermercado') {
-        if (!midAdInserted) {
-          html += midAdBlockHtml();
-          midAdInserted = true;
-        }
-        html += '<div class="size-div">🛒 Supermercado — Cesta básica</div>';
-        lastSize = 'supermercado';
+        html += bebidas.map(productCardHtml).join('');
       }
-    } else if (filter === 'supermercado' && lastSize !== superSub) {
-      const sub = SUPER_SUBCATS.find(s => s.id === superSub);
-      if (sub) {
-        html += '<div class="size-div" style="background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.3);color:#4ade80;">' + sub.emoji + ' ' + sub.label + '</div>';
-        lastSize = superSub;
+      var superItems = PRODUCTS.filter(function (p) {
+        return p.category === 'supermercado' && p.sub === 'cesta';
+      });
+      if (superItems.length) {
+        html += '<div class="size-div">🛒 Supermercado — Cesta básica</div>';
+        html += superItems.map(productCardHtml).join('');
       }
     }
 
-    html += '<article class="card" onclick="openProduct(' + p.id + ')">' +
-      '<div class="card-img">' + p.emoji + '</div>' +
-      '<div class="card-body">' +
-        '<div class="card-name">' + p.name + '</div>' +
-        '<div class="card-desc">' + p.description + '</div>' +
-        '<div class="card-footer">' +
-          '<span class="card-price">' + fmt(p.price) + '</span>' +
-          '<button class="btn-add" onclick="event.stopPropagation();openProduct(' + p.id + ')">+ Add</button>' +
-        '</div>' +
-      '</div>' +
-    '</article>';
-  });
-
-  if (filter === 'all' && !midAdInserted) {
-    html += midAdBlockHtml();
+    grid.innerHTML = html;
+    return;
   }
 
-  grid.innerHTML = html;
+  // fallback
+  grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><div class="empty-icon">😕</div><p>Nenhum produto nesta categoria</p></div>';
 }
 
 /* ========== BUILDER ========== */
