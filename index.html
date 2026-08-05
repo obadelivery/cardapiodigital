@@ -4574,10 +4574,7 @@ function renderProducts() {
     html += halfCardHtml();
     html += builderCardHtml();
 
-    // 3) Slot publicidade MEIO logo abaixo dos dois cards
-    html += midAdBlockHtml();
-
-    // 4) Pizzas do tamanho selecionado
+    // 3) Pizzas do tamanho selecionado
     var pizzas = PRODUCTS.filter(function (p) {
       return p.category === 'pizza' && p.size === pizzaSizeFilter;
     });
@@ -4587,7 +4584,12 @@ function renderProducts() {
       html += '<div class="pizza-size-hint">Nenhuma pizza neste tamanho no momento.<br>Toque em outro tamanho acima.</div>';
     }
 
-    // 5) Na aba Todos: bebidas + supermercado depois das pizzas
+    // 4) Slot publicidade MEIO
+    //    - Aba Todos: depois das pizzas, antes das bebidas
+    //    - Aba Pizzas: no final da lista de pizzas
+    html += midAdBlockHtml();
+
+    // 5) Na aba Todos: bebidas + supermercado depois do slot meio
     if (filter === 'all') {
       var bebidas = PRODUCTS.filter(function (p) { return p.category === 'bebida'; });
       if (bebidas.length) {
