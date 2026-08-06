@@ -329,9 +329,13 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
   box-shadow: 0 12px 40px rgba(245,158,11,0.1);
 }
 .card-img {
-  height: 100px; display: flex; align-items: center; justify-content: center;
+  height: 110px; display: flex; align-items: center; justify-content: center;
   background: linear-gradient(160deg, rgba(245,158,11,0.08), rgba(245,158,11,0.02));
-  font-size: 48px; position: relative;
+  font-size: 48px; position: relative; overflow: hidden;
+}
+.card-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center;
+  display: block;
 }
 .card-body { padding: 12px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
 .card-name { font-size: 13px; font-weight: 700; line-height: 1.3; color: var(--text); }
@@ -728,10 +732,14 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
 }
 .product-hero-emoji {
   font-size: 72px; line-height: 1;
-  width: 110px; height: 110px;
+  width: 140px; height: 140px;
   display: flex; align-items: center; justify-content: center;
   background: linear-gradient(160deg, rgba(245,158,11,0.12), rgba(245,158,11,0.03));
   border-radius: 24px; margin-bottom: 4px;
+  overflow: hidden;
+}
+.product-hero-emoji img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
 }
 .product-hero-name { font-size: 18px; font-weight: 700; line-height: 1.3; }
 .product-size-badge {
@@ -2806,8 +2814,8 @@ body.modal-open {
   <div class="agenda-box">
     <div class="agenda-header">
       <div style="flex:1;min-width:0">
-        <h2 id="cupomHeaderTitle">🎁 Poste e Ganhe Cupom de Desconto</h2>
-        <span class="agenda-sub" id="cupomHeaderSub">Baixe uma foto, poste no story do Instagram e ganhe cupom</span>
+        <h2 id="cupomHeaderTitle">🎁 Cupom de Desconto</h2>
+        <span class="agenda-sub" id="cupomHeaderSub">Baixe uma foto, poste no Instagram e ganhe cupom</span>
       </div>
       <button class="btn-close" onclick="closeAgenda()" aria-label="Fechar">✕</button>
     </div>
@@ -3188,44 +3196,44 @@ body.modal-open {
 <script>
 /* ========== DATA ========== */
 const PRODUCTS = [
-  { id: 1, name: 'Pizza Mussarela 8 fatias', category: 'pizza', size: '8', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 50.00, emoji: '🍕' },
-  { id: 2, name: 'Pizza Calabresa 8 fatias', category: 'pizza', size: '8', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 65.00, emoji: '🍕' },
-  { id: 201, name: 'Pizza Calabresa simples/econômica 8 fatias', category: 'pizza', size: '8', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 50.00, emoji: '🍕' },
+  { id: 1, name: 'Pizza Mussarela 8 fatias', category: 'pizza', size: '8', image: 'imagens/produtos/pizza-mussarela.webp', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 50.00, emoji: '🍕' },
+  { id: 2, name: 'Pizza Calabresa 8 fatias', category: 'pizza', size: '8', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 65.00, emoji: '🍕' },
+  { id: 201, name: 'Pizza Calabresa simples/econômica 8 fatias', category: 'pizza', size: '8', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 50.00, emoji: '🍕' },
   { id: 3, name: 'Pizza Bacon 8 fatias', category: 'pizza', size: '8', description: 'Molho de tomate, milho, presunto, mussarela, bacon fatiado, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 66.00, emoji: '🍕' },
   { id: 4, name: 'Pizza Mexicana 8 fatias', category: 'pizza', size: '8', description: 'Molho, carne moída, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 70.00, emoji: '🍕' },
   { id: 5, name: 'Pizza Frango 8 fatias', category: 'pizza', size: '8', description: 'Molho, frango desfiado, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 70.00, emoji: '🍕' },
   { id: 6, name: 'Pizza à moda da casa frango 8 fatias', category: 'pizza', size: '8', description: 'Molho, frango desfiado, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 72.00, emoji: '🍕' },
   { id: 7, name: 'Pizza à moda da casa carne moída 8 fatias', category: 'pizza', size: '8', description: 'Molho, carne moída, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 72.00, emoji: '🍕' },
   { id: 8, name: 'Pizza Bacon simples/econômica 8 fatias', category: 'pizza', size: '8', description: 'Molho, mussarela, bacon, tomate, cebola, azeite, cheddar e catupiry', price: 52.00, emoji: '🍕' },
-  { id: 9, name: 'Pizza Mussarela 6 fatias', category: 'pizza', size: '6', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 35.00, emoji: '🍕' },
-  { id: 10, name: 'Pizza Calabresa 6 fatias', category: 'pizza', size: '6', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 40.00, emoji: '🍕' },
-  { id: 202, name: 'Pizza Calabresa simples/econômica 6 fatias', category: 'pizza', size: '6', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 33.00, emoji: '🍕' },
+  { id: 9, name: 'Pizza Mussarela 6 fatias', category: 'pizza', size: '6', image: 'imagens/produtos/pizza-mussarela.webp', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 35.00, emoji: '🍕' },
+  { id: 10, name: 'Pizza Calabresa 6 fatias', category: 'pizza', size: '6', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 40.00, emoji: '🍕' },
+  { id: 202, name: 'Pizza Calabresa simples/econômica 6 fatias', category: 'pizza', size: '6', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 33.00, emoji: '🍕' },
   { id: 11, name: 'Pizza Bacon 6 fatias', category: 'pizza', size: '6', description: 'Molho de tomate, milho, presunto, mussarela, bacon fatiado, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 41.00, emoji: '🍕' },
   { id: 12, name: 'Pizza Mexicana 6 fatias', category: 'pizza', size: '6', description: 'Molho, carne moída, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 42.00, emoji: '🍕' },
   { id: 13, name: 'Pizza Frango 6 fatias', category: 'pizza', size: '6', description: 'Molho, frango desfiado, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 44.00, emoji: '🍕' },
   { id: 14, name: 'Pizza à moda da casa frango 6 fatias', category: 'pizza', size: '6', description: 'Molho, frango desfiado, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 45.00, emoji: '🍕' },
   { id: 15, name: 'Pizza à moda da casa carne moída 6 fatias', category: 'pizza', size: '6', description: 'Molho, carne moída, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 45.00, emoji: '🍕' },
   { id: 16, name: 'Pizza Bacon simples/econômica 6 fatias', category: 'pizza', size: '6', description: 'Molho, mussarela, bacon, tomate, cebola, azeite, cheddar e catupiry', price: 37.00, emoji: '🍕' },
-  { id: 17, name: 'Pizza Mussarela 4 fatias', category: 'pizza', size: '4', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 25.00, emoji: '🍕' },
-  { id: 18, name: 'Pizza Calabresa 4 fatias', category: 'pizza', size: '4', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 30.00, emoji: '🍕' },
-  { id: 203, name: 'Pizza Calabresa simples/econômica 4 fatias', category: 'pizza', size: '4', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 25.00, emoji: '🍕' },
+  { id: 17, name: 'Pizza Mussarela 4 fatias', category: 'pizza', size: '4', image: 'imagens/produtos/pizza-mussarela.webp', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 25.00, emoji: '🍕' },
+  { id: 18, name: 'Pizza Calabresa 4 fatias', category: 'pizza', size: '4', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 30.00, emoji: '🍕' },
+  { id: 203, name: 'Pizza Calabresa simples/econômica 4 fatias', category: 'pizza', size: '4', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 25.00, emoji: '🍕' },
   { id: 19, name: 'Pizza Bacon 4 fatias', category: 'pizza', size: '4', description: 'Molho de tomate, milho, presunto, mussarela, bacon fatiado, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 31.00, emoji: '🍕' },
   { id: 20, name: 'Pizza Mexicana 4 fatias', category: 'pizza', size: '4', description: 'Molho, carne moída, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 32.00, emoji: '🍕' },
   { id: 21, name: 'Pizza Frango 4 fatias', category: 'pizza', size: '4', description: 'Molho, frango desfiado, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 32.00, emoji: '🍕' },
   { id: 22, name: 'Pizza à moda da casa frango 4 fatias', category: 'pizza', size: '4', description: 'Molho, frango desfiado, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 32.00, emoji: '🍕' },
   { id: 23, name: 'Pizza à moda da casa carne moída 4 fatias', category: 'pizza', size: '4', description: 'Molho, carne moída, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 32.00, emoji: '🍕' },
   { id: 24, name: 'Pizza Bacon simples/econômica 4 fatias', category: 'pizza', size: '4', description: 'Molho, mussarela, bacon, tomate, cebola, azeite, cheddar e catupiry', price: 27.00, emoji: '🍕' },
-  { id: 25, name: 'Pizza Mussarela Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 15.00, emoji: '🍕' },
-  { id: 26, name: 'Pizza Calabresa Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 16.00, emoji: '🍕' },
-  { id: 204, name: 'Pizza Calabresa simples/econômica Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 15.00, emoji: '🍕' },
+  { id: 25, name: 'Pizza Mussarela Brotinho', category: 'pizza', size: 'brotinho', image: 'imagens/produtos/pizza-mussarela.webp', description: 'Molho de tomate, milho verde, presunto, mussarela, azeitonas verdes, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 15.00, emoji: '🍕' },
+  { id: 26, name: 'Pizza Calabresa Brotinho', category: 'pizza', size: 'brotinho', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho especial de tomate, milho, presunto, mussarela, calabresa fatiada, azeitona, tomate, cebola, orégano e azeite, cheddar e catupiry', price: 16.00, emoji: '🍕' },
+  { id: 204, name: 'Pizza Calabresa simples/econômica Brotinho', category: 'pizza', size: 'brotinho', image: 'imagens/produtos/pizza-calabresa.jpg', description: 'Molho, calabresa fatiada, cebola, mussarela, azeitonas verdes, orégano, cheddar e catupiry', price: 15.00, emoji: '🍕' },
   { id: 27, name: 'Pizza Bacon Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho de tomate, milho, presunto, mussarela, bacon fatiado, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 17.00, emoji: '🍕' },
   { id: 28, name: 'Pizza Mexicana Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho, carne moída, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 18.00, emoji: '🍕' },
   { id: 29, name: 'Pizza Frango Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho, frango desfiado, milho, presunto, mussarela, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 19.00, emoji: '🍕' },
   { id: 30, name: 'Pizza à moda da casa frango Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho, frango desfiado, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 20.00, emoji: '🍕' },
   { id: 31, name: 'Pizza à moda da casa carne moída Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho, carne moída, presunto, salsicha, milho, mussarela, calabresa, bacon, tomate, azeitona, cebola, orégano e azeite, cheddar e catupiry', price: 20.00, emoji: '🍕' },
   { id: 32, name: 'Pizza Bacon simples/econômica Brotinho', category: 'pizza', size: 'brotinho', description: 'Molho, mussarela, bacon, tomate, cebola, azeite, cheddar e catupiry', price: 17.00, emoji: '🍕' },
-  { id: 33, name: 'Coca-Cola 2L', category: 'bebida', description: 'Refrigerante gelado', price: 13.00, emoji: '🥤' },
-  { id: 34, name: 'Guaraná Antarctica 2L', category: 'bebida', description: 'Refrigerante gelado', price: 11.00, emoji: '🥤' },
+  { id: 33, name: 'Coca-Cola 2L', category: 'bebida', image: 'imagens/produtos/coca-cola-2l.jpg', description: 'Refrigerante gelado', price: 13.00, emoji: '🥤' },
+  { id: 34, name: 'Guaraná Antarctica 2L', category: 'bebida', image: 'imagens/produtos/guarana-antarctica-2l.jpg', description: 'Refrigerante gelado', price: 11.00, emoji: '🥤' },
   {id: 35, name: 'Jaó Guaraná 2L', category: 'bebida', description: 'Refrigerante gelado', price: 7.50, emoji: '🥤' },
   { id: 46, name: 'Cerveja Antarctica 15 latas palito', category: 'bebida', description: 'Caixa de cerveja gelada', price: 60.00, emoji: '🍺' },
   { id: 36, name: 'Cerveja Skol 15 latas palito', category: 'bebida', description: 'Caixa de cerveja gelada', price: 60.00, emoji: '🍺' },
@@ -5034,7 +5042,7 @@ function setPizzaSizeFilter(sz) {
 const COUPON_LS_KEY = 'oba_coupons_v2';
 const DEFAULT_COUPONS = {
   'UTENSILIOS10': {
-    code: 'OBADELIVERYAMORINOPOLIS10',
+    code: 'UTENSILIOS10',
     percent: 10,
     scope: 'all_pizzas',
     productIds: [],
@@ -5043,7 +5051,7 @@ const DEFAULT_COUPONS = {
     createdAt: 0,
     expiresAt: 0,
     bannerTitle: 'Oferta de parceiro',
-    bannerText: 'O melhor delivery de Amorinópolis?',
+    bannerText: 'Qual é a loja que vende mais barato utensílios para a sua cozinha?',
     sponsor: 'Cupom patrocinado · 10% nas pizzas',
     builtin: true
   },
@@ -5487,20 +5495,21 @@ const CONTACTS = [
 
 /* ========== SISTEMA DE CUPOM (substitui Agenda) ========== */
 const CUPOM_ADMIN_PASSWORD = 'Mm121933/';
-const CUPOM_ADMIN_EMAIL = 'marcosviniciusgh12@gmail.com';
+const CUPOM_ADMIN_EMAIL = 'marcosviniciuslemes20152016@gmail.com'; // principal (alerta sonoro)
+const CUPOM_ADMIN_EMAIL_ALT = 'marcosviniciusgh12@gmail.com'; // alternativo
 const CUPOM_ADMIN_WHATSAPP = '5564981261464';
 const CUPOM_STORAGE_KEY = 'oba_solicitacoes';
 const CUPOM_SESSION_KEY = 'oba_admin_session';
 
 const CUPOM_PHOTOS = [
-  { src: '01-segunda-semana-salario.jpg', title: 'Semana de Salário na Conta', file: 'oba-semana-salario.jpg' },
-  { src: '02-sextou-familia.png', title: 'Sextou com Oba Delivery', file: 'oba-sextou-familia.png' },
-  { src: '03-almoco-entregador.png', title: 'Agora também no Almoço', file: 'oba-almoco.png' },
-  { src: '04-massas-cresceram.jpg', title: 'Nossas Massas Cresceram', file: 'oba-massas-cresceram.jpg' },
-  { src: '05-quarta-recheio.jpg', title: 'Quarta do Recheio', file: 'oba-quarta-recheio.jpg' },
-  { src: '06-tamanho-40cm.jpg', title: 'Mais Sabor, Maior Tamanho', file: 'oba-tamanho-40cm.jpg' },
-  { src: '07-terca-pizza.png', title: 'Terça também é dia de Pizza', file: 'oba-terca-pizza.png' },
-  { src: '08-monte-sua-pizza.png', title: 'Monte a sua Pizza', file: 'oba-monte-sua-pizza.png' }
+  { src: 'imagens/01-segunda-semana-salario.jpg', title: 'Semana de Salário na Conta', file: 'oba-semana-salario.jpg' },
+  { src: 'imagens/02-sextou-familia.png', title: 'Sextou com Oba Delivery', file: 'oba-sextou-familia.png' },
+  { src: 'imagens/03-almoco-entregador.png', title: 'Agora também no Almoço', file: 'oba-almoco.png' },
+  { src: 'imagens/04-massas-cresceram.jpg', title: 'Nossas Massas Cresceram', file: 'oba-massas-cresceram.jpg' },
+  { src: 'imagens/05-quarta-recheio.jpg', title: 'Quarta do Recheio', file: 'oba-quarta-recheio.jpg' },
+  { src: 'imagens/06-tamanho-40cm.jpg', title: 'Mais Sabor, Maior Tamanho', file: 'oba-tamanho-40cm.jpg' },
+  { src: 'imagens/07-terca-pizza.png', title: 'Terça também é dia de Pizza', file: 'oba-terca-pizza.png' },
+  { src: 'imagens/08-monte-sua-pizza.png', title: 'Monte a sua Pizza', file: 'oba-monte-sua-pizza.png' }
 ];
 
 let cupomView = 'public'; // public | login | admin
@@ -5706,19 +5715,27 @@ function cupomSubmit() {
   var btn = document.getElementById('cupomSubmitBtn');
   if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
 
-  // E-mail automático via FormSubmit
-  fetch('https://formsubmit.co/ajax/' + CUPOM_ADMIN_EMAIL, {
+  // E-mail automático via FormSubmit (principal + alternativo)
+  var emailPayload = {
+    _subject: '🍕 Nova solicitação de cupom - Oba Delivery Pizza',
+    Nome: nome,
+    Celular: celular,
+    'Link Instagram': instagram,
+    Mensagem: 'Nova solicitação de cupom. Abra o cardápio → Cupom → ADM para analisar.',
+    _template: 'table'
+  };
+  var emailOpts = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      _subject: '🍕 Nova solicitação de cupom - Oba Delivery Pizza',
-      Nome: nome,
-      Celular: celular,
-      'Link Instagram': instagram,
-      Mensagem: 'Nova solicitação de cupom. Abra o cardápio → Cupom → ADM para analisar.',
-      _template: 'table'
-    })
-  }).then(function() {
+    body: JSON.stringify(emailPayload)
+  };
+  var emails = [CUPOM_ADMIN_EMAIL];
+  if (typeof CUPOM_ADMIN_EMAIL_ALT === 'string' && CUPOM_ADMIN_EMAIL_ALT) {
+    emails.push(CUPOM_ADMIN_EMAIL_ALT);
+  }
+  Promise.all(emails.map(function(em) {
+    return fetch('https://formsubmit.co/ajax/' + em, emailOpts).catch(function() { return null; });
+  })).then(function() {
     cupomShowSuccess();
   }).catch(function() {
     cupomShowSuccess();
@@ -5917,7 +5934,7 @@ function waLinkFromNumber(num) {
 const STATS_LS_VISITS = 'oba_stats_visits_v1';
 const STATS_LS_SESSION = 'oba_stats_session_v1';
 const STATS_LS_PRESENCE = 'oba_stats_presence_v1';
-const STATS_BASE_VISITS = 8; // ponto de partida visível (ajuste se quiser)
+const STATS_BASE_VISITS = 48; // ponto de partida visível (ajuste se quiser)
 const STATS_SESSION_MS = 45 * 60 * 1000; // 45 min = mesma visita
 
 function statsHourBoost() {
@@ -6155,8 +6172,11 @@ function midAdBlockHtml() {
 }
 
 function productCardHtml(p) {
+  var imgHtml = p.image
+    ? '<img src="' + p.image + '" alt="' + String(p.name).replace(/"/g, '&quot;') + '" loading="lazy">'
+    : (p.emoji || '📦');
   return '<article class="card" onclick="openProduct(' + p.id + ')">' +
-    '<div class="card-img">' + p.emoji + '</div>' +
+    '<div class="card-img">' + imgHtml + '</div>' +
     '<div class="card-body">' +
       '<div class="card-name">' + p.name + '</div>' +
       '<div class="card-desc">' + p.description + '</div>' +
@@ -6462,7 +6482,12 @@ function openProduct(id) {
   prodQty = 1;
   lockBodyScroll();
 
-  document.getElementById('prodEmoji').textContent = p.emoji || '🍕';
+  var hero = document.getElementById('prodEmoji');
+  if (p.image) {
+    hero.innerHTML = '<img src="' + p.image + '" alt="' + String(p.name).replace(/"/g, '&quot;') + '">';
+  } else {
+    hero.textContent = p.emoji || '🍕';
+  }
   document.getElementById('prodName').textContent = p.name;
   document.getElementById('prodPrice').textContent = fmt(p.price);
 
