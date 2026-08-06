@@ -2505,7 +2505,7 @@ body.modal-open {
       <div class="coupon-panel" id="couponPanel">
         <div class="coupon-banner" id="couponBanner">
           <div class="cb-title">Oferta de parceiro</div>
-          <div class="cb-text">Qual é a loja que vende mais barato utensílios para a sua cozinha?</div>
+          <div class="cb-text">COM UM CUPOM DE DESCONTO DE PARCEIROS VOCÊ GARANTE ATÉ 20%OFF?</div>
           <div class="cb-sponsor">Digite o cupom do anunciante e ganhe desconto nas pizzas</div>
         </div>
         <div id="couponFormWrap">
@@ -3852,7 +3852,7 @@ function renderMkAuthBar() {
   } else if (mkFirebaseConfigured()) {
     cloudHint.innerHTML = '⚠️ Config Firebase presente, conectando…';
   } else {
-    cloudHint.innerHTML = '💾 Modo local — para nuvem, configure <code>MK_FIREBASE</code> no código';
+    cloudHint.innerHTML = '💾 Modo local — para nuvem,  <code>MK_FIREBASE</code> no código';
   }
 
   if (session) {
@@ -4914,7 +4914,7 @@ function setPizzaSizeFilter(sz) {
 const COUPON_LS_KEY = 'oba_coupons_v2';
 const DEFAULT_COUPONS = {
   'UTENSILIOS10': {
-    code: 'UTENSILIOS10',
+    code: 'OBAUTENSILIOS10',
     percent: 10,
     scope: 'all_pizzas',
     productIds: [],
@@ -5443,7 +5443,7 @@ function renderAgenda() {
 const STATS_LS_VISITS = 'oba_stats_visits_v1';
 const STATS_LS_SESSION = 'oba_stats_session_v1';
 const STATS_LS_PRESENCE = 'oba_stats_presence_v1';
-const STATS_BASE_VISITS = 48; // ponto de partida visível (ajuste se quiser)
+const STATS_BASE_VISITS = 10; // ponto de partida visível (ajuste se quiser)
 const STATS_SESSION_MS = 45 * 60 * 1000; // 45 min = mesma visita
 
 function statsHourBoost() {
