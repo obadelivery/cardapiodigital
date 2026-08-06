@@ -3316,12 +3316,12 @@ const WA_URL = 'https://wa.me/5564981261464';
 const ADS = {
   topo: {
     emoji: '🏪',
-    logo: '',
-    title: 'Seu comércio aqui — Slot Topo',
-    teaser: 'Anuncie para quem está pedindo pizza e mercado na região. Toque para ver o anúncio.',
-    slotLabel: 'Posição: Topo do cardápio',
-    desc: 'Este é o espaço mais visível do cardápio digital. Quem abre o menu vê seu anúncio antes de tudo.',
-    offer: '<strong>Ideal para:</strong> mercados, farmácias, lava-jatos e serviços da região.',
+    logo: 'grok_1786038106059.jpg',
+    title: 'FELIZ DIA DOS PAIS — Á TODOS OS PAIS',
+    teaser: 'Que todos os pais tenham um Dia dos Pais repleto de carinho, saúde e reconhecimento pelo amor que dedicam todos os dias.',
+    slotLabel: 'Feliz Dia dos Pais!',
+    desc: 'Desejamos a todos os pais um dia especial, cheio. cheio de momentos felizes ao lado de quem mais amam..',
+    offer: '<strong>USE O CUPOM:</strong> OBA5 e garanta 5% de desconto em qualquer pizza.',
     wa: '',
     msg: ''
   },
@@ -5056,7 +5056,7 @@ const DEFAULT_COUPONS = {
     builtin: true
   },
   'OBA5': {
-    code: 'OBA5',
+    code: 'ESPECIALOBA5',
     percent: 5,
     scope: 'all_pizzas',
     productIds: [],
@@ -5593,14 +5593,14 @@ function renderAgenda() {
   }
 
   // VIEW PÚBLICA
-  if (titleEl) titleEl.textContent = '🎁 Cupom de Desconto';
-  if (subEl) subEl.textContent = 'Baixe uma foto, poste no Instagram e ganhe cupom';
+  if (titleEl) titleEl.textContent = '🎁Ganhe Cupons de Desconto';
+  if (subEl) subEl.textContent = 'É só Baixar uma foto, postar no story do Instagram e ganha cupom';
 
   let html = '';
   html += '<div class="cupom-steps">' +
-    '<div class="cupom-step"><span class="cupom-step-n">1</span><span>Baixe uma foto</span></div>' +
+    '<div class="cupom-step"><span class="cupom-step-n">1</span><span>Baixe qualquer foto</span></div>' +
     '<div class="cupom-step"><span class="cupom-step-n">2</span><span>Poste marcando <strong>@oba.delivery.pizza</strong></span></div>' +
-    '<div class="cupom-step"><span class="cupom-step-n">3</span><span>Envie o link aqui</span></div>' +
+    '<div class="cupom-step"><span class="cupom-step-n">3</span><span>Copie o link do post e Envie o link aqui</span></div>' +
     '<div class="cupom-step"><span class="cupom-step-n">4</span><span>Receba o cupom</span></div>' +
   '</div>';
 
