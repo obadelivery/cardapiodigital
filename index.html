@@ -5041,6 +5041,21 @@ function setPizzaSizeFilter(sz) {
  */
 const COUPON_LS_KEY = 'oba_coupons_v2';
 const DEFAULT_COUPONS = {
+  'OBA5': {
+    code: 'OBA5',
+    percent: 5,
+    scope: 'all_pizzas',
+    productIds: [],
+    includeCustom: true,
+    days: 365,
+    createdAt: 0,
+    expiresAt: 0,
+    bannerTitle: 'Cupom DIA DOS PAIS',
+    bannerText: 'Desconto especial nas pizzas para quem tem o cupom do dia dos pais.',
+    sponsor: '5% de desconto nas pizzas',
+    builtin: true
+  },
+  
   'UTENSILIOS10': {
     code: 'OBAPIZZA10',
     percent: 10,
@@ -5055,20 +5070,7 @@ const DEFAULT_COUPONS = {
     sponsor: 'Cupom patrocinado · 10% nas pizzas',
     builtin: true
   },
-  'OBA5': {
-    code: 'ESPECIALOBA5',
-    percent: 5,
-    scope: 'all_pizzas',
-    productIds: [],
-    includeCustom: true,
-    days: 365,
-    createdAt: 0,
-    expiresAt: 0,
-    bannerTitle: 'Cupom Oba Delivery',
-    bannerText: 'Desconto especial nas pizzas para quem tem o cupom do parceiro.',
-    sponsor: '5% de desconto nas pizzas',
-    builtin: true
-  },
+  
   'PIZZA2': {
     code: 'PIZZA2',
     percent: 2,
