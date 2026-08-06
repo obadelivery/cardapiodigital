@@ -208,11 +208,11 @@ h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; }
   white-space: nowrap;
 }
 .h-agenda {
-  background: linear-gradient(160deg, rgba(236,72,153,0.18), rgba(190,24,93,0.06));
-  border-color: rgba(236,72,153,0.35);
-  color: #f9a8d4;
+  background: linear-gradient(160deg, rgba(245,158,11,0.2), rgba(217,119,6,0.08));
+  border-color: rgba(245,158,11,0.4);
+  color: var(--accent2);
 }
-.h-agenda:hover { border-color: #ec4899; box-shadow: 0 4px 16px rgba(236,72,153,0.25); }
+.h-agenda:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(245,158,11,0.3); }
 .h-market {
   background: linear-gradient(160deg, rgba(6,182,212,0.18), rgba(2,132,199,0.06));
   border-color: rgba(6,182,212,0.35);
@@ -1735,7 +1735,7 @@ body.modal-open {
 }
 .agenda-header h2 {
   font-size: 17px; font-weight: 800; margin: 0;
-  background: linear-gradient(135deg, #f472b6, #ec4899);
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .agenda-header .agenda-sub {
@@ -1756,6 +1756,126 @@ body.modal-open {
 }
 .agenda-intro h3 { font-size: 14px; font-weight: 700; color: #f9a8d4; margin-bottom: 4px; }
 .agenda-intro p { font-size: 12px; color: var(--text2); line-height: 1.45; }
+
+/* CUPOM SYSTEM */
+.cupom-steps {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px;
+}
+.cupom-step {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 10px 12px;
+  font-size: 11px; color: var(--text2); line-height: 1.35; font-weight: 500;
+}
+.cupom-step-n {
+  flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--accent); color: #000; font-weight: 800; font-size: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.cupom-gallery {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px;
+}
+@media (min-width: 480px) { .cupom-gallery { grid-template-columns: 1fr 1fr 1fr; } }
+.cupom-card {
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: 14px; overflow: hidden;
+}
+.cupom-card-img {
+  aspect-ratio: 4/5; overflow: hidden; background: var(--bg2);
+}
+.cupom-card-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+}
+.cupom-card-body { padding: 8px 10px 10px; }
+.cupom-card-title {
+  font-size: 11px; font-weight: 700; color: var(--text); margin-bottom: 6px;
+  line-height: 1.25; min-height: 28px;
+}
+.cupom-btn-dl {
+  display: block; text-align: center; padding: 7px 8px;
+  background: var(--accent); color: #000; border-radius: 8px;
+  font-size: 11px; font-weight: 700; text-decoration: none;
+}
+.cupom-btn-dl:active { transform: scale(0.97); }
+.cupom-form-wrap {
+  background: var(--card); border: 1.5px solid var(--border);
+  border-radius: 14px; padding: 16px; margin-bottom: 8px;
+}
+.cupom-field { margin-bottom: 12px; }
+.cupom-field label {
+  display: block; font-size: 11px; font-weight: 600; color: var(--text2); margin-bottom: 4px;
+}
+.cupom-field input {
+  width: 100%; padding: 11px 12px; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--bg2); color: var(--text);
+  font-size: 14px; font-family: inherit;
+}
+.cupom-field input:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(245,158,11,0.15);
+}
+.cupom-btn-primary {
+  background: var(--accent); color: #000; border: none; border-radius: 10px;
+  padding: 12px 16px; font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: inherit; transition: background .15s;
+}
+.cupom-btn-primary:hover { background: var(--accent2); }
+.cupom-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.cupom-btn-ghost {
+  background: transparent; color: var(--text2); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 8px 12px; font-size: 12px; font-weight: 600;
+  cursor: pointer; font-family: inherit; text-decoration: none; display: inline-block;
+}
+.cupom-btn-ok {
+  background: #16a34a; color: #fff; border: none; border-radius: 8px;
+  padding: 8px 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.cupom-btn-no {
+  background: #dc2626; color: #fff; border: none; border-radius: 8px;
+  padding: 8px 12px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit;
+}
+.cupom-login { max-width: 320px; margin: 24px auto; }
+.cupom-admin-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+.cupom-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px;
+}
+.cupom-stat {
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+  padding: 10px 6px; text-align: center;
+}
+.cupom-stat b { display: block; font-size: 18px; font-weight: 800; color: var(--accent); font-family: 'Space Grotesk', sans-serif; }
+.cupom-stat span { font-size: 10px; color: var(--text3); font-weight: 600; }
+.cupom-filters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.cupom-filter {
+  padding: 6px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+  background: var(--card); color: var(--text3); font-size: 11px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+}
+.cupom-filter.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+.cupom-req {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px; margin-bottom: 10px;
+}
+.cupom-req.pending { border-left: 3px solid #eab308; }
+.cupom-req.approved { border-left: 3px solid #22c55e; }
+.cupom-req.cancelled { border-left: 3px solid #ef4444; opacity: 0.7; }
+.cupom-req-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.cupom-req-top strong { font-size: 14px; }
+.cupom-badge {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 10px;
+}
+.cupom-badge-pending { background: rgba(234,179,8,0.2); color: #eab308; }
+.cupom-badge-approved { background: rgba(34,197,94,0.2); color: #4ade80; }
+.cupom-badge-cancelled { background: rgba(239,68,68,0.2); color: #f87171; }
+.cupom-req-info { font-size: 12px; color: var(--text2); margin-bottom: 3px; word-break: break-all; }
+.cupom-req-info a { color: var(--accent); }
+.cupom-req-actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.cupom-code-box {
+  margin-top: 8px; padding: 10px; background: rgba(34,197,94,0.12);
+  border-radius: 8px; font-size: 13px; color: #4ade80;
+}
+.cupom-code-box strong { font-size: 15px; letter-spacing: 1px; }
 
 .contact-card {
   background: var(--card);
@@ -2338,9 +2458,9 @@ body.modal-open {
     </div>
   </div>
   <nav class="header-actions" aria-label="Atalhos do cardápio">
-    <button type="button" class="h-action h-agenda" onclick="openAgenda()" aria-label="Agenda de contatos">
-      <span class="h-ico">📇</span>
-      <span class="h-lbl">Agenda</span>
+    <button type="button" class="h-action h-agenda" onclick="openAgenda()" aria-label="Cupom de desconto">
+      <span class="h-ico">🎁</span>
+      <span class="h-lbl">Cupom</span>
     </button>
     <button type="button" class="h-action h-market" onclick="openMarketplace()" aria-label="Marketplace">
       <span class="h-ico">🏪</span>
@@ -2505,7 +2625,7 @@ body.modal-open {
       <div class="coupon-panel" id="couponPanel">
         <div class="coupon-banner" id="couponBanner">
           <div class="cb-title">Oferta de parceiro</div>
-          <div class="cb-text">COM UM CUPOM DE DESCONTO DE PARCEIROS VOCÊ GARANTE ATÉ 20%OFF?</div>
+          <div class="cb-text">Qual é a loja que vende mais barato utensílios para a sua cozinha?</div>
           <div class="cb-sponsor">Digite o cupom do anunciante e ganhe desconto nas pizzas</div>
         </div>
         <div id="couponFormWrap">
@@ -2686,13 +2806,13 @@ body.modal-open {
   <div class="agenda-box">
     <div class="agenda-header">
       <div style="flex:1;min-width:0">
-        <h2>📇 Agenda de Contatos</h2>
-        <span class="agenda-sub">Principais comércios de Amorinópolis</span>
+        <h2 id="cupomHeaderTitle">🎁 Cupom de Desconto</h2>
+        <span class="agenda-sub" id="cupomHeaderSub">Baixe uma foto, poste no Instagram e ganhe cupom</span>
       </div>
       <button class="btn-close" onclick="closeAgenda()" aria-label="Fechar">✕</button>
     </div>
     <div class="agenda-body" id="agendaBody">
-      <!-- preenchido por JS -->
+      <!-- preenchido por JS: galeria + formulário ou painel ADM -->
     </div>
   </div>
 </div>
@@ -3852,7 +3972,7 @@ function renderMkAuthBar() {
   } else if (mkFirebaseConfigured()) {
     cloudHint.innerHTML = '⚠️ Config Firebase presente, conectando…';
   } else {
-    cloudHint.innerHTML = '💾 Modo local — para nuvem,  <code>MK_FIREBASE</code> no código';
+    cloudHint.innerHTML = '💾 Modo local — para nuvem, configure <code>MK_FIREBASE</code> no código';
   }
 
   if (session) {
@@ -4914,7 +5034,7 @@ function setPizzaSizeFilter(sz) {
 const COUPON_LS_KEY = 'oba_coupons_v2';
 const DEFAULT_COUPONS = {
   'UTENSILIOS10': {
-    code: 'OBAUTENSILIOS10',
+    code: 'UTENSILIOS10',
     percent: 10,
     scope: 'all_pizzas',
     productIds: [],
@@ -5365,7 +5485,30 @@ const CONTACTS = [
   // },
 ];
 
+/* ========== SISTEMA DE CUPOM (substitui Agenda) ========== */
+const CUPOM_ADMIN_PASSWORD = 'Mm121933/';
+const CUPOM_ADMIN_EMAIL = 'marcosviniciusgh12@gmail.com';
+const CUPOM_ADMIN_WHATSAPP = '5564981261464';
+const CUPOM_STORAGE_KEY = 'oba_solicitacoes';
+const CUPOM_SESSION_KEY = 'oba_admin_session';
+
+const CUPOM_PHOTOS = [
+  { src: '01-segunda-semana-salario.jpg', title: 'Semana de Salário na Conta', file: 'oba-semana-salario.jpg' },
+  { src: '02-sextou-familia.png', title: 'Sextou com Oba Delivery', file: 'oba-sextou-familia.png' },
+  { src: '03-almoco-entregador.png', title: 'Agora também no Almoço', file: 'oba-almoco.png' },
+  { src: '04-massas-cresceram.jpg', title: 'Nossas Massas Cresceram', file: 'oba-massas-cresceram.jpg' },
+  { src: '05-quarta-recheio.jpg', title: 'Quarta do Recheio', file: 'oba-quarta-recheio.jpg' },
+  { src: '06-tamanho-40cm.jpg', title: 'Mais Sabor, Maior Tamanho', file: 'oba-tamanho-40cm.jpg' },
+  { src: '07-terca-pizza.png', title: 'Terça também é dia de Pizza', file: 'oba-terca-pizza.png' },
+  { src: '08-monte-sua-pizza.png', title: 'Monte a sua Pizza', file: 'oba-monte-sua-pizza.png' }
+];
+
+let cupomView = 'public'; // public | login | admin
+let cupomFilter = 'all';
+let cupomApproveId = null;
+
 function openAgenda() {
+  cupomView = (sessionStorage.getItem(CUPOM_SESSION_KEY) === 'ok') ? 'admin' : 'public';
   renderAgenda();
   document.getElementById('agendaModal').classList.add('open');
   lockBodyScroll();
@@ -5374,64 +5517,395 @@ function openAgenda() {
 function closeAgenda() {
   document.getElementById('agendaModal').classList.remove('open');
   unlockBodyScroll();
+  cupomApproveId = null;
 }
 
-function waLinkFromNumber(num) {
-  const digits = String(num || '').replace(/\D/g, '');
-  if (!digits) return '';
-  return 'https://wa.me/' + digits;
+function cupomGetRequests() {
+  try { return JSON.parse(localStorage.getItem(CUPOM_STORAGE_KEY) || '[]'); }
+  catch (e) { return []; }
+}
+
+function cupomSaveRequests(list) {
+  localStorage.setItem(CUPOM_STORAGE_KEY, JSON.stringify(list));
+}
+
+function cupomEsc(str) {
+  if (!str) return '';
+  return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function cupomId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+}
+
+function cupomCleanPhone(p) {
+  return String(p || '').replace(/\D/g, '');
+}
+
+function cupomFormatDate(iso) {
+  try {
+    return new Date(iso).toLocaleString('pt-BR', {
+      day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+  } catch (e) { return iso; }
 }
 
 function renderAgenda() {
   const body = document.getElementById('agendaBody');
   if (!body) return;
 
-  let html = '';
-  html += '<div class="agenda-intro">' +
-    '<h3>Comércios de Amorinópolis</h3>' +
-    '<p>Toque em WhatsApp ou Instagram para falar direto com o estabelecimento. Novos contatos são adicionados pela equipe.</p>' +
-  '</div>';
+  const titleEl = document.getElementById('cupomHeaderTitle');
+  const subEl = document.getElementById('cupomHeaderSub');
 
-  if (!CONTACTS.length) {
-    html += '<div class="agenda-empty"><div class="icon">📭</div><p>Nenhum contato cadastrado ainda.</p></div>';
-    body.innerHTML = html;
+  if (cupomView === 'login') {
+    if (titleEl) titleEl.textContent = '🔐 Painel ADM';
+    if (subEl) subEl.textContent = 'Digite a senha para acessar';
+    body.innerHTML =
+      '<div class="cupom-login">' +
+        '<p style="color:var(--text2);font-size:13px;margin-bottom:14px;text-align:center">Acesso restrito à equipe Oba</p>' +
+        '<input type="password" id="cupomAdminPwd" placeholder="Senha" style="width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--border);background:var(--bg2);color:var(--text);font-size:15px;margin-bottom:12px;font-family:inherit">' +
+        '<button type="button" class="cupom-btn-primary" onclick="cupomDoLogin()" style="width:100%">Entrar</button>' +
+        '<p id="cupomLoginErr" style="color:#ef4444;font-size:12px;margin-top:10px;text-align:center;display:none">Senha incorreta</p>' +
+        '<button type="button" class="cupom-btn-ghost" onclick="cupomGoPublic()" style="width:100%;margin-top:12px">← Voltar</button>' +
+      '</div>';
+    setTimeout(function() {
+      var inp = document.getElementById('cupomAdminPwd');
+      if (inp) { inp.focus(); inp.addEventListener('keydown', function(e) { if (e.key === 'Enter') cupomDoLogin(); }); }
+    }, 50);
     return;
   }
 
-  CONTACTS.forEach(function (c) {
-    const img = c.image
-      ? '<img class="contact-photo" src="' + c.image + '" alt="' + (c.name || '') + '" loading="lazy">'
-      : '<div class="contact-photo-placeholder">🏪</div>';
+  if (cupomView === 'admin') {
+    if (titleEl) titleEl.textContent = '📊 Solicitações de Cupom';
+    if (subEl) subEl.textContent = 'Analise, aprove ou cancele';
+    renderCupomAdmin(body);
+    return;
+  }
 
-    let actions = '';
-    if (c.whatsapp) {
-      const wa = waLinkFromNumber(c.whatsapp);
-      actions += '<a class="contact-btn contact-btn-wa" href="' + wa + '" target="_blank" rel="noopener noreferrer">' +
-        '💬 WhatsApp</a>';
-    }
-    if (c.instagram) {
-      actions += '<a class="contact-btn contact-btn-ig" href="' + c.instagram + '" target="_blank" rel="noopener noreferrer">' +
-        '📷 Instagram</a>';
-    }
-    if (!c.whatsapp && !c.instagram && c.phone) {
-      const tel = String(c.phone).replace(/\D/g, '');
-      actions += '<a class="contact-btn contact-btn-phone" href="tel:+' + tel + '">📞 Ligar</a>';
-    }
-    if (!actions) {
-      actions = '<span style="font-size:12px;color:var(--text3)">Sem contato disponível</span>';
-    }
+  // VIEW PÚBLICA
+  if (titleEl) titleEl.textContent = '🎁 Cupom de Desconto';
+  if (subEl) subEl.textContent = 'Baixe uma foto, poste no Instagram e ganhe cupom';
 
-    html += '<article class="contact-card">' +
-      img +
-      '<div class="contact-info">' +
-        '<div class="contact-name">' + (c.name || 'Estabelecimento') + '</div>' +
-        '<div class="contact-place">📍 ' + (c.place || 'Amorinópolis') + '</div>' +
-        '<div class="contact-actions">' + actions + '</div>' +
+  let html = '';
+  html += '<div class="cupom-steps">' +
+    '<div class="cupom-step"><span class="cupom-step-n">1</span><span>Baixe uma foto</span></div>' +
+    '<div class="cupom-step"><span class="cupom-step-n">2</span><span>Poste marcando <strong>@oba.delivery.pizza</strong></span></div>' +
+    '<div class="cupom-step"><span class="cupom-step-n">3</span><span>Envie o link aqui</span></div>' +
+    '<div class="cupom-step"><span class="cupom-step-n">4</span><span>Receba o cupom</span></div>' +
+  '</div>';
+
+  html += '<div class="cupom-gallery">';
+  CUPOM_PHOTOS.forEach(function(ph) {
+    html += '<article class="cupom-card">' +
+      '<div class="cupom-card-img"><img src="' + ph.src + '" alt="' + cupomEsc(ph.title) + '" loading="lazy"></div>' +
+      '<div class="cupom-card-body">' +
+        '<div class="cupom-card-title">' + cupomEsc(ph.title) + '</div>' +
+        '<a class="cupom-btn-dl" href="' + ph.src + '" download="' + ph.file + '">⬇️ Baixar</a>' +
       '</div>' +
     '</article>';
   });
+  html += '</div>';
+
+  html += '<div class="cupom-form-wrap" id="cupomFormWrap">' +
+    '<h3 style="font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text)">🎁 Solicitar cupom</h3>' +
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:14px;line-height:1.4">Já postou marcando <strong>@oba.delivery.pizza</strong>? Preencha abaixo.</p>' +
+    '<div class="cupom-field"><label>Nome completo *</label><input type="text" id="cupomNome" placeholder="Ex: Maria Silva" autocomplete="name"></div>' +
+    '<div class="cupom-field"><label>Celular (WhatsApp) *</label><input type="tel" id="cupomCelular" placeholder="(64) 99999-9999" autocomplete="tel"></div>' +
+    '<div class="cupom-field"><label>Link do Instagram *</label><input type="url" id="cupomInstagram" placeholder="https://www.instagram.com/p/..."></div>' +
+    '<button type="button" class="cupom-btn-primary" id="cupomSubmitBtn" onclick="cupomSubmit()" style="width:100%">📨 Enviar solicitação</button>' +
+    '<p style="font-size:11px;color:var(--text3);margin-top:10px;line-height:1.4">Após o envio, analisamos o post e enviamos o cupom no WhatsApp informado.</p>' +
+  '</div>';
+
+  html += '<div id="cupomSuccessBox" style="display:none;text-align:center;padding:28px 16px;background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);border-radius:14px;margin-top:8px">' +
+    '<div style="font-size:36px;margin-bottom:8px">✅</div>' +
+    '<h3 style="color:#4ade80;font-size:16px;margin-bottom:6px">Pedido enviado com sucesso!</h3>' +
+    '<p style="color:var(--text2);font-size:13px;line-height:1.5">Em poucos minutos vamos enviar o seu cupom no WhatsApp informado.</p>' +
+    '<button type="button" class="cupom-btn-ghost" style="margin-top:14px" onclick="cupomResetForm()">Enviar outra</button>' +
+  '</div>';
+
+  html += '<div style="text-align:center;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)">' +
+    '<button type="button" class="cupom-btn-ghost" onclick="cupomGoLogin()" style="font-size:11px;opacity:0.6">🔐 ADM</button>' +
+  '</div>';
 
   body.innerHTML = html;
+
+  var cel = document.getElementById('cupomCelular');
+  if (cel) {
+    cel.addEventListener('input', function(e) {
+      var v = e.target.value.replace(/\D/g, '');
+      if (v.length > 11) v = v.slice(0, 11);
+      if (v.length > 6) v = v.replace(/^(\d{2})(\d{5})(\d{0,4}).*/, '($1) $2-$3');
+      else if (v.length > 2) v = v.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+      else if (v.length > 0) v = v.replace(/^(\d*)/, '($1');
+      e.target.value = v;
+    });
+  }
+}
+
+function cupomGoPublic() {
+  cupomView = 'public';
+  renderAgenda();
+}
+
+function cupomGoLogin() {
+  cupomView = 'login';
+  renderAgenda();
+}
+
+function cupomDoLogin() {
+  var pwd = (document.getElementById('cupomAdminPwd') || {}).value || '';
+  if (pwd === CUPOM_ADMIN_PASSWORD) {
+    sessionStorage.setItem(CUPOM_SESSION_KEY, 'ok');
+    cupomView = 'admin';
+    renderAgenda();
+    if (typeof toast === 'function') toast('Bem-vindo ao painel!');
+  } else {
+    var err = document.getElementById('cupomLoginErr');
+    if (err) err.style.display = 'block';
+  }
+}
+
+function cupomLogout() {
+  sessionStorage.removeItem(CUPOM_SESSION_KEY);
+  cupomView = 'public';
+  renderAgenda();
+}
+
+function cupomSubmit() {
+  var nome = (document.getElementById('cupomNome') || {}).value.trim();
+  var celular = (document.getElementById('cupomCelular') || {}).value.trim();
+  var instagram = (document.getElementById('cupomInstagram') || {}).value.trim();
+
+  if (!nome || !celular || !instagram) {
+    if (typeof toast === 'function') toast('Preencha todos os campos');
+    return;
+  }
+  if (!instagram.includes('instagram.com')) {
+    if (typeof toast === 'function') toast('Cole um link válido do Instagram');
+    return;
+  }
+
+  var request = {
+    id: cupomId(),
+    nome: nome,
+    celular: celular,
+    celularLimpo: cupomCleanPhone(celular),
+    instagram: instagram,
+    status: 'pending',
+    cupom: '',
+    cupomDesc: '',
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+
+  var list = cupomGetRequests();
+  list.unshift(request);
+  cupomSaveRequests(list);
+
+  var btn = document.getElementById('cupomSubmitBtn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Enviando...'; }
+
+  // E-mail automático via FormSubmit
+  fetch('https://formsubmit.co/ajax/' + CUPOM_ADMIN_EMAIL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      _subject: '🍕 Nova solicitação de cupom - Oba Delivery Pizza',
+      Nome: nome,
+      Celular: celular,
+      'Link Instagram': instagram,
+      Mensagem: 'Nova solicitação de cupom. Abra o cardápio → Cupom → ADM para analisar.',
+      _template: 'table'
+    })
+  }).then(function() {
+    cupomShowSuccess();
+  }).catch(function() {
+    cupomShowSuccess();
+  });
+}
+
+function cupomShowSuccess() {
+  var form = document.getElementById('cupomFormWrap');
+  var box = document.getElementById('cupomSuccessBox');
+  if (form) form.style.display = 'none';
+  if (box) box.style.display = 'block';
+  var btn = document.getElementById('cupomSubmitBtn');
+  if (btn) { btn.disabled = false; btn.textContent = '📨 Enviar solicitação'; }
+  if (typeof toast === 'function') toast('Pedido enviado com sucesso!');
+}
+
+function cupomResetForm() {
+  var form = document.getElementById('cupomFormWrap');
+  var box = document.getElementById('cupomSuccessBox');
+  if (form) form.style.display = 'block';
+  if (box) box.style.display = 'none';
+  ['cupomNome','cupomCelular','cupomInstagram'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+}
+
+function renderCupomAdmin(body) {
+  var list = cupomGetRequests();
+  var pending = list.filter(function(r) { return r.status === 'pending'; }).length;
+  var approved = list.filter(function(r) { return r.status === 'approved'; }).length;
+  var cancelled = list.filter(function(r) { return r.status === 'cancelled'; }).length;
+
+  var filtered = list;
+  if (cupomFilter !== 'all') filtered = list.filter(function(r) { return r.status === cupomFilter; });
+
+  var html = '';
+  html += '<div class="cupom-admin-bar">' +
+    '<button type="button" class="cupom-btn-ghost" onclick="cupomLogout()">Sair</button>' +
+    '<button type="button" class="cupom-btn-ghost" onclick="cupomGoPublic()">← Site</button>' +
+  '</div>';
+
+  html += '<div class="cupom-stats">' +
+    '<div class="cupom-stat"><b>' + pending + '</b><span>Pendentes</span></div>' +
+    '<div class="cupom-stat"><b>' + approved + '</b><span>Aprovados</span></div>' +
+    '<div class="cupom-stat"><b>' + cancelled + '</b><span>Cancelados</span></div>' +
+    '<div class="cupom-stat"><b>' + list.length + '</b><span>Total</span></div>' +
+  '</div>';
+
+  html += '<div class="cupom-filters">' +
+    '<button type="button" class="cupom-filter' + (cupomFilter==='all'?' active':'') + '" onclick="cupomSetFilter(\'all\')">Todos</button>' +
+    '<button type="button" class="cupom-filter' + (cupomFilter==='pending'?' active':'') + '" onclick="cupomSetFilter(\'pending\')">Pendentes</button>' +
+    '<button type="button" class="cupom-filter' + (cupomFilter==='approved'?' active':'') + '" onclick="cupomSetFilter(\'approved\')">Aprovados</button>' +
+    '<button type="button" class="cupom-filter' + (cupomFilter==='cancelled'?' active':'') + '" onclick="cupomSetFilter(\'cancelled\')">Cancelados</button>' +
+  '</div>';
+
+  if (!filtered.length) {
+    html += '<div class="agenda-empty"><div class="icon">📭</div><p>Nenhuma solicitação.</p></div>';
+  } else {
+    filtered.forEach(function(r) {
+      var badge = r.status === 'pending' ? 'Pendente' : r.status === 'approved' ? 'Aprovado' : 'Cancelado';
+      var badgeCls = 'cupom-badge-' + r.status;
+      html += '<div class="cupom-req ' + r.status + '">' +
+        '<div class="cupom-req-top"><strong>' + cupomEsc(r.nome) + '</strong><span class="cupom-badge ' + badgeCls + '">' + badge + '</span></div>' +
+        '<div class="cupom-req-info">📱 ' + cupomEsc(r.celular) + '</div>' +
+        '<div class="cupom-req-info">🔗 <a href="' + cupomEsc(r.instagram) + '" target="_blank" rel="noopener">' + cupomEsc(r.instagram) + '</a></div>' +
+        '<div class="cupom-req-info">🕐 ' + cupomFormatDate(r.createdAt) + '</div>';
+
+      if (r.status === 'approved' && r.cupom) {
+        html += '<div class="cupom-code-box">Cupom: <strong>' + cupomEsc(r.cupom) + '</strong>' +
+          (r.cupomDesc ? '<br><small>' + cupomEsc(r.cupomDesc) + '</small>' : '') + '</div>';
+      }
+
+      html += '<div class="cupom-req-actions">';
+      if (r.status === 'pending') {
+        html += '<button type="button" class="cupom-btn-ok" onclick="cupomOpenApprove(\'' + r.id + '\')">✅ Aprovar</button>';
+        html += '<button type="button" class="cupom-btn-no" onclick="cupomCancel(\'' + r.id + '\')">❌ Cancelar</button>';
+        html += '<a class="cupom-btn-ghost" href="' + cupomEsc(r.instagram) + '" target="_blank" rel="noopener">Ver post</a>';
+      } else if (r.status === 'approved') {
+        html += '<button type="button" class="cupom-btn-ok" onclick="cupomNotifyCustomer(\'' + r.id + '\')">📲 Enviar no WhatsApp</button>';
+        html += '<a class="cupom-btn-ghost" href="' + cupomEsc(r.instagram) + '" target="_blank" rel="noopener">Ver post</a>';
+      } else {
+        html += '<button type="button" class="cupom-btn-ghost" onclick="cupomReopen(\'' + r.id + '\')">Reabrir</button>';
+      }
+      html += '</div></div>';
+    });
+  }
+
+  // Modal aprovar embutido
+  html += '<div id="cupomApproveBox" style="display:none;margin-top:16px;padding:16px;background:var(--bg2);border:1px solid var(--border);border-radius:14px">' +
+    '<h4 style="margin-bottom:10px;font-size:14px">✅ Liberar cupom</h4>' +
+    '<div class="cupom-field"><label>Código do cupom *</label><input type="text" id="cupomCodeInput" placeholder="OBA10OFF"></div>' +
+    '<div class="cupom-field"><label>Descrição</label><input type="text" id="cupomDescInput" placeholder="10% de desconto"></div>' +
+    '<div style="display:flex;gap:8px;margin-top:10px">' +
+      '<button type="button" class="cupom-btn-ghost" onclick="cupomCloseApprove()">Cancelar</button>' +
+      '<button type="button" class="cupom-btn-ok" onclick="cupomConfirmApprove()">Aprovar e notificar</button>' +
+    '</div>' +
+  '</div>';
+
+  body.innerHTML = html;
+}
+
+function cupomSetFilter(f) {
+  cupomFilter = f;
+  renderAgenda();
+}
+
+function cupomOpenApprove(id) {
+  cupomApproveId = id;
+  var box = document.getElementById('cupomApproveBox');
+  if (box) box.style.display = 'block';
+  var code = document.getElementById('cupomCodeInput');
+  var desc = document.getElementById('cupomDescInput');
+  if (code) code.value = 'OBA' + Math.floor(1000 + Math.random() * 9000);
+  if (desc) desc.value = '10% de desconto na próxima compra';
+  if (box) box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function cupomCloseApprove() {
+  cupomApproveId = null;
+  var box = document.getElementById('cupomApproveBox');
+  if (box) box.style.display = 'none';
+}
+
+function cupomConfirmApprove() {
+  var code = ((document.getElementById('cupomCodeInput') || {}).value || '').trim();
+  var desc = ((document.getElementById('cupomDescInput') || {}).value || '').trim();
+  if (!code) {
+    if (typeof toast === 'function') toast('Digite o código do cupom');
+    return;
+  }
+  var list = cupomGetRequests();
+  var idx = list.findIndex(function(r) { return r.id === cupomApproveId; });
+  if (idx === -1) return;
+  list[idx].status = 'approved';
+  list[idx].cupom = code;
+  list[idx].cupomDesc = desc;
+  list[idx].updatedAt = new Date().toISOString();
+  cupomSaveRequests(list);
+  var approvedId = list[idx].id;
+  cupomCloseApprove();
+  renderAgenda();
+  setTimeout(function() { cupomNotifyCustomer(approvedId); }, 400);
+}
+
+function cupomCancel(id) {
+  if (!confirm('Cancelar esta solicitação?')) return;
+  var list = cupomGetRequests();
+  var idx = list.findIndex(function(r) { return r.id === id; });
+  if (idx === -1) return;
+  list[idx].status = 'cancelled';
+  list[idx].updatedAt = new Date().toISOString();
+  cupomSaveRequests(list);
+  renderAgenda();
+}
+
+function cupomReopen(id) {
+  var list = cupomGetRequests();
+  var idx = list.findIndex(function(r) { return r.id === id; });
+  if (idx === -1) return;
+  list[idx].status = 'pending';
+  list[idx].cupom = '';
+  list[idx].cupomDesc = '';
+  list[idx].updatedAt = new Date().toISOString();
+  cupomSaveRequests(list);
+  renderAgenda();
+}
+
+function cupomNotifyCustomer(id) {
+  var list = cupomGetRequests();
+  var r = list.find(function(x) { return x.id === id; });
+  if (!r || r.status !== 'approved') return;
+  var phone = r.celularLimpo || cupomCleanPhone(r.celular);
+  if (phone.length === 10 || phone.length === 11) phone = '55' + phone;
+  var msg = encodeURIComponent(
+    '🍕 *Oba Delivery Pizza*\n\nOlá, ' + r.nome + '!\n\nSua postagem foi aprovada ✅\n\n🎁 *Seu cupom:* ' + r.cupom +
+    (r.cupomDesc ? '\n' + r.cupomDesc : '') +
+    '\n\nObrigado por marcar a gente no Instagram!\nQualquer dúvida, é só responder.'
+  );
+  window.open('https://wa.me/' + phone + '?text=' + msg, '_blank');
+  if (typeof toast === 'function') toast('Abrindo WhatsApp do cliente...');
+}
+
+function waLinkFromNumber(num) {
+  const digits = String(num || '').replace(/\D/g, '');
+  if (!digits) return '';
+  return 'https://wa.me/' + digits;
 }
 
 
@@ -5443,7 +5917,7 @@ function renderAgenda() {
 const STATS_LS_VISITS = 'oba_stats_visits_v1';
 const STATS_LS_SESSION = 'oba_stats_session_v1';
 const STATS_LS_PRESENCE = 'oba_stats_presence_v1';
-const STATS_BASE_VISITS = 10; // ponto de partida visível (ajuste se quiser)
+const STATS_BASE_VISITS = 8; // ponto de partida visível (ajuste se quiser)
 const STATS_SESSION_MS = 45 * 60 * 1000; // 45 min = mesma visita
 
 function statsHourBoost() {
